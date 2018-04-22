@@ -13,3 +13,15 @@ Basically:
 - Import the grafana json file from this repo as a dashboard.
 - You'll almost certainly have to edit the dashboard because it has a few hard coded things specific to my network.
 - Good luck!
+
+# Auto Start (incomplete, needs launch files added to repo)
+- Copy `up.conf` to `/usr/local/etc/unifi-poller/up.conf`
+- Copy/Install the `unifi-poller` binary to `/usr/local/bin/unifi-poller`
+
+## macOS
+- Copy the launch agent plist to `~/Library/LaunchAgents/pro.sleepers.unifi-poller.plist`
+- `launchctl load ~/Library/LaunchAgents/pro.sleepers.unifi-poller.plist`
+
+## Linux
+- Copy the systemd service unit file to `/etc/systemd/system/unifi-poller.service`
+- `sudo systemctl start unifi-poller`
