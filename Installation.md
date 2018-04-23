@@ -14,13 +14,15 @@ Basically:
 - You'll almost certainly have to edit the dashboard because it has a few hard coded things specific to my network.
 - Good luck!
 
-# Auto Start (incomplete, needs launch files added to repo)
+# Auto Start
+- Running `make install` (macOS) or `sudo make install` (linux) should put the files in the right place. Then just start the service with one of the commands below. If you want to do it yourself, here it is:
+
 - Copy `up.conf` to `/usr/local/etc/unifi-poller/up.conf`
 - Copy/Install the `unifi-poller` binary to `/usr/local/bin/unifi-poller`
 
 ## macOS
-- Copy the launch agent plist to `~/Library/LaunchAgents/pro.sleepers.unifi-poller.plist`
-- `launchctl load ~/Library/LaunchAgents/pro.sleepers.unifi-poller.plist`
+- Copy the launch agent plist to `~/Library/LaunchAgents/com.github.davidnewhall.unifi-poller.plist`
+- `launchctl load ~/Library/LaunchAgents/com.github.davidnewhall.unifi-poller.plist`
 
 ## Linux
 - Copy the systemd service unit file to `/etc/systemd/system/unifi-poller.service`
