@@ -8,9 +8,9 @@ Basically:
 - Log into your Unifi Controller, Go to `Settings -> Admins` and add a read-only user (`influxdb`) with a nice long password. Try `uuidgen`.
 - copy `up.conf.example` to `up.conf`, edit it with your endpoint access details. 
 - create a database in influxdb. `CREATE DATABASE unifi`
-- run it: `./unifi-poller -c up.conf -D`
+- run it: `./unifi-poller -c up.conf`
 - Add the unifi database as a data source to Grafana.
-- Import the grafana json file from this repo as a dashboard.
+- Import the grafana json files from this repo as dashboards.
 - You'll almost certainly have to edit the dashboard because it has a few hard coded things specific to my network.
 - Good luck!
 
