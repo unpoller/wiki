@@ -4,7 +4,7 @@ This will be expanded upon as I take more screenshots and get everything dialed 
 
 Basically:
 - Compile the app by typing `make`.
-- If that didn't work, make sure your Go env is up to snuff. I tested this with 1.9 and 1.10.
+- If that didn't work, make sure your Go env is up to snuff. I tested this with 1.11.4.
 - Log into your Unifi Controller, Go to `Settings -> Admins` and add a read-only user (`influxdb`) with a nice long password. Try `uuidgen`.
 - copy `up.conf.example` to `up.conf`, edit it with your endpoint access details. 
 - create a database in influxdb. `CREATE DATABASE unifi`
