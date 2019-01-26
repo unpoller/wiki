@@ -15,8 +15,9 @@ Basically:
 - Good luck!
 
 # Auto Start
-- Running `make install` (macOS) or `sudo make install` (linux) should put the files in the right place. Then just start the service with one of the commands below. If you want to do it yourself, here it is:
+- Running `make install` (macOS) or `sudo make install` (linux) should put the files in the right place. Then just start the service with one of the commands below. 
 
+If you want to do it yourself, here it is:
 - Copy `up.conf` to `/usr/local/etc/unifi-poller/up.conf`
 - Copy/Install the `unifi-poller` binary to `/usr/local/bin/unifi-poller`
 - Then:
