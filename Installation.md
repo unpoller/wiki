@@ -19,6 +19,7 @@ Basically:
 
 - Copy `up.conf` to `/usr/local/etc/unifi-poller/up.conf`
 - Copy/Install the `unifi-poller` binary to `/usr/local/bin/unifi-poller`
+- Then:
 
 ## macOS
 - Copy the launch agent plist to `~/Library/LaunchAgents/com.github.davidnewhall.unifi-poller.plist`
