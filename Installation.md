@@ -3,30 +3,31 @@
 This will be expanded upon as I take more screenshots and get everything dialed in. Help is always appreciated.
 
 Basically:
-- [Install Go](https://golang.org/doc/install). 
-- [Install dep](https://golang.github.io/dep/docs/installation.html).
-- Clone this repo. Change your working directory to the checkout.
-  - `git clone git@github.com:davidnewhall/unifi-poller.git ; cd unifi-poller`
-- Install local dependencies by typing `make dep`
-- Compile the app by typing `make`.
-- If that gave you no errors, then proceed.
-- If that didn't work, make sure your Go env is up to snuff. I tested this with 1.11.4 & 1.12.1
-- Run `sudo make install` to automatically install the application and a startup script to keep it running.
-  - This isn't well tested on Linux, so please provide feedback. Open an [Issue](https://github.com/davidnewhall/unifi-poller/issues/new).
-- Log into your Unifi Controller, Go to `Settings -> Admins` and add a read-only user (`influxdb`) with a nice long password. Try `uuidgen`.
-- Edit `/usr/local/etc/unifi-poller/up.conf` - Correct the influxdb configuration.
-- Create a database in influxdb. `CREATE DATABASE unifi`
-- Restart the service:
-  - mac: 
-    - `launchctl unload ~/Library/LaunchAgents/com.github.davidnewhall.unifi-poller.plist`
-    - `launchctl load ~/Library/LaunchAgents/com.github.davidnewhall.unifi-poller.plist`
-  - linux
-    - `sudo service unifi-poller restart`
-- Check the log. mac: `/usr/local/var/log/unifi-poller.log` linux: somewhere in `/var/log` (check `messages` and `syslog`)
-- Add the unifi database as a data source to Grafana.
-- Import the grafana json files from this repo as dashboards.
-- You'll almost certainly have to edit the dashboard because it has a few hard coded things specific to my network.
-- Good luck!
+1. [Install Go](https://golang.org/doc/install). 
+1. [Install dep](https://golang.github.io/dep/docs/installation.html).
+1. Clone this repo. Change your working directory to the checkout.
+   1. `git clone git@github.com:davidnewhall/unifi-poller.git ; cd unifi-poller`
+1. Install local dependencies by typing `make dep`
+1. Compile the app by typing `make`.
+   1. If that gave you no errors, then proceed.
+   1. If that didn't work, make sure your Go env is up to snuff. I tested this with 1.11.4 & 1.12.1
+1. Run `sudo make install` to automatically install the application and a startup script to keep it running.
+   1. This isn't well tested on Linux, so please provide feedback. Open an [Issue](https://github.com/davidnewhall/unifi-poller/issues/new).
+1. Log into your Unifi Controller, Go to `Settings -> Admins` and add a read-only user (`influxdb`) with a nice long password. Try `uuidgen`.
+1. Edit `/usr/local/etc/unifi-poller/up.conf` - Correct the influxdb configuration.
+1. Create a database in influxdb. `CREATE DATABASE unifi`
+1. Restart the service:
+   1. mac: 
+      1. `launchctl unload ~/Library/LaunchAgents/com.github.davidnewhall.unifi-poller.plist`
+      1. `launchctl load ~/Library/LaunchAgents/com.github.davidnewhall.unifi-poller.plist`
+   1. linux
+      1. `sudo service unifi-poller restart`
+1. Check the log. mac: `/usr/local/var/log/unifi-poller.log` linux: somewhere in `/var/log` (check `messages` and `syslog`)
+1. Add the unifi database as a data source to Grafana.
+1. Import the grafana json files from this repo as dashboards.
+1. You'll almost certainly have to edit the dashboard because it has a few hard coded things specific to my network.
+
+**Good luck!** Please leave feedback about your experience and how these directions can be improved to save the next person some time. Thanks!
 
 # Auto Start
 - Running `make install` (macOS) or `sudo make install` (linux) should put the files in the right place. Then just start the service with one of the commands below. 
