@@ -46,6 +46,7 @@
    1. Put it in Debug mode. Edit the startup file and add `--debug` to the cli arguments.
    1. macOS: `~/Library/LaunchAgents/com.github.davidnewhall.unifi-poller.plist`
    1. Linux: `/etc/systemd/system/unifi-poller.service`
+   1. Restart the service (shown above).
 1. **Add the unifi InfluxDB** database as a [data source to Grafana](https://grafana.com/docs/features/datasources/influxdb/). 
 1. **Import the grafana json files** from this repo as dashboards.
 1. You'll almost certainly have to edit the dashboard because it has a few hard coded things specific to my network.
