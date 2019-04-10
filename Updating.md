@@ -2,7 +2,8 @@ If you've already followed the [Installation Wiki](Installation) guide and you w
 
 Go back to your git checkout for unifi-poller, or clone it again.
 ```shell
-git clone git@github.com:davidnewhall/unifi-poller.git ; cd unifi-poller
+git clone git@github.com:davidnewhall/unifi-poller.git
+cd unifi-poller
 ```
 
 Update app & vendors. This will bring everything up to, what should be, a compatible version.
