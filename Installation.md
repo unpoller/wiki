@@ -69,3 +69,25 @@ If you want to do it yourself, here it is:
 ## Linux: start `unifi-poller` service 
 - Copy the systemd service unit file to `/etc/systemd/system/unifi-poller.service`
 - `sudo systemctl start unifi-poller`
+
+# Installing on Ubuntu tested with 18.04
+Gain root
+```shell
+cd ~
+apt-get  install ruby golang ruby-dev
+gem install ronn
+mkdir /root/go
+mkdir /root/go/pkg
+mkdir /root/go/pkg/mod
+mkdir /root/go/bin
+export GOPATH=/root/go
+go get github.com/golift/unifi
+go get github.com/influxdata/influxdb1-client/v2
+go get github.com/naoina/toml
+go get github.com/ogier/pflag
+git clone https://github.com/davidnewhall/unifi-poller
+cd unifi-poller
+make
+
+cp startup/systemd/unifi-poller.service /etc/systemd/system/
+sudo systemctl start unifi-poller
