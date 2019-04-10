@@ -1,11 +1,8 @@
 # Unifi-Poller Installation
 
-This will be expanded upon as I take more screenshots and get everything dialed in. Help is always appreciated.
-
-Basically:
 1. [Install Go](https://golang.org/doc/install). 
 1. [Install dep](https://golang.github.io/dep/docs/installation.html).
-1. [Install Ronn](Ronn). This makes a man page so you can run `man unifi-poller`
+1. [Install Ronn](Ronn). This makes a man page so you can run `man unifi-poller`.
 1. Clone this repo and change your working directory to the checkout.
    ```shell
    git clone git@github.com:davidnewhall/unifi-poller.git ; cd unifi-poller
