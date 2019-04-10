@@ -39,7 +39,9 @@
       ```shell
       sudo systemctl restart unifi-poller
       ```
-1. **Check the log.** mac: `/usr/local/var/log/unifi-poller.log` linux: somewhere in `/var/log` (check `messages` and `syslog`). [Tell me](https://github.com/davidnewhall/unifi-poller/issues/new) where you found it.
+1. **Check the log.** 
+   1. macOS: `/usr/local/var/log/unifi-poller.log`
+   1. Linux: somewhere in `/var/log` (check `messages` and `syslog`). [Tell me](https://github.com/davidnewhall/unifi-poller/issues/new) where you found it.
 1. **Add the unifi InfluxDB** database as a [data source to Grafana](https://grafana.com/docs/features/datasources/influxdb/). 
 1. **Import the grafana json files** from this repo as dashboards.
 1. You'll almost certainly have to edit the dashboard because it has a few hard coded things specific to my network.
