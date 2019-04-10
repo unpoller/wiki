@@ -9,7 +9,6 @@
    ```
 1. Install local Golang dependencies: 
    ```shell
-   dep init
    dep ensure -update
    ```
 1. Compile the app by typing `make`.
