@@ -22,21 +22,26 @@ Basically:
 1. Create a database in influxdb. `CREATE DATABASE unifi`
 1. Restart the service:
    1. mac: 
-      1. `launchctl unload ~/Library/LaunchAgents/com.github.davidnewhall.unifi-poller.plist`
-      1. `launchctl load ~/Library/LaunchAgents/com.github.davidnewhall.unifi-poller.plist`
+      ```shell
+      launchctl unload ~/Library/LaunchAgents/com.github.davidnewhall.unifi-poller.plist
+      launchctl load ~/Library/LaunchAgents/com.github.davidnewhall.unifi-poller.plist
+      ```
    1. linux
-      1. `sudo service unifi-poller restart`
-1. Check the log. mac: `/usr/local/var/log/unifi-poller.log` linux: somewhere in `/var/log` (check `messages` and `syslog`)
-1. Add the unifi database as a data source to Grafana.
+      ```shell
+      sudo systemctl restart unifi-poller
+      ```
+1. Check the log. mac: `/usr/local/var/log/unifi-poller.log` linux: somewhere in `/var/log` (check `messages` and `syslog`). [Tell me](https://github.com/davidnewhall/unifi-poller/issues/new) where you found it.
+1. Add the unifi InfluxDB database as a [data source to Grafana](https://grafana.com/docs/features/datasources/influxdb/). 
 1. Import the grafana json files from this repo as dashboards.
 1. You'll almost certainly have to edit the dashboard because it has a few hard coded things specific to my network.
 
-**Good luck!** Please leave feedback about your experience and how these directions can be improved to save the next person some time. Thanks!
+**Good luck!** Please [leave feedback](https://github.com/davidnewhall/unifi-poller/issues/new) about your experience and how these directions can be improved to save the next person some time. Thanks!
 
 # Auto Start
 - Running `make install` (macOS) or `sudo make install` (linux) should put the files in the right place. Then just start the service with one of the commands below. 
 
 If you want to do it yourself, here it is:
+- Build it: `go build ./...`
 - Copy `up.conf` to `/usr/local/etc/unifi-poller/up.conf`
 - Copy/Install the `unifi-poller` binary to `/usr/local/bin/unifi-poller`
 - Then:
