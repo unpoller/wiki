@@ -8,12 +8,15 @@ Basically:
 1. [Install Ronn](Ronn). This makes a man page so you can run `man unifi-poller`
 1. Clone this repo. Change your working directory to the checkout.
    1. `git clone git@github.com:davidnewhall/unifi-poller.git ; cd unifi-poller`
-1. Install local Golang dependencies by typing `make dep`
+1. Install local Golang dependencies: 
+   1. `dep init`
+   1. `dev ensure -update`
 1. Compile the app by typing `make`.
    1. If that gave you no errors, then proceed.
    1. If that didn't work, make sure your Go env is up to snuff. I tested this with 1.11.4 & 1.12.1
 1. Run `sudo make install` to automatically install the application and a startup script to keep it running.
    1. This isn't well tested on Linux, so please provide feedback. Open an [Issue](https://github.com/davidnewhall/unifi-poller/issues/new).
+   1. This is also a safe operation to re-run when you want to [update](Updating).
 1. Log into your Unifi Controller, Go to `Settings -> Admins` and add a read-only user (`influxdb`) with a nice long password. Try `uuidgen`.
 1. Edit `/usr/local/etc/unifi-poller/up.conf` - Correct the influxdb configuration.
 1. Create a database in influxdb. `CREATE DATABASE unifi`
