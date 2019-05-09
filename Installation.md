@@ -91,3 +91,4 @@ make
 
 cp startup/systemd/unifi-poller.service /etc/systemd/system/
 sudo systemctl start unifi-poller
+sudo systemctl enable unifi-poller
