@@ -10,8 +10,10 @@
    ```
 1. **Install local Golang dependencies**: 
    ```shell
-   dep ensure -update
+   dep ensure
    ```
+   Note: Running `dep ensure` with the `-update` flag may pull in dependencies with compatibility problems.
+
 1. **Compile the app** by typing `make`
    1. If that gave you no errors, then proceed.
    1. If that didn't work, make sure your Go env is up to snuff. I tested this with 1.11.4 & 1.12.1
