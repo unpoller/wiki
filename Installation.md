@@ -75,23 +75,31 @@ If you want to do it yourself, here it is:
 - `sudo systemctl start unifi-poller`
 
 # Installing on Ubuntu tested with 18.04
-These directions manually build and compiled unifi-poller. The make install command enables and starts the unit. Remember to update the configuration file and restart the service with systemctl. 
+These directions manually build and compile unifi-poller. The `make install` command enables and starts the systemd service unit. Remember to update the configuration file and restart the service with `systemctl`. Commands without sudo do not have to be run as root, but this entire process works as root too.
+ 
 ```shell
-cd ~
-apt-get install -y ruby golang ruby-dev
-gem install ronn
+# All this hoopla for a man page, but it's worth it.
+sudo apt-get install -y ruby golang ruby-dev
+sudo gem install --no-document ronn
 
+# OPTIONAL, install fpm to build a package install of manual install.
+sudo gem install --no-document fpm
+
+# Make a build environment.
+cd ~
 mkdir ~/go
 mkdir ~/go/pkg
 mkdir ~/go/pkg/mod
 mkdir ~/go/bin
 export GOPATH=~/go
 
-mkdir ~/go/src/github.com/davidnewhall
+# Clone the repo into a "normal" go path.
+mkdir -p ~/go/src/github.com/davidnewhall
 cd ~/go/src/github.com/davidnewhall
 git clone https://github.com/davidnewhall/unifi-poller
 cd unifi-poller
 
+# Install dependencies.
 go get github.com/golift/unifi
 go get github.com/influxdata/influxdb1-client/v2
 go get github.com/naoina/toml
@@ -99,9 +107,21 @@ go get github.com/spf13/pflag
 go get github.com/naoina/go-stringutil
 go get github.com/pkg/errors
 
-# run make install as root - enables and starts unifi-poller
+# OPTIONAL: Instead of installing directly to /usr/local you may build a package and install that into standard paths. If you do this, DO NOT run make install.
+make deb
+sudo dpkg -i unifi-poller*.deb
+
+# run make install as root - builds, installs, enables and starts unifi-poller
 sudo make install
+
+# Edit config and fix influx and unifi auth details.
 sudo vi /usr/local/etc/unifi-poller/up.conf
+# If you install the package, the config file is at /etc/unifi-poller/up.conf
+
+# Restart the app after fixing config.
 sudo systemctl restart unifi-poller
+
+# Check log file.
+tail -f -n30 /var/log/syslog | grep unifi-poller
 ```
 **Note**: There probably a few more packages to `go get`. Check [Gopkg.lock](https://github.com/davidnewhall/unifi-poller/blob/master/Gopkg.lock) for all the package names.
