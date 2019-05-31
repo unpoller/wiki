@@ -75,27 +75,33 @@ If you want to do it yourself, here it is:
 - `sudo systemctl start unifi-poller`
 
 # Installing on Ubuntu tested with 18.04
-Gain root
+These directions manually build and compiled unifi-poller. The make install command enables and starts the unit. Remember to update the configuration file and restart the service with systemctl. 
 ```shell
 cd ~
-apt-get  install ruby golang ruby-dev
+apt-get install -y ruby golang ruby-dev
 gem install ronn
-mkdir /root/go
-mkdir /root/go/pkg
-mkdir /root/go/pkg/mod
-mkdir /root/go/bin
-export GOPATH=/root/go
+
+mkdir ~/go
+mkdir ~/go/pkg
+mkdir ~/go/pkg/mod
+mkdir ~/go/bin
+export GOPATH=~/go
+
+mkdir ~/go/src/github.com/davidnewhall
+cd ~/go/src/github.com/davidnewhall
 git clone https://github.com/davidnewhall/unifi-poller
 cd unifi-poller
-# see note below about go gets.
+
 go get github.com/golift/unifi
 go get github.com/influxdata/influxdb1-client/v2
 go get github.com/naoina/toml
 go get github.com/spf13/pflag
-make
+go get github.com/naoina/go-stringutil
+go get github.com/pkg/errors
 
-cp startup/systemd/unifi-poller.service /etc/systemd/system/
-sudo systemctl start unifi-poller
-sudo systemctl enable unifi-poller
+# run make install as root - enables and starts unifi-poller
+sudo make install
+sudo vi /usr/local/etc/unifi-poller/up.conf
+sudo systemctl restart unifi-poller
 ```
 **Note**: There probably a few more packages to `go get`. Check [Gopkg.lock](https://github.com/davidnewhall/unifi-poller/blob/master/Gopkg.lock) for all the package names.
