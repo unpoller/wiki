@@ -82,7 +82,7 @@ These directions manually build and compile unifi-poller. The `make install` com
 sudo apt-get install -y ruby golang ruby-dev
 sudo gem install --no-document ronn
 
-# OPTIONAL, install fpm to build a package install of manual install.
+# OPTIONAL, install fpm to build a package. Install this instead of manual install. (more later)
 sudo gem install --no-document fpm
 
 # Make a build environment.
@@ -107,11 +107,12 @@ go get github.com/spf13/pflag
 go get github.com/naoina/go-stringutil
 go get github.com/pkg/errors
 
-# OPTIONAL: Instead of installing directly to /usr/local you may build a package and install that into standard paths. If you do this, DO NOT run make install.
+# OPTIONAL: Instead of installing directly to /usr/local you may build a package and install that.
+# If you do this, DO NOT run make install. These two commands build, install, enable and start unifi-poller.
 make deb
 sudo dpkg -i unifi-poller*.deb
 
-# run make install as root - builds, installs, enables and starts unifi-poller
+# OR, run make install as root - this command builds, installs, enables and starts unifi-poller
 sudo make install
 
 # Edit config and fix influx and unifi auth details.
