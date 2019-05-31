@@ -1,4 +1,6 @@
-# Unifi-Poller Installation
+# Unifi-Poller Manual Installation
+
+This procedure details manual installation, building the software from scratch and installing to /usr/local. You may be able to download or build a package for your operating system as well and use that instead of this procedure.
 
 1. [Install Go](https://golang.org/doc/install). 
 1. [Install dep](https://golang.github.io/dep/docs/installation.html).
@@ -83,14 +85,17 @@ mkdir /root/go/pkg
 mkdir /root/go/pkg/mod
 mkdir /root/go/bin
 export GOPATH=/root/go
+git clone https://github.com/davidnewhall/unifi-poller
+cd unifi-poller
+# see note below about go gets.
 go get github.com/golift/unifi
 go get github.com/influxdata/influxdb1-client/v2
 go get github.com/naoina/toml
-go get github.com/ogier/pflag
-git clone https://github.com/davidnewhall/unifi-poller
-cd unifi-poller
+go get github.com/spf13/pflag
 make
 
 cp startup/systemd/unifi-poller.service /etc/systemd/system/
 sudo systemctl start unifi-poller
 sudo systemctl enable unifi-poller
+```
+**Note**: There probably a few more packages to `go get`. Check [Gopkg.lock](https://github.com/davidnewhall/unifi-poller/blob/master/Gopkg.lock) for all the package names.
