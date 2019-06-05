@@ -1,6 +1,6 @@
 This page provides simple instructions on how to install and maintain InfluxDB.
 
-# Linux
+# Linux: Debian / Ubuntu
 
 These directions came [from here](https://github.com/davidnewhall/unifi-poller/issues/26).
 
