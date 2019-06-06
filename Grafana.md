@@ -34,7 +34,7 @@ brew services list
 # Plugins
 
 This application uses a few Grafana plugins. Install them:
-- Clock, Discrete, PieChart
+- `Clock`, `Discrete`, `PieChart`, `Singlestat` (standard), `Table` (standard)
 ```shell
 grafana-cli plugins install grafana-clock-panel
 grafana-cli plugins install natel-discrete-panel
