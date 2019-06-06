@@ -30,3 +30,13 @@ brew install grafana
 brew services restart grafana
 brew services list
 ```
+
+# Plugins
+
+This application uses a few Grafana plugins. Install them:
+- Clock, Discrete, PieChart
+```shell
+grafana-cli plugins install grafana-clock-panel
+grafana-cli plugins install natel-discrete-panel
+grafana-cli plugins install grafana-piechart-panel
+```
