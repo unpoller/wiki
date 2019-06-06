@@ -24,7 +24,7 @@ You need [Homebrew](https://brew.sh/):
 ```
 
 ```shell
-brew install influxib
+brew install influxdb
 brew services restart influxdb
 ```
 
