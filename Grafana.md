@@ -4,7 +4,7 @@ This will set it up on localhost:3000 with admin/admin login.
 
 # Linux
 
-## Grafana Install for Ubuntu 18.04.2
+## Ubuntu 18.04
 
 ```shell
 curl https://packages.grafana.com/gpg.key | sudo apt-key add -
