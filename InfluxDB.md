@@ -23,8 +23,10 @@ You need [Homebrew](https://brew.sh/):
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
 
-- Install: `brew install influxdb`
-- Start: `brew services start influxdb`
+```shell
+brew install influxib
+brew services restart influxdb
+```
 
 # InfluxDB
 
