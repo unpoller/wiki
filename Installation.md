@@ -1,6 +1,6 @@
 # Unifi-Poller Manual Installation
 
-This procedure details manual installation, building the software from scratch and installing to /usr/local. **Recommended: You may be able to download or [build a package](https://github.com/davidnewhall/unifi-poller/wiki/Packages) for your operating system, and use that instead of this procedure.**
+This procedure details manual installation, building the software from scratch and installing to /usr/local. **Recommended: You may be able to download or [build a package](https://github.com/davidnewhall/unifi-poller/wiki/Package-Install) for your operating system, and use that instead of this procedure.**
 
 1. [Install Go](https://golang.org/doc/install). 
 1. [Install dep](https://golang.github.io/dep/docs/installation.html).
