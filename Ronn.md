@@ -5,13 +5,17 @@ Ronn is a tool that converts [markdown](https://github.com/davidnewhall/unifi-po
 ### RedHat/Fedora variants
 
 ```shell
-sudo yum install ruby-devel -y 
-sudo gem install ronn --no-document
+# as root
+yum install ruby-devel -y 
+yum groupinstall -y 'Development Tools'
+gem install ronn --no-document
 ```
 
 ### Debian/Ubuntu variants
 
 ```shell
+# as root
+sudo apt install -y build-essential
 sudo apt install -y rubygems
 sudo gem install ronn --no-document
 ```
