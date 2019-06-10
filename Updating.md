@@ -1,4 +1,6 @@
-If you've already followed the [Installation Wiki](Installation) guide and you want to update to a newer version of unifi-poller or the [unifi](https://github.com/golift/unifi) go library (or [other libraries](https://github.com/davidnewhall/unifi-poller/blob/master/Gopkg.lock)), it's pretty easy. Just go through the process again. 
+**If you installed a package** and `unifi-poller` is working, updating is simple: [Download](https://github.com/davidnewhall/unifi-poller/releases) and install a new package. The package will correctly restart `unifi-poller` after upgrading and will not overwrite your existing configuration file(s). After installing the new package, you may choose to [import updated dashboards](Grafana-Dashboards).
+
+**If you followed the [Installation Wiki](Installation)** guide and you want to update to a newer version of `unifi-poller` or the [unifi](https://github.com/golift/unifi) go library (or [other libraries](https://github.com/davidnewhall/unifi-poller/blob/master/Gopkg.lock)), it's pretty easy. Just go through the process again. 
 
 If you want to build and install a new package:
 
