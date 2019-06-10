@@ -1,4 +1,6 @@
-If you've already followed the [Installation Wiki](Installation) guide and you want to update to a newer version of unifi-poller or the [unifi](https://github.com/golift/unifi) go library (or [other libraries](https://github.com/davidnewhall/unifi-poller/blob/master/Gopkg.lock)), it's pretty easy.
+If you've already followed the [Installation Wiki](Installation) guide and you want to update to a newer version of unifi-poller or the [unifi](https://github.com/golift/unifi) go library (or [other libraries](https://github.com/davidnewhall/unifi-poller/blob/master/Gopkg.lock)), it's pretty easy. Just go through the process again. 
+
+If you want to build and install a new package:
 
 Go back to your git checkout for unifi-poller, or clone it again.
 ```shell
@@ -9,7 +11,7 @@ cd unifi-poller
 Update app & vendors. This will bring everything up to, what should be, a compatible version.
 ```shell
 git pull 
-make deps
+dep ensure
 ```
 
 Test First (optional)
@@ -17,9 +19,21 @@ Test First (optional)
 make test
 ```
 
-Reinstall. This just replaces the binary. The config file is not touched. The app is restarted.
+Build a new package, pick one:
 ```shell
-sudo make install
+make deb
+make rpm
+make osxpkg
+```
+
+Install the package:
+```
+# redhat/centos/fedora:
+rpm -Uvh *.rpm
+# debian/ubuntu
+dpkg -I *.deb
+# osx
+open *.pkg
 ```
 
 ## Troubleshooting
