@@ -1,4 +1,4 @@
-This document provides instructions to install Grafana.
+This document provides instructions to install Grafana. You can find official instructions in the [Grafana Docs](https://grafana.com/docs/installation/). After installing Grafana, you should [import the provided dashboards](Grafana-Dashboards).
 
 This will set it up on localhost:3000 with admin/admin login.
 
