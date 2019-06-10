@@ -81,10 +81,11 @@ If you followed a previous version of this procedure, or installed unifi-poller 
 This is a tl;dr version of the above instructions provided by the community. These directions manually build and compile unifi-poller, create and install a package that enables, auto-starts and keeps the application running.
  
 ```shell
+# Install rubygems, go, ronn, fpm.
 sudo apt-get install -y ruby golang ruby-dev
 sudo gem install --no-document ronn fpm
 
-# Make a build environment.
+# Make a go build environment.
 cd ~
 mkdir ~/go
 mkdir ~/go/pkg
@@ -98,20 +99,17 @@ cd ~/go/src/github.com/davidnewhall
 git clone https://github.com/davidnewhall/unifi-poller
 cd unifi-poller
 
-# Install dependencies (you should use `dep`, explained above, but this should work too).
-go get github.com/golift/unifi
-go get github.com/influxdata/influxdb1-client/v2
-go get github.com/naoina/toml
-go get github.com/spf13/pflag
-go get github.com/naoina/go-stringutil
-go get github.com/pkg/errors
+# Install go dependencies with dep.
+curl -sLo $GOPATH/bin/dep https://github.com/golang/dep/releases/download/v0.5.3/dep-linux-amd64
+chmod +x $GOPATH/bin/dep
+dep ensure
 
+# Make and install package.
 make deb
 sudo dpkg -i unifi-poller*.deb
 
 # Edit config and fix influx and unifi auth details.
-sudo vi /usr/local/etc/unifi-poller/up.conf
-# If you install the package, the config file is at /etc/unifi-poller/up.conf
+sudo vi /etc/unifi-poller/up.conf
 
 # Restart the app after fixing config.
 sudo systemctl restart unifi-poller
@@ -119,4 +117,3 @@ sudo systemctl restart unifi-poller
 # Check log file.
 tail -f -n30 /var/log/syslog | grep unifi-poller
 ```
-**Note**: There probably a few more packages to `go get`. Check [Gopkg.lock](https://github.com/davidnewhall/unifi-poller/blob/master/Gopkg.lock) for all the package names.
