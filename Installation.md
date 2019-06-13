@@ -6,7 +6,6 @@ If you followed a previous version of this procedure, or installed unifi-poller 
 
 1. [Install Go](https://golang.org/doc/install). 
 1. [Install dep](https://golang.github.io/dep/docs/installation.html).
-1. [Install Ronn](Ronn). This makes a man page so you can run `man unifi-poller`.
 1. **Clone this repo** and change your working directory to the checkout.
    ```shell
    git clone git@github.com:davidnewhall/unifi-poller.git
@@ -21,7 +20,6 @@ If you followed a previous version of this procedure, or installed unifi-poller 
 1. **Compile the app** by typing `make`
    1. If that gave you no errors, then make the man file `make man`
    1. If that didn't work, make sure your Go env is up to snuff. I tested this with 1.10 through 1.12.5.
-   1. If the man file failed, instal `ronn`. See above.
 1. Copy all the files into place.
 
    **Linux**, as root:
@@ -81,9 +79,9 @@ If you followed a previous version of this procedure, or installed unifi-poller 
 This is a tl;dr version of the above instructions provided by the community. These directions manually build and compile unifi-poller, create and install a package that enables, auto-starts and keeps the application running.
  
 ```shell
-# Install rubygems, go, ronn, fpm.
+# Install rubygems, go, fpm.
 sudo apt-get install -y ruby golang ruby-dev
-sudo gem install --no-document ronn fpm
+sudo gem install --no-document fpm
 
 # Make a go build environment.
 cd ~
