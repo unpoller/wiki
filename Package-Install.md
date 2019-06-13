@@ -86,7 +86,7 @@ The mac package installs the following files:
 
 You can build your own package from source with the `Makefile`.
 
-Follow the first few steps on the [Installation](Installation) page to get the Go environment setup and ronn installed. Then: `make deb` will build a Debian package, `make rpm` builds a RHEL package and `make osxpkg` builds a macOS package (only works on macOS).
+Follow the first few steps on the [Installation](Installation) page to get the Go environment setup. Then: `make deb` will build a Debian package, `make rpm` builds a RHEL package and `make osxpkg` builds a macOS package (only works on macOS).
 
 You need `fpm` installed to build your own packages, see directions here: https://fpm.readthedocs.io/en/latest/installing.html
 - tl;dr: `sudo gem install --no-document fpm`
