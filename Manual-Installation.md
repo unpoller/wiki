@@ -1,6 +1,6 @@
 # Unifi-Poller Manual Installation
 
-This procedure details manual installation, building the software from scratch and installing to /usr/local. **Recommended: You should download or [build a package](https://github.com/davidnewhall/unifi-poller/wiki/Package-Install) for your operating system, and use that instead of this procedure.**
+This procedure details manual installation, building the software from scratch and installing to /usr/local. This is not recommended. **Recommended: You should download or [build a package](https://github.com/davidnewhall/unifi-poller/wiki/Package-Install) for your operating system, and use that instead of this procedure.**
 
 If you followed a previous version of this procedure, or installed unifi-poller to /usr/local on Linux, recommend running `make uninstall` before following this procedure or using a package.
 
@@ -35,9 +35,8 @@ If you followed a previous version of this procedure, or installed unifi-poller 
    ```shell
    cp unifi-poller /usr/local/bin
    mkdir /usr/local/etc/unifi-poller  /usr/local/var/log/unifi-poller 
-   chown nobody: /usr/local/var/log/unifi-poller 
    cp examples/up.conf.example /usr/local/etc/unifi-poller/up.conf
-   cp init/launchd/com.github.davidnewhall.unifi-poller.plist /Library/LaunchAgents/
+   cp init/launchd/com.github.davidnewhall.unifi-poller.plist ~/Library/LaunchAgents/
    cp unifi-poller.1.gz /usr/local/share/man/man1
    ```
 
@@ -54,10 +53,9 @@ If you followed a previous version of this procedure, or installed unifi-poller 
 1. **Restart the `unifi-poller` service**:
   
       **macOS**: 
-      The `launchctl` command must be run as root because the daemon runs as user `nobody`.
       ```shell
-      sudo launchctl unload /Library/LaunchAgents/com.github.davidnewhall.unifi-poller.plist
-      sudo launchctl load -w /Library/LaunchAgents/com.github.davidnewhall.unifi-poller.plist
+      launchctl unload ~/Library/LaunchAgents/com.github.davidnewhall.unifi-poller.plist
+      launchctl load -w ~/Library/LaunchAgents/com.github.davidnewhall.unifi-poller.plist
       ```
       **Linux**:
       ```shell
@@ -65,7 +63,7 @@ If you followed a previous version of this procedure, or installed unifi-poller 
       systemctl start unifi-poller
       ```
 1. **Check the log.** Watch it for a minute or so, look for errors.
-   1. macOS: `/usr/local/var/log/unifi-poller/log` (must be owned by `nobody`)
+   1. macOS: `/usr/local/var/log/unifi-poller/log`
    1. Linux: `/var/log/syslog` or `/var/log/messages`.
 1. **If you see errors in the log file:**
    1. Put it in Debug mode. Edit the config file and restart.
