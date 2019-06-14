@@ -20,4 +20,4 @@ cd unifi-poller
 make docker
 ```
 
-_<need info about how to edit up.conf in Docker container>_
+-_need info about how to edit up.conf in Docker container_-
