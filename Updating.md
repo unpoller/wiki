@@ -25,17 +25,12 @@ Build a new package, pick one:
 ```shell
 make deb
 make rpm
-make osxpkg
 ```
 
 Install the package:
 ```
 # redhat/centos/fedora:
-rpm -Uvh *.rpm
-# debian/ubuntu
-dpkg -I *.deb
-# osx
-open *.pkg
+rpm -Uvh *.rpm || dpkg -i *.deb
 ```
 
 ## Troubleshooting
