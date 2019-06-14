@@ -1,6 +1,8 @@
 # Work In Progress
 
-A docker image is available on [Docker Hub](https://hub.docker.com/r/golift/unifi-poller). You may download the latest version with this command:
+A docker image is available on [Docker Hub](https://hub.docker.com/r/golift/unifi-poller). See this [contribution](https://github.com/davidnewhall/unifi-poller/pull/38) for information on where the image comes from. Many thanks to [mabunixda](https://github.com/mabunixda)!
+
+You may download the latest version with this command:
 ```shell
 docker pull golift/unifi-poller
 ```
