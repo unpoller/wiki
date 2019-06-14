@@ -20,4 +20,13 @@ cd unifi-poller
 make docker
 ```
 
--_need info about how to edit up.conf in Docker container_-
+To run the container use following command:
+```shell
+docker run -d -v /your/config/up.conf:/etc/unifi-poller/up.conf golift/unifi-poller:v1.3.0
+```
+Just fetch the [configuration from the repository](https://github.com/davidnewhall/unifi-poller/blob/master/examples/up.conf.example) and mount it as overlay into the container. The example configuration file is also included in the container at the default location _/etc/unifi-poller/up.conf_
+
+To avoid a password in your configuration file just use the following parameter on your docker run command:
+```shell
+docker run -e UNIFI_PASSWORD="your-secret-pasword" -d -v /your/config/up.conf:/etc/unifi-poller/up.conf golift/unifi-poller:v1.3.0
+```
