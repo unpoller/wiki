@@ -19,3 +19,5 @@ git clone https://github.com/davidnewhall/unifi-poller.git
 cd unifi-poller
 make docker
 ```
+
+_<need info about how to edit up.conf in Docker container>_
