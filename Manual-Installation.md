@@ -1,6 +1,6 @@
 # Unifi-Poller Manual Installation
 
-This procedure details manual installation, building the software from scratch and installing to /usr/local. This is not recommended. **Recommended: You should download or [build a package](https://github.com/davidnewhall/unifi-poller/wiki/Package-Install) for your operating system, and use that instead of this procedure.**
+This procedure details manual installation, building the software from scratch and installing to /usr/local. This is not recommended. **Recommended: You should download or [build a package](https://github.com/davidnewhall/unifi-poller/wiki/Installation) for your operating system, and use that instead of this procedure.**
 
 If you followed a previous version of this procedure, or installed unifi-poller to /usr/local on Linux, recommend running `make uninstall` before following this procedure or using a package.
 
