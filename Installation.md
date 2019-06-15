@@ -22,6 +22,9 @@ You need to create an Influx database and user/pass on the Unifi Controller.
    1. https://github.com/davidnewhall/unifi-poller/wiki/Grafana
    1. Forgetting to do this will render most of the dashboards useless and empty.
 
+# Docker
+See [Docker](Docker)
+
 # Linux
 
 Redhat and Fedora variants should download and install the rpm with something like this:
