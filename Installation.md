@@ -65,20 +65,19 @@ Use Homebrew.
 1. `brew tap golift/mugs`
 1. `brew install unifi-poller`
 
-Edit the config file after installing the package or brew:
+Edit the config file after installing the brew:
 ```shell
 nano /usr/local/etc/unifi-poller/up.conf
 # or
 vi /usr/local/etc/unifi-poller/up.conf
 ```
-Correct the authentication information for your setup.
+Correct the authentication information for your setup (see prerequisites).
 
 Start the service:
 ```shell
 # do not use sudo
 brew services start unifi-poller
 ```
-
 The **log file** should show up at `/usr/local/var/log/unifi-poller/log`. If it does not show up, make sure your user has permissions to create the file.
 
 If you need to restart it:
