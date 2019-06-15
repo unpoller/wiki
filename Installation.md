@@ -52,7 +52,7 @@ Restart the service:
 sudo systemctl restart unifi-poller
 ```
 
-Check the log (may be different on RHEL):
+Check the log:
 ```shell
 tail -f -n100  /var/log/syslog /var/log/messages | grep unifi-poller
 ```
@@ -64,26 +64,24 @@ Use Homebrew.
 1. [Install Homebrew](https://brew.sh/)
 1. `brew tap golift/mugs`
 1. `brew install unifi-poller`
+1. Edit the config file after installing the brew:
+    ```shell
+    nano /usr/local/etc/unifi-poller/up.conf
+    # or
+    vi /usr/local/etc/unifi-poller/up.conf
+    ```
+    Correct the authentication information for your setup (see prerequisites).
+1. Start the service:
+    ```shell
+    # do not use sudo
+    brew services start unifi-poller
+    ```
+    The **log file** should show up at `/usr/local/var/log/unifi-poller/log`. If it does not show up, make sure your user has permissions to create the file.
 
-Edit the config file after installing the brew:
-```shell
-nano /usr/local/etc/unifi-poller/up.conf
-# or
-vi /usr/local/etc/unifi-poller/up.conf
-```
-Correct the authentication information for your setup (see prerequisites).
-
-Start the service:
-```shell
-# do not use sudo
-brew services start unifi-poller
-```
-The **log file** should show up at `/usr/local/var/log/unifi-poller/log`. If it does not show up, make sure your user has permissions to create the file.
-
-If you need to restart it:
-```shell
-brew services restart unifi-poller
-```
+- If you need to restart it:
+    ```shell
+    brew services restart unifi-poller
+    ```
 
 # Manually
 
@@ -107,4 +105,4 @@ You can build your own package from source with the `Makefile`.
 1. Install it:
    1. `sudo dpkg -i *.deb || sudo rpm -Uvh *.rpm`
 
-If you're building linux packages on a mac you can run `brew install rpmbuild gnu-tar` to get the additional tools you need.
+Note: If you're building linux packages on a mac you can run `brew install rpmbuild gnu-tar` to get the additional tools you need. That means you're going to need [Homebrew](https://brew.sh).
