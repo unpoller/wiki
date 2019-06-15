@@ -1,18 +1,37 @@
-# Work In Progress
+## A docker image is available on [Docker Hub](https://hub.docker.com/r/golift/unifi-poller/tags). 
 
-A docker image is available on [Docker Hub](https://hub.docker.com/r/golift/unifi-poller). See this [contribution](https://github.com/davidnewhall/unifi-poller/pull/38) for information on where the image comes from. Many thanks to [mabunixda](https://github.com/mabunixda)!
+See this [contribution](https://github.com/davidnewhall/unifi-poller/pull/38) for information on where the image comes from. Many thanks to [mabunixda](https://github.com/mabunixda)! The images are [built automatically](https://cloud.docker.com/repository/docker/golift/unifi-poller/builds) by Docker Cloud using the [Dockerfile](https://github.com/davidnewhall/unifi-poller/blob/master/Dockerfile) included in this repo. 
 
+# Install 
+
+You can install `latest`, `release` (recommended), or pick a specific version. See the follow sections for information on how to do each.
+
+### Release
+You can install the latest released version using a tag like this:
+```shell
+docker pull golift/unifi-poller:release
+```
+
+### Latest (master)
 You may download the latest version with this command:
 ```shell
-docker pull golift/unifi-poller
+docker pull golift/unifi-poller:latest
 ```
-The latest version may contain bugs; thank you for beta testing. 
+The latest version is based from `master` branch and may contain bugs; thank you for beta testing. 
 
-You can install a released version using a tag like this:
+### Pick a version
+You can install the latest released minor version like this:
 ```shell
-docker pull golift/unifi-poller:v1.3.0
+docker pull golift/unifi-poller:1.3
+```
+The above example will download version 1.3.2 (or whatever the latest release in the 1.3 line is).
+
+Install a specific version like this:
+```shell
+docker pull golift/unifi-poller:1.3.2
 ```
 
+### From Source
 You can build your own image from source.
 ```shell
 git clone https://github.com/davidnewhall/unifi-poller.git
@@ -20,13 +39,16 @@ cd unifi-poller
 make docker
 ```
 
+# Running the Container
+Make sure you've completed the prerequisites in the [Installation](Installation) article.
+
 To run the container use following command:
 ```shell
 docker run -d -v /your/config/up.conf:/etc/unifi-poller/up.conf golift/unifi-poller:v1.3.0
 ```
-Just fetch the [configuration from the repository](https://github.com/davidnewhall/unifi-poller/blob/master/examples/up.conf.example) and mount it as overlay into the container. The example configuration file is also included in the container at the default location _/etc/unifi-poller/up.conf_
+Copy the [example configuration](https://github.com/davidnewhall/unifi-poller/blob/master/examples/up.conf.example) from this repository and mount it as an overlay into the container. The example configuration file is also included in the container at the default location _/etc/unifi-poller/up.conf_
 
-To avoid a password in your configuration file just use the following parameter on your docker run command:
+To avoid a writing a password in your configuration file, it can be passed in as an environment variable. Here's an example:
 ```shell
 docker run -e UNIFI_PASSWORD="your-secret-pasword" -d -v /your/config/up.conf:/etc/unifi-poller/up.conf golift/unifi-poller:v1.3.0
 ```
