@@ -29,14 +29,14 @@ See [Docker](Docker)
 
 Redhat and Fedora variants should download and install the rpm with something like this:
 ```shell
-wget https://github.com/davidnewhall/unifi-poller/releases/download/v1.3.0/unifi-poller-1.3.0-158.x86_64.rpm
+wget https://github.com/davidnewhall/unifi-poller/releases/download/v1.3.2/unifi-poller-1.3.2-175.x86_64.rpm
 sudo rpm -Uvh unifi-poller*.rpm
 ```
 
 Debian and Ubuntu variants should download and install the deb with something like this:
 ```shell
-wget https://github.com/davidnewhall/unifi-poller/releases/download/v1.3.0/unifi-poller_1.3.0-158_amd64.deb
-sudo dpkg -i unifi-poller*.deb
+wget https://github.com/davidnewhall/unifi-poller/releases/download/v1.3.2/unifi-poller_1.3.0-175_amd64.deb
+sudo dpkg -i unifi-poller*.de2
 ```
 
 Edit the config file after installing the package:
