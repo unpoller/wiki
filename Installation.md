@@ -27,6 +27,8 @@ See [Docker](Docker)
 
 # Linux
 
+**Find the latest version on the [Releases](https://github.com/davidnewhall/unifi-poller/releases) page.**
+
 Redhat and Fedora variants should download and install the rpm with something like this:
 ```shell
 wget https://github.com/davidnewhall/unifi-poller/releases/download/v1.3.2/unifi-poller-1.3.2-175.x86_64.rpm
