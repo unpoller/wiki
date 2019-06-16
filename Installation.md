@@ -37,8 +37,8 @@ sudo rpm -Uvh unifi-poller*.rpm
 
 Debian and Ubuntu variants should download and install the deb with something like this:
 ```shell
-wget https://github.com/davidnewhall/unifi-poller/releases/download/v1.3.2/unifi-poller_1.3.0-175_amd64.deb
-sudo dpkg -i unifi-poller*.de2
+wget https://github.com/davidnewhall/unifi-poller/releases/download/v1.3.2/unifi-poller_1.3.2-175_amd64.deb
+sudo dpkg -i unifi-poller*.deb
 ```
 
 Edit the config file after installing the package:
