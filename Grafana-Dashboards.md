@@ -1,4 +1,4 @@
-This project provides a few Grafana dashboards. The package installs them into `/usr/share/doc/uniti-poller` (Linux) or `/usr/local/share/doc/unifi-poller` (macOS). You can also [download them from GitHub](https://github.com/davidnewhall/unifi-poller/tree/master/examples).
+This project provides a few Grafana dashboards. The package installs them into `/usr/share/doc/unifi-poller` (Linux) or `/usr/local/share/doc/unifi-poller` (macOS). You can also [download them from GitHub](https://github.com/davidnewhall/unifi-poller/tree/master/examples).
 
 Recommendation:
 
