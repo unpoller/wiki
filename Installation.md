@@ -6,6 +6,8 @@ Beginning with version 1.1.1 architecture-specific packages are available for De
 
 You need to create an Influx database and user/pass on the Unifi Controller. 
 
+1. You need [Grafana](Grafana). If you already have this, just add a new backend/source. 
+1. You need [InfluxDB](InfluxDB). If you already have this, skip to "create a database"
 1. **Add a user to the Unifi Controller**. After logging into your controller:
    1. Go to `Settings -> Admins`
    1. Add a read-only user (`influxdb`) with a nice long password. 
