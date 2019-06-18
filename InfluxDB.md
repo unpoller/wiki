@@ -2,6 +2,12 @@ This page provides simple instructions on how to install and maintain InfluxDB.
 
 # Linux
 
+## CentOS 7
+
+Provided by community: https://github.com/davidnewhall/unifi-poller/issues/30
+
+I don't run CentOS. If you do, please improve these instructions.
+
 ## Ubuntu 18.04
 
 These directions came [from here](https://github.com/davidnewhall/unifi-poller/issues/26).
