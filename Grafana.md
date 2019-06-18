@@ -4,6 +4,10 @@ This will set it up on localhost:3000 with admin/admin login.
 
 # Linux
 
+## CentOS 7
+
+Get an RPM. https://grafana.com/docs/installation/rpm/
+
 ## Ubuntu 18.04
 
 ```shell
