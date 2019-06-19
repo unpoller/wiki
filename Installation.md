@@ -17,7 +17,7 @@ You need to create an Influx database and user/pass on the Unifi Controller.
      influx -host localhost -port 8086
      CREATE DATABASE unifi
      ```
-   If your InfluxDB requires authentication, then you probably know more about it than I do! Take note of the username and password you create (if you choose to do so, Influx is normally authentication-less). You'll need the hostname, port and optionally user and pass in a moment for the unifi-poller config file.
+   If your InfluxDB requires authentication, then you probably know more about it than I do! Take note of the username and password you create (if you choose to do so, Influx is normally authentication-less). You'll need the hostname, port, database name, and optionally user/pass in a moment for the unifi-poller config file.
 1. **You need [Grafana](Grafana)**. 
     1. [Add a new data source](https://grafana.com/docs/features/datasources/influxdb/) for the `unifi` database 
 1. **Install Grafana Plugins**
