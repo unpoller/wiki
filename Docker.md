@@ -4,12 +4,12 @@ See this [contribution](https://github.com/davidnewhall/unifi-poller/pull/38) fo
 
 # Install 
 
-You can install `latest`, `release` (recommended), or pick a specific version. See the following sections for information on how to do each.
+You can install `latest`, `stable` (recommended), or pick a specific version. See the following sections for information on how to do each.
 
-### Release
-You may install the latest released version using a tag like this:
+### Stable Release
+You may install the current stable released version using a tag like this:
 ```shell
-docker pull golift/unifi-poller:release
+docker pull golift/unifi-poller:stable
 ```
 
 ### Latest (master)
@@ -44,11 +44,11 @@ Make sure you've completed the prerequisites in the [Installation](Installation)
 
 This command starts the container as a daemon:
 ```shell
-docker run -d -v /your/config/up.conf:/etc/unifi-poller/up.conf golift/unifi-poller:release
+docker run -d -v /your/config/up.conf:/etc/unifi-poller/up.conf golift/unifi-poller:stable
 ```
 Copy the [example configuration file](https://github.com/davidnewhall/unifi-poller/blob/master/examples/up.conf.example) from this repository and mount it as an overlay into the container. The example configuration file is also included in the container at the default location _/etc/unifi-poller/up.conf_
 
 To avoid writing a password in your configuration file, it may be passed in as an environment variable. If you do this, do not include a the password in the config file, or it will be used instead. Here's an example:
 ```shell
-docker run -e UNIFI_PASSWORD="your-secret-pasword" -d -v /your/config/up.conf:/etc/unifi-poller/up.conf golift/unifi-poller:release
+docker run -e UNIFI_PASSWORD="your-secret-pasword" -d -v /your/config/up.conf:/etc/unifi-poller/up.conf golift/unifi-poller:stable
 ```
