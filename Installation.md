@@ -68,7 +68,7 @@ Use Homebrew.
 
 1. [Install Homebrew](https://brew.sh/)
 1. `brew tap golift/mugs`
-1. `brew install unifi-poller`
+1. `brew install unifi-poller` 
 ```
 $ brew install unifi-poller
 ==> Installing unifi-poller from golift/mugs
@@ -87,40 +87,38 @@ $ brew install unifi-poller
 🍺  /usr/local/Cellar/dep/0.5.4: 7 files, 11.6MB
 ==> Installing golift/mugs/unifi-poller
 ==> Downloading https://github.com/davidnewhall/unifi-poller/archive/v1.3.2.tar.gz
-==> Downloading from https://codeload.github.com/davidnewhall/unifi-poller/tar.gz/v1.3.2
+==> Downloading from https://codeload.github.com/davidnewhall/unifi-poller/tar.gz/v1.3.3
 ######################################################################## 100.0%
-Warning: Cannot verify integrity of 91732a8a1879b642243488b25ba59ca0d8bec32cbf6f66cd8ec8faf80f60844b--unifi-poller-1.3.2.tar.gz
-A checksum was not provided for this resource
-For your reference the SHA-256 is: 71da479a789044c19b1f07d8afc319af4eb6a4a8fb6e055c438589538fd84ce1
 ==> dep ensure
-==> make install VERSION=1.3.2 PREFIX=/usr/local/Cellar/unifi-poller/1.3.2 ETC=/usr/local/etc
+==> make install VERSION=1.3.3 PREFIX=/usr/local/Cellar/unifi-poller/1.3.3 ETC=/usr/local/etc
+==> touch /usr/local/var/log/unifi-poller.log
 ==> Caveats
   This application will not work until the config file has authentication
   information for a Unifi Controller and an Influx Database. Edit the config
   file at /usr/local/etc/unifi-poller/up.conf then start the application with
-  brew services start unifi-poller ~ log file: /usr/local/var/log/unifi-poller/log
+  brew services start unifi-poller ~ log file: /usr/local/var/log/unifi-poller.log
   The manual explains the config file options: man unifi-poller
 
 To have launchd start golift/mugs/unifi-poller now and restart at login:
   brew services start golift/mugs/unifi-poller
 ==> Summary
-🍺  /usr/local/Cellar/unifi-poller/1.3.2: 19 files, 8.0MB, built in 15 seconds
+🍺  /usr/local/Cellar/unifi-poller/1.3.3: 19 files, 8.0MB, built in 16 seconds
 ```
-1. Edit the config file after installing the brew:
+- Edit the config file after installing the brew:
     ```shell
     nano /usr/local/etc/unifi-poller/up.conf
     # or
     vi /usr/local/etc/unifi-poller/up.conf
     ```
     Correct the authentication information for your setup (see prerequisites).
-1. Start the service:
+- Start the service:
     ```shell
     # do not use sudo
     brew services start unifi-poller
     ```
-    The **log file** should show up at `/usr/local/var/log/unifi-poller/log`. If it does not show up, make sure your user has permissions to create the file.
+    The **log file** should show up at `/usr/local/var/log/unifi-poller.log`. If it does not show up, make sure your user has permissions to create the file.
 
-- If you need to restart it:
+- This is how you restart it. **Do this when you upgrade.**:
     ```shell
     brew services restart unifi-poller
     ```
