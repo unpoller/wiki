@@ -34,7 +34,7 @@ If you followed a previous version of this procedure, or installed unifi-poller 
    **macOS**:
    ```shell
    cp unifi-poller /usr/local/bin
-   mkdir /usr/local/etc/unifi-poller  /usr/local/var/log/unifi-poller 
+   mkdir /usr/local/etc/unifi-poller  /usr/local/var/log
    cp examples/up.conf.example /usr/local/etc/unifi-poller/up.conf
    cp init/launchd/com.github.davidnewhall.unifi-poller.plist ~/Library/LaunchAgents/
    cp unifi-poller.1.gz /usr/local/share/man/man1
@@ -63,7 +63,7 @@ If you followed a previous version of this procedure, or installed unifi-poller 
       systemctl start unifi-poller
       ```
 1. **Check the log.** Watch it for a minute or so, look for errors.
-   1. macOS: `/usr/local/var/log/unifi-poller/log`
+   1. macOS: `/usr/local/var/log/unifi-poller.log`
    1. Linux: `/var/log/syslog` or `/var/log/messages`.
 1. **If you see errors in the log file:**
    1. Put it in Debug mode. Edit the config file and restart.
