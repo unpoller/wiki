@@ -69,6 +69,43 @@ Use Homebrew.
 1. [Install Homebrew](https://brew.sh/)
 1. `brew tap golift/mugs`
 1. `brew install unifi-poller`
+```
+$ brew install unifi-poller
+==> Installing unifi-poller from golift/mugs
+==> Installing dependencies for golift/mugs/unifi-poller: go and dep
+==> Installing golift/mugs/unifi-poller dependency: go
+==> Downloading https://homebrew.bintray.com/bottles/go-1.12.6.sierra.bottle.tar.gz
+==> Downloading from https://akamai.bintray.com/25/253cd5e8f6989e721a8c2982b4159e6fcd50ad73c0b4b4d036df569e57928093?__gda__=exp=1560924489~hmac=77ca6eeb4568344dbf4dad9f8bc4884347ae4978e4c6a4550be0bb41a8a795bd&response-content-disposition=attachment%3Bfilename%3D%22go-1.12.6.sierra.bottle.tar.gz%22&respon
+######################################################################## 100.0%
+==> Pouring go-1.12.6.sierra.bottle.tar.gz
+🍺  /usr/local/Cellar/go/1.12.6: 9,812 files, 452.7MB
+==> Installing golift/mugs/unifi-poller dependency: dep
+==> Downloading https://homebrew.bintray.com/bottles/dep-0.5.4.sierra.bottle.tar.gz
+==> Downloading from https://akamai.bintray.com/ef/ef9a0a978cbf2d4e537d21c4ff7b89a75b66228697b0aa348daa2284bc7362a9?__gda__=exp=1560924549~hmac=6b643c2179d01564233d3ab9943c4712d0b8eaf6675fb95d6373d88c106716d0&response-content-disposition=attachment%3Bfilename%3D%22dep-0.5.4.sierra.bottle.tar.gz%22&respon
+######################################################################## 100.0%
+==> Pouring dep-0.5.4.sierra.bottle.tar.gz
+🍺  /usr/local/Cellar/dep/0.5.4: 7 files, 11.6MB
+==> Installing golift/mugs/unifi-poller
+==> Downloading https://github.com/davidnewhall/unifi-poller/archive/v1.3.2.tar.gz
+==> Downloading from https://codeload.github.com/davidnewhall/unifi-poller/tar.gz/v1.3.2
+######################################################################## 100.0%
+Warning: Cannot verify integrity of 91732a8a1879b642243488b25ba59ca0d8bec32cbf6f66cd8ec8faf80f60844b--unifi-poller-1.3.2.tar.gz
+A checksum was not provided for this resource
+For your reference the SHA-256 is: 71da479a789044c19b1f07d8afc319af4eb6a4a8fb6e055c438589538fd84ce1
+==> dep ensure
+==> make install VERSION=1.3.2 PREFIX=/usr/local/Cellar/unifi-poller/1.3.2 ETC=/usr/local/etc
+==> Caveats
+  This application will not work until the config file has authentication
+  information for a Unifi Controller and an Influx Database. Edit the config
+  file at /usr/local/etc/unifi-poller/up.conf then start the application with
+  brew services start unifi-poller ~ log file: /usr/local/var/log/unifi-poller/log
+  The manual explains the config file options: man unifi-poller
+
+To have launchd start golift/mugs/unifi-poller now and restart at login:
+  brew services start golift/mugs/unifi-poller
+==> Summary
+🍺  /usr/local/Cellar/unifi-poller/1.3.2: 19 files, 8.0MB, built in 15 seconds
+```
 1. Edit the config file after installing the brew:
     ```shell
     nano /usr/local/etc/unifi-poller/up.conf
