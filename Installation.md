@@ -6,12 +6,11 @@ Beginning with version 1.1.1 architecture-specific packages are available for De
 
 You need to create an Influx database and user/pass on the Unifi Controller. 
 
-1. You need [Grafana](Grafana). If you already have this, just add a new backend/source. 
-1. You need [InfluxDB](InfluxDB). If you already have this, skip to "create a database"
 1. **Add a user to the Unifi Controller**. After logging into your controller:
    1. Go to `Settings -> Admins`
    1. Add a read-only user (`influxdb`) with a nice long password. 
    1. Take note of this info, you need to put it into the unifi-poller config file in a moment.
+1. **You need [InfluxDB](InfluxDB)**. If you already have this, skip ahead.
 1. **Create a database in InfluxDB.**
    1. Something like:
      ```shell
@@ -19,6 +18,8 @@ You need to create an Influx database and user/pass on the Unifi Controller.
      CREATE DATABASE unifi
      ```
    If your InfluxDB requires authentication, then you probably know more about it than I do! Take note of the username and password you create (if you choose to do so, Influx is normally authentication-less). You'll need the hostname, port and optionally user and pass in a moment for the unifi-poller config file.
+1. **You need [Grafana](Grafana)**. 
+    1. [Add a new data source](https://grafana.com/docs/features/datasources/influxdb/) for the `unifi` database 
 1. **Install Grafana Plugins**
    1. Click this link, scroll to the bottom, and action the Plugins section:
    1. https://github.com/davidnewhall/unifi-poller/wiki/Grafana#plugins
