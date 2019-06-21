@@ -40,7 +40,8 @@ make docker
 ```
 
 # Running the Container
-Make sure you've completed the prerequisites in the [Installation](Installation) article.
+
+*   **Make sure you've completed the prerequisites in the [Installation](Installation) article.**
 
 This command starts the container as a daemon:
 ```shell
