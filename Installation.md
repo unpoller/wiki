@@ -1,4 +1,4 @@
-Beginning with version 1.1.1 architecture-specific packages are available for Debian/Ubuntu, RedHat/Fedora and macOS. Beginning with version 1.3.0 homebrew installation is available for macOS, and the pkg for macOS has been removed as of version 1.3.1 (it was buggy). The packages (or brew) allow you to install a prebuilt binary, config file and startup script (systemd or launchd) without knowing anything about Go. The easy way. Pre-built packages are available on the [Releases](https://github.com/davidnewhall/unifi-poller/releases) page.
+Architecture-specific packages are available for Debian/Ubuntu, RedHat/Fedora and macOS. Beginning with version 1.3.0 homebrew installation is available for macOS, and the pkg for macOS has been removed as of version 1.3.1 (the launchd config is unreliable). The packages (or brew) allow you to install a prebuilt binary, config file and startup script (systemd or launchd) without knowing anything about Go or compiling applications. Pre-built packages are available on the [Releases](https://github.com/davidnewhall/unifi-poller/releases) page.
 
 **If you already ran `make install` you need to run `make uninstall` before switching the install to a package (or brew).**
 
@@ -26,7 +26,8 @@ You need to create an Influx database and user/pass on the Unifi Controller.
    1. Forgetting to do this will render most of the dashboards useless and empty.
 
 # Docker
-See [Docker](Docker)
+
+Check that you meet the pre-reqs. Then see [Docker](Docker).
 
 # Linux
 
