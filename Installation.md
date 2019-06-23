@@ -19,7 +19,7 @@ You need to create an Influx database and user/pass on the UniFi Controller.
      CREATE USER unifi WITH PASSWORD 'unifi' WITH ALL PRIVILEGES
      GRANT ALL ON unifi TO unifi
      ```
-Take note of the username and password you create (if you choose to do so, you may skip the last 2 commands). You'll need the **hostname**, **port**, **database name**, and optionally **user/pass** in a moment for the unifi-poller config file.
+     Take note of the username and password you create (if you choose to do so, you may skip the last 2 commands). You'll need the **hostname**, **port**, **database name**, and optionally **user/pass** in a moment for the unifi-poller config file.
 1. **You need [Grafana](Grafana)**. 
     1. [Add a new data source](https://grafana.com/docs/features/datasources/influxdb/) for the InfluxDB `unifi` database you created.
 1. **Install Grafana Plugins**
