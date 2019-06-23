@@ -44,3 +44,10 @@ grafana-cli plugins install grafana-clock-panel
 grafana-cli plugins install natel-discrete-panel
 grafana-cli plugins install grafana-piechart-panel
 ```
+
+# Dashboards
+
+[Download them here](https://grafana.com/dashboards?search=unifi-poller).
+
+The most important part! Something to quickly visualize all the data you're collecting!
+The dashboards used to be in this repository, but they've been moved to [Grafana.com](https://grafana.com/dashboards?search=unifi-poller). You can install all of them, or only install the ones that interest you. Directions are available on each dashboard's page.
