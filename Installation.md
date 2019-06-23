@@ -135,7 +135,7 @@ You can build your own package from source with the `Makefile`. Recommend readin
 1. [Install dep](https://golang.github.io/dep/docs/installation.html).
 1. **Clone this repo** and change your working directory to the checkout.
    ```shell
-   git clone git@github.com:davidnewhall/unifi-poller.git
+   git clone https://github.com/davidnewhall/unifi-poller.git
    cd unifi-poller
    ```
 1. **Install local Golang dependencies**: 
@@ -157,7 +157,7 @@ sudo gem install --no-document fpm
 mkdir ~/go/{src,mod}
 export GOPATH=~/go
 cd ~go/src
-git clone git@github.com:davidnewhall/unifi-poller.git
+git clone https://github.com/davidnewhall/unifi-poller.git
 cd unifi-poller
 dep ensure
 make rpm deb
