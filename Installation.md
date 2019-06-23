@@ -4,9 +4,9 @@ Architecture-specific packages are available for Debian/Ubuntu, RedHat/Fedora an
 
 # Prerequisites
 
-You need to create an Influx database and user/pass on the Unifi Controller. 
+You need to create an Influx database and user/pass on the UniFi Controller. 
 
-1. **Add a user to the Unifi Controller**. After logging into your controller:
+1. **Add a user to the UniFi Controller**. After logging into your controller:
    1. Go to `Settings -> Admins`
    1. Add a read-only user (`influxdb`) with a nice long password. 
    1. Take note of this info, you need to put it into the unifi-poller config file in a moment.
@@ -16,8 +16,10 @@ You need to create an Influx database and user/pass on the Unifi Controller.
      ```shell
      influx -host localhost -port 8086
      CREATE DATABASE unifi
+     CREATE USER unifi WITH PASSWORD 'unifi' WITH ALL PRIVILEGES
+     GRANT ALL ON unifi TO unifi
      ```
-   If your InfluxDB requires authentication, then you probably know more about it than I do! Take note of the username and password you create (if you choose to do so, Influx is normally authentication-less). You'll need the **hostname**, **port**, **database name**, and optionally **user/pass** in a moment for the unifi-poller config file.
+Take note of the username and password you create (if you choose to do so, you may skip the last 2 commands). You'll need the **hostname**, **port**, **database name**, and optionally **user/pass** in a moment for the unifi-poller config file.
 1. **You need [Grafana](Grafana)**. 
     1. [Add a new data source](https://grafana.com/docs/features/datasources/influxdb/) for the InfluxDB `unifi` database you created.
 1. **Install Grafana Plugins**
