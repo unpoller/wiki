@@ -128,7 +128,7 @@ To have launchd start golift/mugs/unifi-poller now and restart at login:
 
 # Manually
 
-You can build your own package from source with the `Makefile`.
+You can build your own package from source with the `Makefile`. Recommend reading the note at the bottom if you're using a mac.
 
 1. [Install FPM](https://fpm.readthedocs.io/en/latest/installing.html)
 1. [Install Go](https://golang.org/doc/install). 
@@ -148,4 +148,17 @@ You can build your own package from source with the `Makefile`.
 1. Install it:
    1. `sudo dpkg -i *.deb || sudo rpm -Uvh *.rpm`
 
-Note: If you're building linux packages on a mac you can run `brew install rpmbuild gnu-tar` to get the additional tools you need. That means you're going to need [Homebrew](https://brew.sh).
+### Note
+
+If you're building linux packages on a mac you can run `brew install rpmbuild gnu-tar` to get the additional tools you need. That means you're going to need [Homebrew](https://brew.sh). And if you're going to install Homebrew, or already have, you can simply do something like this to get your Go environment up and build the packages:
+```shell
+brew install rpmbuild gnu-tar go dep
+sudo gem install --no-document fpm
+mkdir ~/go/{src,mod}
+export GOPATH=~/go
+cd ~go/src
+git clone git@github.com:davidnewhall/unifi-poller.git
+cd unifi-poller
+dep ensure
+make rpm deb
+```
