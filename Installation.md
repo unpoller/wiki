@@ -33,16 +33,9 @@ Check that you meet the pre-reqs. Then see [Docker](Docker).
 
 **Find the latest version on the [Releases](https://github.com/davidnewhall/unifi-poller/releases) page.**
 
-Redhat and Fedora variants should download and install the rpm with something like this:
+Use the provided [install.sh script](https://github.com/davidnewhall/unifi-poller/blob/master/scripts/install.sh) to download (and optionally install) the correct package for your system. Running with `sudo` is optional and will invoke `rpm` or `dpkg` to install the downloaded package.
 ```shell
-wget https://github.com/davidnewhall/unifi-poller/releases/download/v1.3.3/unifi-poller-1.3.3-184.x86_64.rpm
-sudo rpm -Uvh unifi-poller*.rpm
-```
-
-Debian and Ubuntu variants should download and install the deb with something like this:
-```shell
-wget https://github.com/davidnewhall/unifi-poller/releases/download/v1.3.3/unifi-poller-1.3.3-184_amd64.deb
-sudo dpkg -i unifi-poller*.deb
+curl https://raw.githubusercontent.com/davidnewhall/unifi-poller/master/scripts/install.sh | sudo bash
 ```
 
 Edit the config file after installing the package:
