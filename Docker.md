@@ -39,7 +39,7 @@ git clone https://github.com/davidnewhall/unifi-poller.git
 cd unifi-poller
 make docker
 ```
-This builds a 64 bit amd64 linux image from scratch. if you need another architecture, use the `docker build` command directly with a correct `--build-arg` flag.
+This builds a 64-bit amd64 linux image from scratch. If you need another architecture, use the `docker build` command directly with a correct `--build-arg` flag.
 
 # Running the Container
 
