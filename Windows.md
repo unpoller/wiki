@@ -5,5 +5,3 @@ As it is now, a pre-compiled windows binary (.exe) is provided on the [Releases]
 ```shell
 unifi-poller.exe -c up.conf
 ```
-
-* **The .exe will be provided as part of the release following v1.3.3.** In other words, this wiki page is in the future.
