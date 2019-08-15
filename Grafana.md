@@ -1,5 +1,7 @@
 This document provides instructions to install Grafana. You can find official instructions in the [Grafana Docs](https://grafana.com/docs/installation/). After installing Grafana, you should [import the provided dashboards](Grafana-Dashboards).
 
+**Grafana 5.5 or newer is required. Grafana 4.x will not work. Grafana 6.x+ is recommended.**
+
 This will set it up on localhost:3000 with admin/admin login.
 
 # Linux
