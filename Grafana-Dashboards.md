@@ -1,11 +1,13 @@
 This project provides a few Grafana dashboards. They used to be installed as part of the packages and available in this repo, but they have been moved to [Grafana.com](https://grafana.com/dashboards?search=unifi-poller) to simplify installation.
 
-Keep in mind these dashboards are just examples. You should make an Example folder
-in Grafana to keep them in, and copy the graphs to new dashboards that you want to maintain.
+Keep in mind these dashboards are just examples. You should make a single dedicated folder
+in Grafana to keep all of them in, and copy the graphs to new dashboards that you want to maintain.
 From time to time I will release new features (like multi-site support) that brings
 new benefits to the existing dashboards. When that happens I update them.
 Keeping an Example set allows you to update too, inspect the changes, and apply them
 to your own custom dashboards.
+
+**Note**: Do not make one folder per dashboard. Make one folder for all of them. The folder name cannot be the same as the dashboard names, or Grafana will throw an error.
 
 Recommendations:
 
