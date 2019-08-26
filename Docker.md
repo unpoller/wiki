@@ -74,6 +74,6 @@ UP_VERIFY_SSL|verify_ssl|default `"false"`
 UP_COLLECT_IDS|collect_ids| default `"false"`
 UP_QUIET_MODE|quiet| default `"false"`
 UP_DEBUG_MODE|debug| default `"false"`
-UP_POLLING_INTERVAL|interval|uses Go duration. ie `"1m"` or `"90s"`
+UP_POLLING_INTERVAL|interval|Go duration. ie `"1m"` or `"90s"`, default `"30s"`
 UP_MAX_ERRORS|max_errors|integer, default `"0"`
 UP_POLL_SITES|sites|separate sites with commas, default `"all"`
