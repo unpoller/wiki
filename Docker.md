@@ -6,21 +6,21 @@ Many thanks to [mabunixda](https://github.com/mabunixda) for the [helping](https
 
 You can install `latest`, `stable` (recommended), or pick a specific version. See the following sections for information on how to do each.
 
-### Stable Release
+#### Stable Release
 You may install the current stable released version using a tag like this:
 ```shell
 docker pull golift/unifi-poller:stable
 ```
 This is the recommended way to install. Linux images are available for 386, amd64, arm32v6 and arm64v8. There is no need to specify an arch tag, docker will pull the correct image automatically with the `stable` tag.
 
-### Latest (master)
+#### Latest (master)
 You may download the `latest` version with this command:
 ```shell
 docker pull golift/unifi-poller:latest
 ```
 Using `latest` is not recommended. You may be asked to give this a try while troubleshooting or debugging, but generally this will contain untested code or things that will break your graphs. The latest version is based from the `master` branch and may contain bugs. 
 
-### Pick a version
+#### Pick a version
 You may install the latest released minor version like this:
 ```shell
 docker pull golift/unifi-poller:1.3
@@ -32,7 +32,7 @@ Install a specific version like this:
 docker pull golift/unifi-poller:1.3.3
 ```
 
-### From Source
+#### From Source
 You can build your own image from source.
 ```shell
 git clone https://github.com/davidnewhall/unifi-poller.git
@@ -51,7 +51,29 @@ docker run -d -v /your/config/up.conf:/etc/unifi-poller/up.conf golift/unifi-pol
 ```
 Copy the [example configuration file](https://github.com/davidnewhall/unifi-poller/blob/master/examples/up.conf.example) from this repository and mount it as an overlay into the container. The example configuration file is also included in the container at the default location _/etc/unifi-poller/up.conf_
 
-To avoid writing a password in your configuration file, it may be passed in as an environment variable. If you do this, do not include a the password in the config file, or it will be used instead. Here's an example:
+#### Environment Variables
+
+As of version 1.5.3 all configuration options may be passed as environment variables.
+Here's an example:
 ```shell
-docker run -e UNIFI_PASSWORD="your-secret-pasword" -d -v /your/config/up.conf:/etc/unifi-poller/up.conf golift/unifi-poller:stable
+docker run -e UP_UNIFI_PASS="your-secret-pasword" -e UP_DEBUG_MODE="true" -d golift/unifi-poller:stable
 ```
+##### Available Variables
+|ENV|config|note|
+|---|---|---|
+UP_POLLING_MODE|mode|`"influx"` (default) or `"influxlambda"`
+UP_INFLUX_DB| influx_db | default `"unifi"`
+UP_INFLUX_USER| influx_user| default `"unifi"`
+UP_INFLUX_PASS| influx_pass | default `"unifi"`
+UP_INFLUX_URL| influx_url | default `"http://127.0.0.1:8086"`
+UP_UNIFI_USER| unifi_user | default "influx"
+UP_UNIFI_PASS| unifi_pass |
+UP_UNIFI_URL| unifi_url | default `"https://127.0.0.1:8443"`
+UP_REAUTHENTICATE| reauthenticate | default `"false"`
+UP_VERIFY_SSL|verify_ssl|default `"false"`
+UP_COLLECT_IDS|collect_ids| default `"false"`
+UP_QUIET_MODE|quiet| default `"false"`
+UP_DEBUG_MODE|debug| default `"false"`
+UP_POLLING_INTERVAL|interval|uses Go duration. ie `"1m"` or `"90s"`
+UP_MAX_ERRORS|max_errors|integer, default `"0"`
+UP_POLL_SITES|sites|separate sites with commas, default `"all"`
