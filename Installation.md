@@ -8,7 +8,7 @@ You need to create an Influx database and user/pass on the UniFi Controller.
 
 1. **Add a user to the UniFi Controller**. After logging into your controller:
    1. Go to `Settings -> Admins`
-   1. Add a read-only user (`influxdb`) with a nice long password. 
+   1. Add a read-only user (`influx`) with a nice long password. 
    1. The new user needs access to each site. For each UniFi Site you want to poll, add admin via the 'Invite existing admin' option.
    1. Take note of this info, you need to put it into the unifi-poller config file in a moment.
 1. **You need [InfluxDB](InfluxDB)**. If you already have this, skip ahead.
