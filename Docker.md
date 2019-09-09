@@ -77,3 +77,7 @@ UP_DEBUG_MODE|debug| default `"false"`
 UP_POLLING_INTERVAL|interval|Go duration. ie `"1m"` or `"90s"`, default `"30s"`
 UP_MAX_ERRORS|max_errors|integer, default `"0"`
 UP_POLL_SITES|sites|separate sites with commas, default `"all"`
+
+# Docker Compose
+
+Included with version 1.5.3 is a Docker Compose file and example environment variable configuration to make it work. If you do not have Grafana or InfluxDB running already, then this is a great option to let you try this software. TODO: finish this section...... 9/9/19 - give credit to jon.
