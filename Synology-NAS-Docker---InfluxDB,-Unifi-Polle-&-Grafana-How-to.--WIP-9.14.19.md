@@ -36,7 +36,7 @@ I don't recommend you use host network, using the bridge network keeps it self c
       |-plugins
       |-data
   |-influxdb
-  |-unifipoller
+
 
 ## Download needed images from the registry
 1. select registry
@@ -58,9 +58,7 @@ I don't recommend you use host network, using the bridge network keeps it self c
 6. on port settings
 *change local port from Auto to one you have free on host - this makes it predictable. something like 3456
 *leave container port as 8086 and type as TCP
-7. on links tab
-* we will only be using links tab if name resolution doesn't work! ignore this section for now
-8. on environment tab add the following vars
+7. on environment tab add the following vars
 * INFLUXDB_DATA_DIR       = /var/lib/influxdb/data
 * INFLUXDB_DATA_WAL_DIR   = /var/lib/influxdb/wal
 * INFLUXDB_DATA_META_DIR  = /var/lib/influxdb/meta
@@ -84,17 +82,11 @@ I don't recommend you use host network, using the bridge network keeps it self c
 1. In image select golift/unifi-poller:latest and click launch
 2. leave general settings alone - container name should be golift-unifi-poller1 unless you created other iunifi-pollers
 3. Click advanced settings
-4. on volume tab add the following:
-* docker/unifipoller/up.conf file to mount path /etc/unifi-poller/up.conf leave as read/write
-5. on the network tab
+4. on the network tab
 * remove the default bridge (usually called bridge)
 * add your network, in this example, Grafana_Net
 * Ensure that 'use the same network as docker host' is unchecked
-6. on port settings
-*nothing needs to be changed
-7. on links tab
-* we will only be using links tab if name resolution doesn't work! ignore this section for now
-8. on environment tab add the following vars
+5. on environment tab add the following vars
 * UP_INFLUX_URL = influxdb1
 * UP_UNIFI_URL = https://<your unifi controller ip>:8443
 * UP_UNIFI_USER = <username for the read on account you created in the unifi controller earlier e.g. influx>
