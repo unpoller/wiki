@@ -58,12 +58,19 @@ I don't recommend you use host network, using the bridge network keeps it self c
 * INFLUXDB_DATA_META_DIR  = /var/lib/influxdb/meta
 9 Finalize container and run
 * Click APPLY click NEXT click APPLY
-# Create influxdatabse
+
+# Create influx databse
 1 click containers and then double click the running influxdb1 container
 2 switch to the terminal tab
 3 click the drop down next to create and 'select launch with command'
 4 enter bash and click ok
 5 select bash from the left hand side - you should now see a command prompt
+6 in the command prompt enter these commands (note you can't cut and paste)
+* 'influx' - after a couple of second you should be in the InfluxDB shell.  enter them exactly as shown
+* CREATE DATABASE unifi
+* USE unifi
+* CREATE USER unifi WITH PASSWORD 'unifi' WITH ALL PRIVILEGES
+* GRANT ALL ON unifi TO unifi
 
 
 [DO NOT FOLLOW THESE INSTRUCTIONS THEY ARE UNDER CONSTRUCTION]
