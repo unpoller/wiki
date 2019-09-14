@@ -1,7 +1,7 @@
 [DO NOT FOLLOW THESE INSTRUCTIONS THEY ARE UNDER CONSTRUCTION]
 
 # Introduction
-this needs some pith onservations and scene settings on this not being best way but a way
+this needs some pithy observations and scene settings on this not being best way but a way
 and why we do some things differently because 'reasons' (aka synology)
 
 Assumptions:
@@ -73,5 +73,25 @@ I don't recommend you use host network, using the bridge network keeps it self c
 * GRANT ALL ON unifi TO unifi
 
 #create unifi-poller container
+1. In image select golift/unifi-poller:latest and click launch
+2. leave general settings alone - container name should be golift-unifi-poller1 unless you created other iunifi-pollers
+3. Click advanced settings
+4. on volume tab add the following:
+* docker/unifipoller/up.conf file to mount path /etc/unifi-poller/up.conf leave as read/write
+5. on the network tab
+* remove the default bridge (usually called bridge)
+* add your network, in this example, Grafana_Net
+* Ensure that 'use the same network as docker host' is unchecked
+6. on port settings
+*nothing needs to be changed
+7. on links tab
+* we will only be using links tab if name resolution doesn't work! ignore this section for now
+8. on environment tab add the following vars
+* UP_INFLUX_URL = influxdb1
+* UP_UNIFI_URL = https://<your unifi controller ip>:8443
+* UP_UNIFI_USER = <username for the read on account you created in the unifi controller>
+* UP_UNIFI_PASS = <password for the above user>
+9 Finalize container and run
+* Click APPLY click NEXT click APPLY
 
 [DO NOT FOLLOW THESE INSTRUCTIONS THEY ARE UNDER CONSTRUCTION]
