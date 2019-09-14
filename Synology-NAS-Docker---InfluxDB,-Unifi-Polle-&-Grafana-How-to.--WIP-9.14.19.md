@@ -16,7 +16,7 @@ We do this because the default bridge doesn't have name resolution but new bridg
 
 I don't recommend you use host network, using the bridge network keeps it self contained at helps avoid conflicts with the host or other containers you might have that we cannot predict.
 ## prepare mapped volumes
-1. Create the following structure in your preferred location (mine is a shared folder called docker) <note i am not sure which you absolutely need to precreate might be good to test - hmm thje structure below does not render correctly>
+1. Create the following structure in your preferred location (mine is a shared folder called docker) <note i am not sure which you absolutely need to precreate might be good to test - hmm the structure below does not render correctly>
 /Docker
   |-grafana
       |-home
@@ -25,9 +25,6 @@ I don't recommend you use host network, using the bridge network keeps it self c
       |-plugins
       |-data
   |-influxdb
-      |-data
-      |-wal
-      |-meta
   |-unifipoller
 
 ## Download needed images from the registry
