@@ -7,6 +7,14 @@ and why we do some things differently because 'reasons' (aka synology)
 Assumptions:
 1. You already installed docker from package center
 2. You already enabled SSH on your synology <insert link to SSH instructions elsewhere>
+
+# Prepare your unifi controller
+1. Add a user to the UniFi Controller. After logging into your controller:
+2. Go to Settings -> Admins
+3. Add a read-only user (e.g. 'influx') with a nice long password.
+4. The new user needs access to each site. For each UniFi Site you want to poll, add admin via the 'Invite existing admin' option.
+Take note of this info, you need to put it into the unifi-poller config file in a moment
+
 # Prepare Synology & Docker
 ## Run docker & configure network
 Click on network and select add to create new network:
@@ -89,7 +97,7 @@ I don't recommend you use host network, using the bridge network keeps it self c
 8. on environment tab add the following vars
 * UP_INFLUX_URL = influxdb1
 * UP_UNIFI_URL = https://<your unifi controller ip>:8443
-* UP_UNIFI_USER = <username for the read on account you created in the unifi controller>
+* UP_UNIFI_USER = <username for the read on account you created in the unifi controller earlier e.g. influx>
 * UP_UNIFI_PASS = <password for the above user>
 9 Finalize container and run
 * Click APPLY click NEXT click APPLY
