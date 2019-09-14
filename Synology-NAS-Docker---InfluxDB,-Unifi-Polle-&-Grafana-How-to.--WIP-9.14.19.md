@@ -1,6 +1,9 @@
 [DO NOT FOLLOW THESE INSTRUCTIONS THEY ARE UNDER CONSTRUCTION]
 
 # Introduction
+this needs some pith onservations and scene settings on this not being best way but a way
+and why we do some things differently because 'reasons' (aka synology)
+
 Assumptions:
 1. You already installed docker from package center
 2. You already enabled SSH on your synology <insert link to SSH instructions elsewhere>
@@ -69,5 +72,6 @@ I don't recommend you use host network, using the bridge network keeps it self c
 * CREATE USER unifi WITH PASSWORD 'unifi' WITH ALL PRIVILEGES
 * GRANT ALL ON unifi TO unifi
 
+#create unifi-poller container
 
 [DO NOT FOLLOW THESE INSTRUCTIONS THEY ARE UNDER CONSTRUCTION]
