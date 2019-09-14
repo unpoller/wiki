@@ -94,4 +94,12 @@ I don't recommend you use host network, using the bridge network keeps it self c
 9 Finalize container and run
 * Click APPLY click NEXT click APPLY
 
+#check that poller and influx are working
+1. select container in docker UI
+2. double click golift-unifi-poller1
+3. select log tab
+4. after a couple of minutes you should see an entry like the following, if you do then everything is working ok
+`2019/09/14 22:43:09 [INFO] UniFi Measurements Recorded. Sites: 1, Clients: 78, Wireless APs: 6, Gateways: 1, Switches: 6, Points: 193, Fields: 7398
+`
+
 [DO NOT FOLLOW THESE INSTRUCTIONS THEY ARE UNDER CONSTRUCTION]
