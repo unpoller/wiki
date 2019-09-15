@@ -109,8 +109,11 @@ Options:
 1. SSH into your synology (if you don't know how to do that see this link <link>)
 2. you will need to CD to the root docker directory you created earlier (in this example the /docker folder containing the /grafan folder.
 3. the command format is cd /volume{x}/{dirname}  on my system this shared folder is on volume 3 so for me it is:
+
 `cd /volume3/docker`
+
 4 now you need to change the permissions of the grafana folder
+
 `sudo chown 472 grafana`
 ### Create the container
 1. In image select grafan/grafana:latest and click launch
