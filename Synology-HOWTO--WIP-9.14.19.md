@@ -15,6 +15,7 @@ These instructions will let you use the synology docker stop container action > 
 Assumptions:
 1. You already installed docker from package center
 2. [Enable SSH on Synology](https://www.synology.com/en-global/knowledgebase/DSM/help/DSM/AdminCenter/system_terminal)
+
 (note you should always logon with your default admin account you created when you setup you synology, logging on as root no longer works)
 
 # Prepare your unifi controller
