@@ -104,7 +104,7 @@ Options:
 
 **Method 2** - create container via SSH command on the synology to create the container.  Advantage no need to change file system ownership attributes. Disadvantages - have to create a user account and delete the container and re-run the docker command each time you want to update the base image.
 
-## Method 1
+## Method 1 - Recommended
 ### Prep
 1. SSH into your synology (if you don't know how to do that see this link <link>)
 2. you will need to CD to the root docker directory you created earlier (in this example the /docker folder containing the /grafan folder.
@@ -137,7 +137,7 @@ Options:
 * Click APPLY click NEXT click APPLY 
 
 ### Notes
-*dont change ownership in file station of the grafana folder or you will break the container.
+* don't change ownership in file station of the grafana folder or you will break the container.
 
 **Skip to 'running the container section lower down'**
 
