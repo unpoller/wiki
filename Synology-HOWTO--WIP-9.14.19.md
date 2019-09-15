@@ -91,13 +91,13 @@ I don't recommend you use host network, using the bridge network keeps it self c
 * Ensure that 'use the same network as docker host' is unchecked
 5. on environment tab add the following vars
 * UP_INFLUX_URL = influxdb1
-* UP_UNIFI_URL = https://<your unifi controller ip<>>:8443
+* UP_UNIFI_URL = https://{your unifi controller ip}:8443
 * UP_UNIFI_USER = <username for the read on account you created in the unifi controller earlier e.g. influx>
 * UP_UNIFI_PASS = <password for the above user>
 9 Finalize container and run
 * Click APPLY click NEXT click APPLY
 
-#check that poller and influx are working
+# check that poller and influx are working
 1. select container in docker UI
 2. double click golift-unifi-poller1
 3. select log tab
