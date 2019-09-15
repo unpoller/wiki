@@ -99,7 +99,22 @@ I don't recommend you use host network, using the bridge network keeps it self c
 2. double click golift-unifi-poller1
 3. select log tab
 4. after a couple of minutes you should see an entry like the following, if you do then everything is working ok
-`2019/09/14 22:43:09 [INFO] UniFi Measurements Recorded. Sites: 1, Clients: 78, Wireless APs: 6, Gateways: 1, Switches: 6, Points: 193, Fields: 7398
-`
+`2019/09/14 22:43:09 [INFO] UniFi Measurements Recorded. Sites: 1, Clients: 78, Wireless APs: 6, Gateways: 1, Switches: 6, Points: 193, Fields: 7398`
+
+# Grafana
+This container is a little difficult on synology, there are two methods that have been to shown to work.  If you have an even better method let us know!  The two different methods have their pros and cons.
+
+Options:
+**Method 1** - create container in UI, use SSH on the synology to change some file permissions.  Advantages - the docker clean action in the UI continues to work.  Disadvantages - be careful not to break the container by modifying folder attributes in the UI.
+
+**Method 2** - create container via SSH command on the synology to create the container.  Advantage no need to change file system ownership attributes. Disadvantages - have to create a user account and delete the container and re-run the docker command each time you want to update the base image.
+
+## Method 1
+to be completed
+
+## Method 2
+
+
+
 
 [DO NOT FOLLOW THESE INSTRUCTIONS THEY ARE UNDER CONSTRUCTION]
