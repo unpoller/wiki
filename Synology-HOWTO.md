@@ -3,7 +3,7 @@ We are not claiming this is the only way to do this.  However this is designed t
 
 We use a custom bridge network for some very good reasons and we **highly recommend** most people use it:
 * it ensures name resolution works between the containers without needing to use the deprecated link functionality
-* the default bridge on docker does NOT have name resolution enabled and requires mucking about with host files (this is a docker feature not anything to do with synology
+* the default bridge on docker does NOT have name resolution enabled and requires mucking about with host files (this is a docker feature not anything to do with synology)
 * this also means in the event the container IP changes (it happens) you don't need to reconfigure
 * this also means, due to the ICC, that no host port mappings are required other than for the grafana 3000:3000 mapping in the grafana container, you can choose to remove other port mappings if you desire
 * the reason for not using host port mappings for container <> container comms is we keep this solution self-container and don't have to worry about weird things that might have been on the synology (changing of synology IP,  other containers with host mappings etc).  But feel free to customize in your environment as needed.
