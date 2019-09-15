@@ -126,6 +126,7 @@ If so start the container, the first time it should take a while to intialize th
 
 From you host browser access http://localhost:3000 and you should see the grafana logon (the default is admin:admin)
 ### Notes
+notes?
 <critical notes about this method>
 
 ## Configuring Grafana datasource
