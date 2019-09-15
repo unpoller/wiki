@@ -178,20 +178,40 @@ You will be promptd to change the default password, do so.
 
 
 ## Configuring Grafana datasource
-Click add data source on the page you see after logon.
-Select the influxdb icon
-Set the following fields:
-Name = Unifi InfluxDB  (or whatever name you want) and set to default
-URL = http://influxdb1:8086
-Database = unifi
-Username = unifi
-Password = unifi
-no other fields need to be changed or set on this page
+1. Click add data source on the page you see after logon.
+2. Select the influxdb icon
+3. Set the following fields:
+* Name = Unifi InfluxDB  (or whatever name you want) and set to default
+* URL = http://influxdb1:8086
+* Database = unifi
+* Username = unifi
+* Password = unifi
+#### no other fields need to be changed or set on this page
 
-click save & test
-you should get green banner above the save and test that says 'Data Source is Working' 
+4.click save & test
+#### you should get green banner above the save and test that says 'Data Source is Working' 
 
-## Importing the default dahsboards.
-<fill this section with the instruction on importing the dashboards - i found using thee dahsboard ID from the grafana site and using that simple ID to do the import was easiest even though not documented elsewhere here>
+to return to the homepage click the icon with 4 squares on the left navbar and select home
+
+## Importing the default dashboards.
+Click the + on the left navbar
+select import
+in the field 'grafana.com dashboard' enter one of the IDs listed below.
+after each one click the blue load button
+in the unifi section click the 'Select an InfluxDB Data Source' dropdown
+choose Unfi InfluxDb (or whatver you chose for it earlier)
+then click the  green import button on the next page
+You should see you first dashboard with data (depending on how long you took to do this howto!)
+Repeat this process for more.
+Congratulations!
+
+Dashboards as of 9.14.2019
+* 10414 - Network Sites
+* 10415 - UAP Insights
+* 10416 - 
+* 10417 -
+* 10418 -
+(these can all be found on https://grafana.com/grafana/dashboards by searching)
+
 
 [DO NOT FOLLOW THESE INSTRUCTIONS THEY ARE UNDER CONSTRUCTION]
