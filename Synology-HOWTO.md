@@ -228,7 +228,7 @@ Congratulations!
 * 10417 - USW Insights
 * 10418 - Client Insights
 
-(these can all be found on https://grafana.com/grafana/dashboards by searching)
+(these can all be found on https://grafana.com/grafana/dashboards by searching for unifi-poller)
 
 [TO DO]
 * Verify clean really works ok for all 3 containers
