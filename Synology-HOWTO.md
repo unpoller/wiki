@@ -5,7 +5,7 @@ We use a custom bridge network for some very good reasons and we **highly recomm
 * it ensures name resolution works between the containers without needing to use the deprecated link functionality
 * the default bridge on docker does NOT have name resolution enabled and requires mucking about with host files (this is a docker feature not anything to do with synology)
 * this also means in the event the container IP changes (it happens) you don't need to reconfigure
-* this also means, due to the ICC, that no host port mappings are required other than for the grafana 3000:3000 mapping in the grafana container, you can choose to remove other port mappings if you desire
+* this also means, due to the ICC, that no host port mappings are required other than for the grafana 3000:3000 mapping in the grafana contained, you can choose to remove other port mappings if you desire
 * the reason for not using host port mappings for container <> container comms is we keep this solution self-container and don't have to worry about weird things that might have been on the synology (changing of synology IP,  other containers with host mappings etc).  But feel free to customize in your environment as needed.
 
 These instructions will let you use the synology docker 'stop container action' > 'clear container action' > 'redownload the image' > 'restart container' to update to the latest.  **_<---this still needs to be tested to confirm 100% - we may need to map in some more grafana dirs._**
@@ -228,5 +228,12 @@ Congratulations!
 * 10418 - Client Insights
 
 (these can all be found on https://grafana.com/grafana/dashboards by searching)
+
+[TO DO]
+* Verify clean really works ok for all 3 containers
+* case on names (synology, grafana, etc is inconsisten)
+* table of contents with active links
+* consider splitting into several pages
+* no one has yet tested method 2 for grafana - leave it in doc because eveyone asks 'why can't you use --run like grafana says to'
 
 [END of DOC]
