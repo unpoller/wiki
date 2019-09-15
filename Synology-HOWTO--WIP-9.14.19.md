@@ -121,8 +121,13 @@ to be completed
 
 `sudo docker run --user 1031 --name grafana-grafana1 --net=Grafana_Net -p 300:3000 --volume /volume1/docker/grafanatest:/var/lib/grafana -e "GF_INSTALL_PLUGINS=grafana-clock-panel,grafana-piechart-panel,natel-discrete-panel" grafana/grafana:latest`
 
-### NOTE 
 Use the pid you got in step 3, use the network name you created if you didn't use Grafana_Net AND you will need to use the volume # your docker folder (the one you created manually is on)  by default this will be on volume1 but if you have multiple volumes this may not be the case.
+
+### Notes
+* If you use the clean action in the synology docker UI you will break this VM and need to delete and rerun the docker run command.
+* If you use the synology docker UI to export the configuration and import it again later the docker will break and you will need to rerun the docker run command.
+* I have no idea if  hyperbackup or any other backup / restore will also break the config
+* this all derives from the fact there is no way to do '--user {PID}' in the synology docker UI / JSON.
 
 ## Running the container
 At this point your container should have created ok, 
@@ -130,11 +135,7 @@ At this point your container should have created ok,
 If so start the container, the first time it should take a while to intialize the database.  Check the logs to make sure you have no file / folder permissions issues.  If you did you will need to check you used the right PID and set the ownership of the host grafana folder correctly.
 
 From you host browser access http://localhost:3000 and you should see the grafana logon (the default is admin:admin)
-### Notes
-* If you use the clean action in the synology docker UI you will break this VM and need to delete and rerun the docker run command.
-* If you use the synology docker UI to export the configuration and import it again later the docker will break and you will need to rerun the docker run command.
-* I have no idea if  hyperbackup or any other backup / restore will also break the config
-* this all derives from the fact there is no way to do '--user {PID}' in the synology docker UI / JSON.
+
 
 ## Configuring Grafana datasource
 <fill this section with the instruction on selecting the data source - i.e step by step of how to add source and to use the server name as influxdb1>
