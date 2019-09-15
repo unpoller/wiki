@@ -59,12 +59,12 @@ I don't recommend you use host network, using the bridge network keeps it self c
 * Click APPLY click NEXT click APPLY
 
 # Create influx database
-1 click containers and then double click the running influxdb1 container
-2 switch to the terminal tab
-3 click the drop down next to create and 'select launch with command'
-4 enter bash and click ok
-5 select bash from the left hand side - you should now see a command prompt
-6 in the command prompt enter these commands (note you can't cut and paste)
+1. click containers and then double click the running influxdb1 container
+2. switch to the terminal tab
+3. click the drop down next to create and 'select launch with command'
+4. enter bash and click ok
+5. select bash from the left hand side - you should now see a command prompt
+6. in the command prompt enter these commands (note you can't cut and paste)
 * 'influx' - after a couple of second you should be in the InfluxDB shell.  enter them exactly as shown
 * CREATE DATABASE unifi
 * USE unifi
