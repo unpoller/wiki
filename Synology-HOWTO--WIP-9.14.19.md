@@ -172,11 +172,20 @@ At this point your container should have created ok,
 
 If so start the container, the first time it should take a while to intialize the database.  Check the logs to make sure you have no file / folder permissions issues.  If you did you will need to check you used the right PID and set the ownership of the host grafana folder correctly.
 
-From you host browser access http://localhost:3000 and you should see the grafana logon (the default is admin:admin)
+From you host browser access http://<ip address of your synology>:3000 and you should see the grafana logon (the default is admin:admin)
+
+You will be promptd to change the default password, do so.
 
 
 ## Configuring Grafana datasource
-<fill this section with the instruction on selecting the data source - i.e step by step of how to add source and to use the server name as influxdb1>
+Click add data source on the page you see after logon.
+Select the influxdb icon
+Set the following fields:
+Name = Unifi InfluxDB  (or whatever name you want) and set to default
+URL = http://influxdb1:8086
+Database = unifi
+Username = unifi
+Password = unifi
 
 ## Importing the default dahsboards.
 <fill this section with the instruction on importing the dashboards - i found using thee dahsboard ID from the grafana site and using that simple ID to do the import was easiest even though not documented elsewhere here>
