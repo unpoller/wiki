@@ -208,9 +208,9 @@ Congratulations!
 Dashboards as of 9.14.2019
 * 10414 - Network Sites
 * 10415 - UAP Insights
-* 10416 - 
-* 10417 -
-* 10418 -
+* 10416 - USG / UDM / UDM Pro Inisghts
+* 10417 - USW Insights
+* 10418 - Client Insights
 (these can all be found on https://grafana.com/grafana/dashboards by searching)
 
 
