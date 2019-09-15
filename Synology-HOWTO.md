@@ -1,7 +1,7 @@
-[DO NOT FOLLOW THESE INSTRUCTIONS THEY ARE UNDER CONSTRUCTION]
+INSTRUCTIONS UNDER CONSTRUCTION - WIP 9.14.19
 
 # Introduction
-We are not claiming this is the only way to do this.  However this is designed to use the official packages for Unifi-Poller, InfluxDB and Grafana with the aim to make this maintainable as possible.
+We are not claiming this is the only way to do this.  However this is designed to use the official packages for UniFi Poller, InfluxDB and Grafana with the aim to make this maintainable as possible.
 
 We use a custom bridge network for some very good reasons and we **highly recommend** most people use it:
 * it ensures name resolution works between the containers without needing to use the deprecated link functionality
