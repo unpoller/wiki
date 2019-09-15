@@ -185,7 +185,7 @@ At this point your container should have created ok,
 
 If so start the container, the first time it should take a while to initialize the database.  Check the logs to make sure you have no file / folder permissions issues.  If you did you will need to check you used the right PID and set the ownership of the host grafana folder correctly.
 
-From you host browser access http://<ip address of your synology>:3000 and you should see the grafana logon (the default is admin:admin)
+From you host browser access http://{ip address of your synology}:3000 and you should see the grafana logon (the default is admin:admin)
 
 You will be prompted to change the default password, do so.
 
