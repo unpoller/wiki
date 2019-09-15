@@ -56,8 +56,8 @@ I don't recommend you use host network, using the bridge network keeps it self c
 4. on volume tab add the following:
 * docker/influxdb folder to mount path /var/lib/influxdb leave as read/write
 5. on the network tab
-* remove the default bridge (usually called bridge)
 * add your network, in this example, Grafana_Net
+* remove the default bridge (usually called bridge)
 * Ensure that 'use the same network as docker host' is unchecked
 6. on port settings **<--- um why do i have host mapped port, not sure we need this for this set of 3 as all traffic is internal**
 * change local port from Auto to one you have free on host - this makes it predictable. something like 3456
@@ -89,8 +89,8 @@ I don't recommend you use host network, using the bridge network keeps it self c
 2. leave general settings alone - container name should be golift-unifi-poller1 unless you created other iunifi-pollers
 3. Click advanced settings
 4. on the network tab
-* remove the default bridge (usually called bridge)
 * add your network, in this example, Grafana_Net
+* remove the default bridge (usually called bridge)
 * Ensure that 'use the same network as docker host' is unchecked
 5. on environment tab add the following vars
 * UP_INFLUX_URL = http://influxdb1:8086
@@ -138,8 +138,8 @@ Options:
 4. on volume tab add the following:
 * docker/grafana folder to mount path /var/lib/grafana leave as read/write
 5. on the network tab
-* remove the default bridge (usually called bridge)
 * add your network, in this example, Grafana_Net
+* remove the default bridge (usually called bridge)
 * Ensure that 'use the same network as docker host' is unchecked
 6. on port settings
 * change local port from Auto to one you have free on host - this makes it predictable. something like 3000
