@@ -58,7 +58,7 @@ I don't recommend you use host network, using the bridge network keeps it self c
 9 Finalize container and run
 * Click APPLY click NEXT click APPLY
 
-# Create influx databse
+# Create influx database
 1 click containers and then double click the running influxdb1 container
 2 switch to the terminal tab
 3 click the drop down next to create and 'select launch with command'
@@ -105,7 +105,32 @@ Options:
 **Method 2** - create container via SSH command on the synology to create the container.  Advantage no need to change file system ownership attributes. Disadvantages - have to create a user account and delete the container and re-run the docker command each time you want to update the base image.
 
 ## Method 1
-to be completed
+### Prep
+1. SSH into your synology (if you don't know how to do that see this link <link>)
+2. you will need to CD to the root docker directory you created earlier (in this example the /docker folder containing the /grafan folder.
+3. the command format is cd /volume{x}/{dirname}  on my system this shared folder is on volume 3 so for me it is:
+`cd /volume3/docker`
+4 now you need to change the permissions of the grafana folder
+`sudo chown 472 grafana`
+### Create the container
+1. In image select grafan/grafana:latest and click launch
+2. leave general settings alone - container name should be grafana-grafana1 unless you created other grafanas
+3. Click advanced settings
+4. on volume tab add the following:
+* docker/grafana folder to mount path /var/lib/grafana leave as read/write
+5. on the network tab
+* remove the default bridge (usually called bridge)
+* add your network, in this example, Grafana_Net
+* Ensure that 'use the same network as docker host' is unchecked
+6. on port settings
+*change local port from Auto to one you have free on host - this makes it predictable. something like 3000
+*leave container port as 3000 and type as TCP
+7. on environment tab add the following vars
+*make no edits, the defaults are fine
+9 Finalize container and run
+* Click APPLY click NEXT click APPLY 
+
+Skip to 'running the container section lower down'
 
 ## Method 2
 1. Create a new user account on the synology from control panel
