@@ -13,7 +13,7 @@ These instructions will let you use the synology docker stop container action > 
 #### Note if you want to use this flow for updates you will need to use Method 1 for grafana documented here.
 
 Assumptions:
-1. You already installed docker from package center
+1. [You already installed Docker from package center.](https://www.synology.com/en-us/dsm/packages/Docker)
 2. [Enable SSH on Synology](https://www.synology.com/en-global/knowledgebase/DSM/help/DSM/AdminCenter/system_terminal)
 
 (note you should always logon with your default admin account you created when you setup you synology, logging on as root no longer works)
