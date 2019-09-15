@@ -29,6 +29,7 @@ You need to create an Influx database and user/pass on the UniFi Controller.
 # Docker
 
 Check that you meet the pre-reqs. Then see [Docker](Docker).
+If you are running docker on a Synology consider using the [HOWTO](https://github.com/davidnewhall/unifi-poller/wiki/Synology-HOWTO) doc.
 
 # Linux
 
