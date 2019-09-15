@@ -119,7 +119,7 @@ Options:
 
 ## Method 1 - Recommended
 ### Prep
-1. SSH into your synology (if you don't know how to do that see this link <link>)
+1. SSH into your synology 
 2. you will need to CD to the root docker directory you created earlier (in this example the /docker folder containing the /grafan folder.
 3. the command format is cd /volume{x}/{dirname}  on my system this shared folder is on volume 3 so for me it is:
 
@@ -163,7 +163,7 @@ Options:
 * assign them to the user group users
 * give them r/w permission to the folder you created e.g. /docker/grafana
 * don't assign them anything else
-2. SSH into your synology (if you don't know how to do that see this link <link>)
+2. SSH into your synology 
 3. Run the following command to find the PID of the user you created and note it for later:
 
         `sudo id grafana`
