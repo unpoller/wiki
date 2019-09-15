@@ -139,6 +139,7 @@ Options:
 Skip to 'running the container section lower down'
 
 ## Method 2
+### Prep
 1. Create a new user account on the synology from control panel
 * Call the user grafana
 * set their password (you don't need to logon as grafana and change it)
@@ -147,14 +148,15 @@ Skip to 'running the container section lower down'
 * give them r/w permission to the folder you created e.g. /docker/grafana
 * don't assign them anything else
 2. SSH into your synology (if you don't know how to do that see this link <link>)
-3. Run the following command to find the PID of the user you created:
+3. Run the following command to find the PID of the user you created and note it for later:
 
         `sudo id grafana`
-4. now run the following command. 
+### Create the container
+1. now run the following command. 
 
         `sudo docker run --user 1031 --name grafana-grafana1 --net=Grafana_Net -p 300:3000 --volume /volume1/docker/grafanatest:/var/lib/grafana -e "GF_INSTALL_PLUGINS=grafana-clock-panel,grafana-piechart-panel,natel-discrete-panel" grafana/grafana:latest`
 
-* Use the pid you got in step 3, use the network name you created if you didn't use Grafana_Net AND you will need to use the volume # your docker folder (the one you created manually is on)  by default this will be on volume1 but if you have multiple volumes this may not be the case.
+* **Use the pid you got in step 3 above**, use the network name you created if you didn't use Grafana_Net AND you will need to use the volume # your docker folder (the one you created manually is on)  by default this will be on volume1 but if you have multiple volumes this may not be the case.
 
 ### Notes
 * If you use the clean action in the synology docker UI you will break this VM and need to delete and rerun the docker run command.
