@@ -136,7 +136,10 @@ Options:
 9 Finalize container and run
 * Click APPLY click NEXT click APPLY 
 
-Skip to 'running the container section lower down'
+### Notes
+*dont change ownership in file station of the grafana folder or you will break the container.
+
+**Skip to 'running the container section lower down'**
 
 ## Method 2
 ### Prep
