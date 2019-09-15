@@ -124,6 +124,7 @@ to be completed
 ### NOTE 
 Use the pid you got in step 3, use the network name you created if you didn't use Grafana_Net AND you will need to use the volume # your docker folder (the one you created manually is on)  by default this will be on volume1 but if you have multiple volumes this may not be the case.
 
+## Running the container
 At this point your container should have created ok, 
 
 If so start the container, the first time it should take a while to intialize the database.  Check the logs to make sure you have no file / folder permissions issues.  If you did you will need to check you used the right PID and set the ownership of the host grafana folder correctly.
