@@ -1,8 +1,14 @@
 [DO NOT FOLLOW THESE INSTRUCTIONS THEY ARE UNDER CONSTRUCTION]
 
 # Introduction
-this needs some pithy observations and scene settings on this not being best way but a way
-and why we do some things differently because 'reasons' (aka synology)
+We are not claiming this is the only way to do this.  However this is designed to use the official packages for Unifi-Poller, InfluxDV and Grafana with the aim to make this maintainable as possible.
+
+We use a custom bridge network for some very good reasons and we would reccommend most people use it:
+* it ensures name resolution works between the containers without needing to use the deprectated link functionality
+* the default bridge on docker does NOT have name resolution enabled and requires mucking about with host files (this is a docker feature not anything to do with synology
+* this also means in the event the container IP changes (it happens) you don't need to reconfigure
+
+These instructions will let you use the synology docker stop container action > clear container action > redownload the image > restart container to updated to the latest.  **_<---this still needs to be tested to confirm 100% - we may need to map in some more grafana dirs._**
 
 Assumptions:
 1. You already installed docker from package center
