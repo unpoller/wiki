@@ -98,6 +98,7 @@ I don't recommend you use host network, using the bridge network keeps it self c
 This container is a little difficult on synology, there are two methods that have been to shown to work.  If you have an even better method let us know!  The two different methods have their pros and cons.
 
 Options:
+
 **Method 1** - create container in UI, use SSH on the synology to change some file permissions.  Advantages - the docker clean action in the UI continues to work.  Disadvantages - be careful not to break the container by modifying folder attributes in the UI.
 
 **Method 2** - create container via SSH command on the synology to create the container.  Advantage no need to change file system ownership attributes. Disadvantages - have to create a user account and delete the container and re-run the docker command each time you want to update the base image.
@@ -116,10 +117,19 @@ to be completed
 2 SSH into your synology (if you don't know how to do that see this link <link>)
 3 Run the following command to fin the PID of the user you created:
 `sudo id grafana
-4. now run the following command.  NOTE use the pid you got in step 3, use the network name you created if you didn't use Grafana_Net AND you will need to use the volume # your docker folder (the one you created manualy is on)  by default this will be on volume1 but if you have multiple volumes this may not be the case.
+4. now run the following command.  NOTE use the pid you got in step 3, use the network name you created if you didn't use Grafana_Net AND you will need to use the volume # your docker folder (the one you created manually is on)  by default this will be on volume1 but if you have multiple volumes this may not be the case.
 `sudo docker run --user 1031 --name grafana-grafana1 --net=Grafana_Net -p 300:3000 --volume /volume1/docker/grafanatest:/var/lib/grafana -e "GF_INSTALL_PLUGINS=grafana-clock-panel,grafana-piechart-panel,natel-discrete-panel" grafana/grafana:latest`
 
+At this point your container should have created ok, 
 
+If so start the container, the first time it should take a while to intialize the database.  Check the logs to make sure you have no file / folder permissions issues.  If you did you will need to check you used the right PID and set the ownership of the host grafana folder correctly.
 
+From you host browser access http://localhost:3000 and you should see the grafana logon (the default is admin:admin)
+
+###Configuring Grafana datasource
+<fill this section with the instruction on selecting the data source - i.e step by step of how to add source and to use the server name as influxdb1>
+
+###Importing the default dahsboards.
+<fill this section with the instruction on importing the dashboards - i found using thee dahsboard ID from the grafana site and using that simple ID to do the import was easiest even though not documented elsewhere here>
 
 [DO NOT FOLLOW THESE INSTRUCTIONS THEY ARE UNDER CONSTRUCTION]
