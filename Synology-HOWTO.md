@@ -1,5 +1,3 @@
-INSTRUCTIONS UNDER CONSTRUCTION - WIP 9.14.19
-
 # Introduction
 We are not claiming this is the only way to do this.  However this is designed to use the official packages for UniFi Poller, InfluxDB and Grafana with the aim to make this maintainable as possible.
 
@@ -7,6 +5,8 @@ We use a custom bridge network for some very good reasons and we **highly recomm
 * it ensures name resolution works between the containers without needing to use the deprecated link functionality
 * the default bridge on docker does NOT have name resolution enabled and requires mucking about with host files (this is a docker feature not anything to do with synology
 * this also means in the event the container IP changes (it happens) you don't need to reconfigure
+* this also means, due to the ICC, that no host port mappings are required other than for the grafana 3000:3000 mapping in the grafana container, you can choose to remove other port mappings if you desire
+* the reason for not using host port mappings for container <> container comms is we keep this solution self-container and don't have to worry about weird things that might have been on the synology (changing of synology IP,  other containers with host mappings etc).  But feel free to customize in your environment as needed.
 
 These instructions will let you use the synology docker 'stop container action' > 'clear container action' > 'redownload the image' > 'restart container' to update to the latest.  **_<---this still needs to be tested to confirm 100% - we may need to map in some more grafana dirs._**
 
@@ -81,6 +81,8 @@ I don't recommend you use host network, using the bridge network keeps it self c
 * CREATE USER unifi WITH PASSWORD 'unifi' WITH ALL PRIVILEGES
 * GRANT ALL ON unifi TO unifi
 
+#### Note - we have not used anmy advanced aut setting of influx, this is for simplicity of instructions and tbh the data in this is not critical, if you have someone on your network who is malicious and figures out how to route into the containers you have bigger issues at hand.... you can removed the influxdb port mapping if that makes you feel better.... :-)
+
 # create unifi-poller container
 1. In image select golift/unifi-poller:latest and click launch
 2. leave general settings alone - container name should be golift-unifi-poller1 unless you created other iunifi-pollers
@@ -94,7 +96,7 @@ I don't recommend you use host network, using the bridge network keeps it self c
 * UP_UNIFI_URL = https://{your unifi controller ip}:8443
 * UP_UNIFI_USER = <username for the read on account you created in the unifi controller earlier e.g. influx>
 * UP_UNIFI_PASS = <password for the above user>
-9 Finalize container and run
+9. Finalize container and run
 * Click APPLY click NEXT click APPLY
 
 # check that poller and influx are working
@@ -143,7 +145,7 @@ Options:
 * leave container port as 3000 and type as TCP
 7. on environment tab add the following vars
 * GF_INSTALL_PLUGINS = grafana-clock-panel,grafana-piechart-panel,natel-discrete-panel
-9 Finalize container and run
+9. Finalize container and run
 * Click APPLY click NEXT click APPLY 
 
 ### Notes
@@ -227,5 +229,4 @@ Congratulations!
 
 (these can all be found on https://grafana.com/grafana/dashboards by searching)
 
-
-[DO NOT FOLLOW THESE INSTRUCTIONS THEY ARE UNDER CONSTRUCTION]
+[END of DOC]
