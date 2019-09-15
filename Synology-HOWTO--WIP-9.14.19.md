@@ -28,14 +28,7 @@ We do this because the default bridge doesn't have name resolution but new bridg
 I don't recommend you use host network, using the bridge network keeps it self contained at helps avoid conflicts with the host or other containers you might have that we cannot predict.
 ## prepare mapped volumes
 1. Create the following structure in your preferred location (mine is a shared folder called docker) <note i am not sure which you absolutely need to precreate might be good to test - hmm the structure below does not render correctly>
-/Docker
-  |-grafana
-      |-home
-      |-provisioning
-      |-config
-      |-plugins
-      |-data
-  |-influxdb
+/docker/grafana  and /docker/influxdb
 
 
 ## Download needed images from the registry
@@ -113,6 +106,18 @@ Options:
 to be completed
 
 ## Method 2
+1. Create a new user account on the synology from control panel
+* Call the user grafana
+* set their password (you don't need to logon as grafana and change it)
+* disallow password change
+* assign them to the user group users
+* give them r/w permission to the folder you created e.g. /docker/grafana
+* don't assign them anything else
+2 SSH into your synology (if you don't know how to do that see this link <link>)
+3 Run the following command to fin the PID of the user you created:
+`sudo id grafana
+4. now run the following command.  NOTE use the pid you got in step 3, use the network name you created if you didn't use Grafana_Net AND you will need to use the volume # your docker folder (the one you created manualy is on)  by default this will be on volume1 but if you have multiple volumes this may not be the case.
+`sudo docker run --user 1031 --name grafana-grafana1 --net=Grafana_Net -p 300:3000 --volume /volume1/docker/grafanatest:/var/lib/grafana -e "GF_INSTALL_PLUGINS=grafana-clock-panel,grafana-piechart-panel,natel-discrete-panel" grafana/grafana:latest`
 
 
 
