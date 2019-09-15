@@ -8,7 +8,7 @@ We use a custom bridge network for some very good reasons and we **highly recomm
 * the default bridge on docker does NOT have name resolution enabled and requires mucking about with host files (this is a docker feature not anything to do with synology
 * this also means in the event the container IP changes (it happens) you don't need to reconfigure
 
-These instructions will let you use the synology docker stop container action > clear container action > redownload the image > restart container to updated to the latest.  **_<---this still needs to be tested to confirm 100% - we may need to map in some more grafana dirs._**
+These instructions will let you use the synology docker 'stop container action' > 'clear container action' > 'redownload the image' > 'restart container' to update to the latest.  **_<---this still needs to be tested to confirm 100% - we may need to map in some more grafana dirs._**
 
 #### Note if you want to use this flow for updates you will need to use Method 1 for grafana documented here.
 
