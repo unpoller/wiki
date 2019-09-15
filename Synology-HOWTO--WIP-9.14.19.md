@@ -126,8 +126,10 @@ If so start the container, the first time it should take a while to intialize th
 
 From you host browser access http://localhost:3000 and you should see the grafana logon (the default is admin:admin)
 ### Notes
-notes?
-<critical notes about this method>
+* If you use the clean action in the synology docker UI you will break this VM and need to delete and rerun the docker run command.
+* If you use the synology docker UI to export the configuration and import it again later the docker will break and you will need to rerun the docker run command.
+* I have no idea if  hyperbackup or any other backup / restore will also break the config
+* this all derives from the fact there is no way to do '--user {PID}' in the synology docker UI / JSON.
 
 ## Configuring Grafana datasource
 <fill this section with the instruction on selecting the data source - i.e step by step of how to add source and to use the server name as influxdb1>
