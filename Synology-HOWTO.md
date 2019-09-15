@@ -90,7 +90,7 @@ I don't recommend you use host network, using the bridge network keeps it self c
 * add your network, in this example, Grafana_Net
 * Ensure that 'use the same network as docker host' is unchecked
 5. on environment tab add the following vars
-* UP_INFLUX_URL = influxdb1
+* UP_INFLUX_URL = http://influxdb1:8086
 * UP_UNIFI_URL = https://{your unifi controller ip}:8443
 * UP_UNIFI_USER = <username for the read on account you created in the unifi controller earlier e.g. influx>
 * UP_UNIFI_PASS = <password for the above user>
