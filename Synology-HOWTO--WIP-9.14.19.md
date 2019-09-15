@@ -170,11 +170,11 @@ Options:
 ## Running the container
 At this point your container should have created ok, 
 
-If so start the container, the first time it should take a while to intialize the database.  Check the logs to make sure you have no file / folder permissions issues.  If you did you will need to check you used the right PID and set the ownership of the host grafana folder correctly.
+If so start the container, the first time it should take a while to initialize the database.  Check the logs to make sure you have no file / folder permissions issues.  If you did you will need to check you used the right PID and set the ownership of the host grafana folder correctly.
 
 From you host browser access http://<ip address of your synology>:3000 and you should see the grafana logon (the default is admin:admin)
 
-You will be promptd to change the default password, do so.
+You will be prompted to change the default password, do so.
 
 
 ## Configuring Grafana datasource
@@ -194,18 +194,21 @@ You will be promptd to change the default password, do so.
 to return to the homepage click the icon with 4 squares on the left navbar and select home
 
 ## Importing the default dashboards.
-Click the + on the left navbar
-select import
-in the field 'grafana.com dashboard' enter one of the IDs listed below.
-after each one click the blue load button
-in the unifi section click the 'Select an InfluxDB Data Source' dropdown
-choose Unfi InfluxDb (or whatver you chose for it earlier)
-then click the  green import button on the next page
+1. Click the + on the left navbar
+2. select import
+3. in the field 'grafana.com dashboard' enter one of the IDs listed below.
+4. after each one click the blue load button
+5. in the unifi section click the 'Select an InfluxDB Data Source' dropdown
+6. choose Unfi InfluxDb (or whatver you chose for it earlier)
+7. then click the  green import button on the next page
+
 You should see you first dashboard with data (depending on how long you took to do this howto!)
+
 Repeat this process for more.
+
 Congratulations!
 
-Dashboards as of 9.14.2019
+### Dashboards as of 9.14.2019
 * 10414 - Network Sites
 * 10415 - UAP Insights
 * 10416 - USG / UDM / UDM Pro Inisghts
