@@ -71,7 +71,7 @@ I don't recommend you use host network, using the bridge network keeps it self c
 * CREATE USER unifi WITH PASSWORD 'unifi' WITH ALL PRIVILEGES
 * GRANT ALL ON unifi TO unifi
 
-#create unifi-poller container
+# create unifi-poller container
 1. In image select golift/unifi-poller:latest and click launch
 2. leave general settings alone - container name should be golift-unifi-poller1 unless you created other iunifi-pollers
 3. Click advanced settings
