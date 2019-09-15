@@ -126,10 +126,10 @@ If so start the container, the first time it should take a while to intialize th
 
 From you host browser access http://localhost:3000 and you should see the grafana logon (the default is admin:admin)
 
-###Configuring Grafana datasource
+##Configuring Grafana datasource
 <fill this section with the instruction on selecting the data source - i.e step by step of how to add source and to use the server name as influxdb1>
 
-###Importing the default dahsboards.
+##Importing the default dahsboards.
 <fill this section with the instruction on importing the dashboards - i found using thee dahsboard ID from the grafana site and using that simple ID to do the import was easiest even though not documented elsewhere here>
 
 [DO NOT FOLLOW THESE INSTRUCTIONS THEY ARE UNDER CONSTRUCTION]
