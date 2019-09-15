@@ -129,10 +129,10 @@ Options:
 * add your network, in this example, Grafana_Net
 * Ensure that 'use the same network as docker host' is unchecked
 6. on port settings
-*change local port from Auto to one you have free on host - this makes it predictable. something like 3000
-*leave container port as 3000 and type as TCP
+* change local port from Auto to one you have free on host - this makes it predictable. something like 3000
+* leave container port as 3000 and type as TCP
 7. on environment tab add the following vars
-*make no edits, the defaults are fine
+* GF_INSTALL_PLUGINS = grafana-clock-panel,grafana-piechart-panel,natel-discrete-panel
 9 Finalize container and run
 * Click APPLY click NEXT click APPLY 
 
