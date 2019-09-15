@@ -188,7 +188,7 @@ You will be prompted to change the default password, do so.
 * Password = unifi
 #### no other fields need to be changed or set on this page
 
-4.click save & test
+4. click save & test
 #### you should get green banner above the save and test that says 'Data Source is Working' 
 
 to return to the homepage click the icon with 4 squares on the left navbar and select home
