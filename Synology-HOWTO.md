@@ -16,9 +16,9 @@ Assumptions:
 1. [You already installed Docker from package center.](https://www.synology.com/en-us/dsm/packages/Docker)
 2. [Enable SSH on Synology](https://www.synology.com/en-global/knowledgebase/DSM/help/DSM/AdminCenter/system_terminal)
 
-(note you should always logon with your default admin account you created when you setup you synology, logging on as root no longer works)
+(note you should always logon with your default admin account you created when you setup you Synology, logging on as root no longer works)
 
-# Prepare your unifi controller
+# Prepare your Unifi controller
 1. Add a user to the UniFi Controller. After logging into your controller:
 2. Go to Settings -> Admins
 3. Add a read-only user (e.g. 'influx') with a nice long password.
@@ -36,7 +36,8 @@ Click on network and select add to create new network:
 We do this because the default bridge doesn't have name resolution but new bridge do, so you don't have to mess with host files etc inside the container. <need to verify this is actually true>.
 
 I don't recommend you use host network, using the bridge network keeps it self contained at helps avoid conflicts with the host or other containers you might have that we cannot predict.
-## prepare mapped volumes
+
+## Prepare mapped volumes
 1. Create the following structure in your preferred location (mine is a shared folder called docker) <note i am not sure which you absolutely need to precreate might be good to test - hmm the structure below does not render correctly>
 /docker/grafana  and /docker/influxdb
 
@@ -83,7 +84,7 @@ I don't recommend you use host network, using the bridge network keeps it self c
 
 #### Note - we have not used anmy advanced aut setting of influx, this is for simplicity of instructions and tbh the data in this is not critical, if you have someone on your network who is malicious and figures out how to route into the containers you have bigger issues at hand.... you can removed the influxdb port mapping if that makes you feel better.... :-)
 
-# create unifi-poller container
+# Create unifi-poller container
 1. In image select golift/unifi-poller:latest and click launch
 2. leave general settings alone - container name should be golift-unifi-poller1 unless you created other iunifi-pollers
 3. Click advanced settings
@@ -99,7 +100,7 @@ I don't recommend you use host network, using the bridge network keeps it self c
 9. Finalize container and run
 * Click APPLY click NEXT click APPLY
 
-# check that poller and influx are working
+# Check that poller and influx are working
 1. select container in docker UI
 2. double click golift-unifi-poller1
 3. select log tab
@@ -201,7 +202,7 @@ You will be prompted to change the default password, do so.
 #### no other fields need to be changed or set on this page
 
 4. click save & test
-#### you should get green banner above the save and test that says 'Data Source is Working' 
+#### You should get green banner above the save and test that says 'Data Source is Working' 
 
 to return to the homepage click the icon with 4 squares on the left navbar and select home
 
