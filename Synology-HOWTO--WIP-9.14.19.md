@@ -186,6 +186,10 @@ URL = http://influxdb1:8086
 Database = unifi
 Username = unifi
 Password = unifi
+no other fields need to be changed or set on this page
+
+click save & test
+you should get green banner above the save and test that says 'Data Source is Working' 
 
 ## Importing the default dahsboards.
 <fill this section with the instruction on importing the dashboards - i found using thee dahsboard ID from the grafana site and using that simple ID to do the import was easiest even though not documented elsewhere here>
