@@ -115,6 +115,9 @@ Options:
 4 now you need to change the permissions of the grafana folder
 
 `sudo chown 472 grafana`
+
+#### Note: if you look at the grafana folder ownership in file station it will say 472 rather than any user you have created.
+
 ### Create the container
 1. In image select grafan/grafana:latest and click launch
 2. leave general settings alone - container name should be grafana-grafana1 unless you created other grafanas
