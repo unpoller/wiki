@@ -65,7 +65,7 @@ I don't recommend you use host network, using the bridge network keeps it self c
 * INFLUXDB_DATA_DIR       = /var/lib/influxdb/data
 * INFLUXDB_DATA_WAL_DIR   = /var/lib/influxdb/wal
 * INFLUXDB_DATA_META_DIR  = /var/lib/influxdb/meta
-9 Finalize container and run
+9. Finalize container and run
 * Click APPLY click NEXT click APPLY
 
 # Create influx database
@@ -91,7 +91,7 @@ I don't recommend you use host network, using the bridge network keeps it self c
 * Ensure that 'use the same network as docker host' is unchecked
 5. on environment tab add the following vars
 * UP_INFLUX_URL = influxdb1
-* UP_UNIFI_URL = https://<<your unifi controller ip>>:8443
+* UP_UNIFI_URL = https://<your unifi controller ip<>>:8443
 * UP_UNIFI_USER = <username for the read on account you created in the unifi controller earlier e.g. influx>
 * UP_UNIFI_PASS = <password for the above user>
 9 Finalize container and run
