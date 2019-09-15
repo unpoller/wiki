@@ -82,7 +82,7 @@ I don't recommend you use host network, using the bridge network keeps it self c
 * CREATE USER unifi WITH PASSWORD 'unifi' WITH ALL PRIVILEGES
 * GRANT ALL ON unifi TO unifi
 
-#### Note - we have not used anmy advanced aut setting of influx, this is for simplicity of instructions and tbh the data in this is not critical, if you have someone on your network who is malicious and figures out how to route into the containers you have bigger issues at hand.... you can removed the influxdb port mapping if that makes you feel better.... :-)
+#### Note - we have not used anmy advanced aut setting of influx, this is for simplicity of instructions and tbh the data in this is not critical, if you have someone on your network who is malicious and figures out how to route into the containers you have bigger issues at hand.... you can remove the influxdb port mapping if that makes you feel better.... :-)
 
 # Create unifi-poller container
 1. In image select golift/unifi-poller:latest and click launch
@@ -95,8 +95,8 @@ I don't recommend you use host network, using the bridge network keeps it self c
 5. on environment tab add the following vars
 * UP_INFLUX_URL = http://influxdb1:8086
 * UP_UNIFI_URL = https://{your unifi controller ip}:8443
-* UP_UNIFI_USER = <username for the read on account you created in the unifi controller earlier e.g. influx>
-* UP_UNIFI_PASS = <password for the above user>
+* UP_UNIFI_USER = {username for the read on account you created in the unifi controller earlier e.g. influx}
+* UP_UNIFI_PASS = {password for the above user}
 9. Finalize container and run
 * Click APPLY click NEXT click APPLY
 
