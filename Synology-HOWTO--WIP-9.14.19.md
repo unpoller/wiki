@@ -58,7 +58,7 @@ I don't recommend you use host network, using the bridge network keeps it self c
 * remove the default bridge (usually called bridge)
 * add your network, in this example, Grafana_Net
 * Ensure that 'use the same network as docker host' is unchecked
-6. on port settings
+6. on port settings **<--- um why do i have host mapped port, not sure we need this for this set of 3 as all traffic is internal**
 * change local port from Auto to one you have free on host - this makes it predictable. something like 3456
 * leave container port as 8086 and type as TCP
 7. on environment tab add the following vars
