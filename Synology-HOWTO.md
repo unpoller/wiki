@@ -21,8 +21,12 @@ Assumptions:
 # Prepare your Unifi controller
 1. Add a user to the UniFi Controller. After logging into your controller:
 2. Go to Settings -> Admins
-3. Add a read-only user (e.g. 'influx') with a nice long password.
-4. The new user needs access to each site. For each UniFi Site you want to poll, add admin via the 'Invite existing admin' option.
+3. Add a read-only user (e.g. 'influx') 
+4. The new user needs access to each site. For each UniFi Site you want to poll, add admin via the 'Manually Set and Share the password' option. Other settings:
+* don't define an email
+* don't require password to be changed
+* use only uppercase, lowercase, numerals and the ! symbol and limit to 10 chars or less (some have had issues with anything else, once you have it all working feel free to play with longer more complex passwords)
+
 Take note of this info, you need to put it into the unifi-poller config file in a moment
 
 # Prepare Synology & Docker
