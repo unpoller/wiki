@@ -21,15 +21,9 @@ docker pull golift/unifi-poller:latest
 Using `latest` is not recommended. You may be asked to give this a try while troubleshooting or debugging, but generally this will contain untested code or things that will break your graphs. The latest version is based from the `master` branch and may contain bugs. 
 
 #### Pick a version
-You may install the latest released minor version like this:
-```shell
-docker pull golift/unifi-poller:1.3
-```
-The above example will download version 1.3.3 (the latest release in the 1.3 version-line).
-
 Install a specific version like this:
 ```shell
-docker pull golift/unifi-poller:1.3.3
+docker pull golift/unifi-poller:1.5.4
 ```
 
 #### From Source
