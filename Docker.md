@@ -59,24 +59,25 @@ Here's an example:
 docker run -e UP_UNIFI_PASS="your-secret-pasword" -e UP_DEBUG_MODE="true" -d golift/unifi-poller:stable
 ```
 ##### Available Variables
-|ENV|config|note|
-|---|---|---|
-UP_POLLING_MODE|mode|`"influx"` (default) or `"influxlambda"`
-UP_INFLUX_DB| influx_db | default `"unifi"`
-UP_INFLUX_USER| influx_user| default `"unifi"`
-UP_INFLUX_PASS| influx_pass | default `"unifi"`
-UP_INFLUX_URL| influx_url | default `"http://127.0.0.1:8086"`
-UP_UNIFI_USER| unifi_user | default "influx"
-UP_UNIFI_PASS| unifi_pass |
-UP_UNIFI_URL| unifi_url | default `"https://127.0.0.1:8443"`
-UP_REAUTHENTICATE| reauthenticate | default `"false"`
-UP_VERIFY_SSL|verify_ssl|default `"false"`
-UP_COLLECT_IDS|collect_ids| default `"false"`
-UP_QUIET_MODE|quiet| default `"false"`
-UP_DEBUG_MODE|debug| default `"false"`
-UP_POLLING_INTERVAL|interval|Go duration. ie `"1m"` or `"90s"`, default `"30s"`
-UP_MAX_ERRORS|max_errors|integer, default `"0"`
-UP_POLL_SITES|sites|separate sites with commas, default `"all"`
+|ENV v1.5|ENV v1.6|config|note|
+|---|---|---|---|
+UP_POLLING_MODE|UP_MODE|mode|`"influx"` (default) or `"influxlambda"`
+UP_INFLUX_DB|UP_INFLUX_DB| influx_db | default `"unifi"`
+UP_INFLUX_USER|UP_INFLUX_USER| influx_user| default `"unifi"`
+UP_INFLUX_PASS|UP_INFLUX_PASS| influx_pass | default `"unifi"`
+UP_INFLUX_URL|UP_INFLUX_URL| influx_url | default `"http://127.0.0.1:8086"`
+UP_UNIFI_USER|UP_UNIFI_USER| unifi_user | default "influx"
+UP_UNIFI_PASS|UP_UNIFI_PASS| unifi_pass |
+UP_UNIFI_URL|UP_UNIFI_URL| unifi_url | default `"https://127.0.0.1:8443"`
+UP_REAUTHENTICATE|UP_REAUTHENTICATE| reauthenticate | default `"false"`
+UP_VERIFY_SSL|UP_VERIFY_SSL|verify_ssl|default `"false"`
+UP_COLLECT_IDS|UP_COLLECT_IDS|collect_ids| default `"false"`
+UP_QUIET_MODE|UP_QUIET|quiet| default `"false"`
+UP_DEBUG_MODE|UP_DEBUG|debug| default `"false"`
+UP_POLLING_INTERVAL|UP_INTERVAL|interval|Go duration. ie `"1m"` or `"90s"`, default `"30s"`
+UP_POLL_SITES|UP_SITES|sites|separate sites with commas, default `"all"`
+||UP_NAMESPACE|namespace|top level Prometheus name space
+||UP_HTTP_LISTEN|http_listen|Prometheus HTTP listen address, `ip:port`
 
 # Docker Compose
 
