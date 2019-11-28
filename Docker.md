@@ -56,7 +56,7 @@ Copy the [example configuration file](https://github.com/davidnewhall/unifi-poll
 As of version 1.5.3 all configuration options may be passed as environment variables.
 Here's an example:
 ```shell
-docker run -e UP_UNIFI_PASS="your-secret-pasword" -e UP_DEBUG_MODE="true" -d golift/unifi-poller:stable
+docker run -e UP_UNIFI_PASS="your-secret-pasword" -e UP_DEBUG="true" -d golift/unifi-poller:stable
 ```
 ##### Available Variables
 |ENV v1.5|ENV v1.6|config|note|
