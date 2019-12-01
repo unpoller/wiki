@@ -65,7 +65,8 @@ UP_UNIFI_PASS|UP_UNIFI_PASS| unifi_pass |
 UP_UNIFI_URL|UP_UNIFI_URL| unifi_url | default `"https://127.0.0.1:8443"`
 UP_REAUTHENTICATE|UP_REAUTHENTICATE| reauthenticate | default `"false"`
 UP_VERIFY_SSL|UP_VERIFY_SSL|verify_ssl|default `"false"`
-UP_COLLECT_IDS|UP_COLLECT_IDS|collect_ids| default `"false"`
+UP_COLLECT_IDS|UP_SAVE_IDS|save_ids| default `"false"`
+||UP_SAVE_SITES|save_sites| default `"true"`
 UP_QUIET_MODE|UP_QUIET|quiet| default `"false"`
 UP_DEBUG_MODE|UP_DEBUG|debug| default `"false"`
 UP_POLLING_INTERVAL|UP_INTERVAL|interval|Go duration. ie `"1m"` or `"90s"`, default `"30s"`
