@@ -1,3 +1,4 @@
+Dec 6, 2019: This still needs to be updated for Prometheus users. Soon!
 Architecture-specific packages are available for Debian/Ubuntu, RedHat/Fedora and macOS. Beginning with version 1.3.0 homebrew installation is available for macOS, and the pkg for macOS has been removed as of version 1.3.1 (the launchd config is unreliable). The packages (or brew) allow you to install a prebuilt binary, config file and startup script (systemd or launchd) without knowing anything about Go or compiling applications. Pre-built packages are available on the [Releases](https://github.com/davidnewhall/unifi-poller/releases) page.
 
 **If you already ran `make install` you need to run `make uninstall` before switching the install to a package (or brew).**
