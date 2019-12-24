@@ -55,7 +55,7 @@ docker run -e UP_UNIFI_PASS="your-secret-pasword" -e UP_DEBUG="true" -d golift/u
 ##### Available Variables
 |ENV v1.5|ENV v1.6|config|note|
 |---|---|---|---|
-UP_POLLING_MODE|UP_MODE|mode|`"influx"` (default) or `"influxlambda"`
+UP_POLLING_MODE|UP_MODE|mode|`"influx"` (default), `"influxlambda"` or `"prometheus"`
 UP_INFLUX_DB|UP_INFLUX_DB| influx_db | default `"unifi"`
 UP_INFLUX_USER|UP_INFLUX_USER| influx_user| default `"unifi"`
 UP_INFLUX_PASS|UP_INFLUX_PASS| influx_pass | default `"unifi"`
@@ -71,8 +71,8 @@ UP_QUIET_MODE|UP_QUIET|quiet| default `"false"`
 UP_DEBUG_MODE|UP_DEBUG|debug| default `"false"`
 UP_POLLING_INTERVAL|UP_INTERVAL|interval|Go duration. ie `"1m"` or `"90s"`, default `"30s"`
 UP_POLL_SITES|UP_SITES|sites|separate sites with commas, default `"all"`
-||UP_NAMESPACE|namespace|top level Prometheus name space
-||UP_HTTP_LISTEN|http_listen|Prometheus HTTP listen address, `ip:port`
+||UP_NAMESPACE|namespace|top level Prometheus namespace. Default `"unifipoller"`
+||UP_HTTP_LISTEN|http_listen|Prometheus HTTP listen address, `ip:port`. You will likely want to publish this port on the host.
 
 # Docker Compose
 
