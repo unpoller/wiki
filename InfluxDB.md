@@ -5,16 +5,14 @@ Most of the production use of this software is with **InfluxDB 1.7.7** = this ve
 # Linux
 
 ## CentOS 7
+Provided by community: 
+https://github.com/davidnewhall/unifi-poller/issues/30
 
-Provided by community: https://github.com/davidnewhall/unifi-poller/issues/30
-
-I don't run CentOS. If you do, please improve these instructions.
 ## CentOS 8 / RHEL 8
-How To Install InfluxDB on CentOS 8 / RHEL 8
+Provided by community:
 https://computingforgeeks.com/how-to-install-influxdb-on-rhel-8-centos-8/
 
 ## Ubuntu 18.04
-
 These directions came [from here](https://github.com/davidnewhall/unifi-poller/issues/26).
 
 Install: 
@@ -28,7 +26,6 @@ sudo apt install -y influxdb
 Start: `sudo systemctl start influxdb`
 
 # macOS
-
 You need [Homebrew](https://brew.sh/):
 ```shell
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
