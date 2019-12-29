@@ -1,0 +1,15 @@
+script:
+- |
+  git config user.name "unifi-poller"
+  git config user.email "code@golift.io"
+  git remote remove origin
+  git remote add origin https://$GITHUB_API_KEY@github.com/unifi-poller/wiki.git > /dev/null 2>&1
+  git remote add upstream https://$GITHUB_API_KEY@github.com/unifi-poller/unifi-poller.wiki.git > /dev/null 2>&1
+  git fetch origin
+  git fetch upstream
+  git merge upstream/master --no-edit
+  git push origin HEAD:master > /dev/null 2>&1
+  git push upstream HEAD:master > /dev/null 2>&1
+env:
+  matrix:
+    secure: bVWi8dgC8GpXK8QgdJaqCRN66lJdjBOJn5CxydwQ5/thZZApgXNWSA+jbKMTV1S/yeBQzhsG4yN6HJdLCk/mcSK229JVHS6ysVdbYvLYquFm3OmUPxVJDpTtwoK3/V1n2haV48s7hZkPoFIhKjsnGad5Rr3WLSmMaIcsrNdZWH6zJX61IeeUvjoBvKPCEoYJkj3b/AqAoAP7RYs9fnNKHy2wzM7C3AJj21ge1SQgDHnu/E0DTPWDQiVdpwP918NGU5eCd+PjjEOlxX0ildJk3AWAjpmx/IecJcQvAftCAX8r1olJFrmryZfO7kVBwTXHhBpwNDaf5ox/5qJY1I6+xg2QFAac20QDzVqdmR0B2v5zzH1uy4P82xBQ5hJGociyKydWCrzjLbmOv602IqHC9ymfFZnuEJRT/IWf3aQgULOq3T+XCBaWJbwkQlxl1SxqQV3KTCphZEIZdVzVA+QlfsGsFBH23mjRqOEZDPBxd/gsjpYo18YkMQ/OzGmunCh+AEaMvkXS+wyBrGq5f18AMex9kZhflSTLNNuvp//Stwzn38AjtNc6VUtBb5/2+Dv9wWHIY/LrWENZlpnKWpOCxU6GrERaUwSeHaLQTDiwgHYVgs+vYR+Z00N8EEPpukK3xbu3B4zozcmoUS2o2s3VYSsoFaWm3Nb58SWRgszXFzY=
