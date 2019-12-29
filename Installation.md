@@ -1,44 +1,44 @@
 Dec 6, 2019: This still needs to be updated for Prometheus users. Soon!
-Architecture-specific packages are available for Debian/Ubuntu, RedHat/Fedora and macOS. Beginning with version 1.3.0 homebrew installation is available for macOS, and the pkg for macOS has been removed as of version 1.3.1 (the launchd config is unreliable). The packages (or brew) allow you to install a prebuilt binary, config file and startup script (systemd or launchd) without knowing anything about Go or compiling applications. Pre-built packages are available on the [Releases](https://github.com/davidnewhall/unifi-poller/releases) page.
+Architecture-specific packages are available for Debian/Ubuntu, RedHat/Fedora and macOS. Beginning with version 1.3.0 homebrew installation is available for macOS. The packages (or brew) allow you to install a prebuilt binary, config file and startup script (systemd or launchd) without knowing anything about Go or compiling applications. Pre-built packages are available on the [Releases](https://github.com/unifi-poller/unifi-poller/releases) page.
 
 
 # Prerequisites
 
-You need to create an Influx database and user/pass on the UniFi Controller. 
+You need to create an Influx database and user/pass on the UniFi Controller.
 
-1. **Add a user to the UniFi Controller**. After logging into your controller:
-   1. Go to `Settings -> Admins`
-   1. Add a read-only user (`influx`) with a nice long password. 
-   1. The new user needs access to each site. For each UniFi Site you want to poll, add admin via the 'Invite existing admin' option.
-   1. Take note of this info, you need to put it into the unifi-poller config file in a moment.
-1. **You need [InfluxDB](InfluxDB)**. If you already have this, skip ahead.
-1. **Create a database in InfluxDB.**
-   1. Something like:
-     ```shell
-     influx -host localhost -port 8086
-     CREATE DATABASE unifi
-     CREATE USER unifi WITH PASSWORD 'unifi' WITH ALL PRIVILEGES
-     GRANT ALL ON unifi TO unifi
-     ```
-     Take note of the username and password you create (if you choose to do so, you may skip the last 2 commands). You'll need the **hostname**, **port**, **database name**, and optionally **user/pass** in a moment for the unifi-poller config file.
-1. **You need [Grafana](Grafana)**. 
+1.  **Add a user to the UniFi Controller**. After logging into your controller:
+    1.  Go to `Settings -> Admins`
+    1.  Add a read-only user (`influx`) with a nice long password.
+    1.  The new user needs access to each site. For each UniFi Site you want to poll, add admin via the 'Invite existing admin' option.
+    1.  Take note of this info, you need to put it into the unifi-poller config file in a moment.
+1.  **You need [InfluxDB](InfluxDB)**. If you already have this, skip ahead.
+1.  **Create a database in InfluxDB.**
+    1.  Something like:
+        ```shell
+        influx -host localhost -port 8086
+        CREATE DATABASE unifi
+        CREATE USER unifi WITH PASSWORD 'unifi' WITH ALL PRIVILEGES
+        GRANT ALL ON unifi TO unifi
+        ```
+        Take note of the username and password you create (if you choose to do so, you may skip the last 2 commands). You'll need the **hostname**, **port**, **database name**, and optionally **user/pass** in a moment for the unifi-poller config file.
+1.  **You need [Grafana](Grafana)**.
     After you follow the directions in [Grafana Wiki](Grafana):
-    1. [Add a new data source](https://grafana.com/docs/features/datasources/influxdb/) for the InfluxDB `unifi` database you created.
-    1. Don't forget to **Install Grafana Plugins** and **[Dashboards](Grafana-Dashboards)**. You must create the data source before importing the dashboards.
+    1.  [Add a new data source](https://grafana.com/docs/features/datasources/influxdb/) for the InfluxDB `unifi` database you created.
+    1.  Don't forget to **Install Grafana Plugins** and **[Dashboards](Grafana-Dashboards)**. You must create the data source before importing the dashboards.
 
 # Docker
 
-Check that you meet the pre-reqs. Then see [Docker](Docker).
+Check that you meet the pre-reqs above then see [Docker](Docker).
 
-If you are running docker on a Synology consider using the [HOWTO](https://github.com/davidnewhall/unifi-poller/wiki/Synology-HOWTO) doc.
+If you are running docker on a Synology check out the [Synology HOWTO](Synology-HOWTO).
 
 # Linux
 
-**Find the latest version on the [Releases](https://github.com/davidnewhall/unifi-poller/releases) page.**
+**Find the latest version on the [Releases](https://github.com/unifi-poller/unifi-poller/releases) page.**
 
-Use the provided [install.sh script](https://github.com/davidnewhall/unifi-poller/blob/master/scripts/install.sh) to download (and optionally install) the correct package for your system. Running with `sudo` is optional and will invoke `rpm` or `dpkg` to install the downloaded package.
+Use the provided [install.sh script](https://github.com/unifi-poller/unifi-poller/blob/master/scripts/install.sh) to download (and optionally install) the correct package for your system. Running with `sudo` is optional and will invoke `rpm` or `dpkg` to install the downloaded package.
 ```shell
-curl https://raw.githubusercontent.com/davidnewhall/unifi-poller/master/scripts/install.sh | sudo bash
+curl https://raw.githubusercontent.com/unifi-poller/unifi-poller/master/scripts/install.sh | sudo bash
 ```
 
 Edit the config file after installing the package:
@@ -63,9 +63,9 @@ tail -f -n100  /var/log/syslog /var/log/messages | grep unifi-poller
 
 Use Homebrew.
 
-1. [Install Homebrew](https://brew.sh/)
-1. `brew tap golift/mugs`
-1. `brew install unifi-poller` 
+1.  [Install Homebrew](https://brew.sh/)
+1.  `brew tap golift/mugs`
+1.  `brew install unifi-poller`
 ```
 $ brew install unifi-poller
 ==> Installing unifi-poller from golift/mugs
@@ -83,8 +83,8 @@ $ brew install unifi-poller
 ==> Pouring dep-0.5.4.sierra.bottle.tar.gz
 🍺  /usr/local/Cellar/dep/0.5.4: 7 files, 11.6MB
 ==> Installing golift/mugs/unifi-poller
-==> Downloading https://github.com/davidnewhall/unifi-poller/archive/v1.3.2.tar.gz
-==> Downloading from https://codeload.github.com/davidnewhall/unifi-poller/tar.gz/v1.3.3
+==> Downloading https://github.com/unifi-poller/unifi-poller/archive/v1.3.2.tar.gz
+==> Downloading from https://codeload.github.com/unifi-poller/unifi-poller/tar.gz/v1.3.3
 ######################################################################## 100.0%
 ==> dep ensure
 ==> make install VERSION=1.3.3 PREFIX=/usr/local/Cellar/unifi-poller/1.3.3 ETC=/usr/local/etc
@@ -101,21 +101,21 @@ To have launchd start golift/mugs/unifi-poller now and restart at login:
 ==> Summary
 🍺  /usr/local/Cellar/unifi-poller/1.3.3: 19 files, 8.0MB, built in 16 seconds
 ```
-- Edit the config file after installing the brew:
+-   Edit the config file after installing the brew:
     ```shell
     nano /usr/local/etc/unifi-poller/up.conf
     # or
     vi /usr/local/etc/unifi-poller/up.conf
     ```
     Correct the authentication information for your setup (see prerequisites).
-- Start the service:
+-   Start the service:
     ```shell
     # do not use sudo
     brew services start unifi-poller
     ```
     The **log file** should show up at `/usr/local/var/log/unifi-poller.log`. If it does not show up, make sure your user has permissions to create the file.
 
-- This is how you restart it. **Do this when you upgrade.**:
+-   This is how you restart it. **Do this when you upgrade.**:
     ```shell
     brew services restart unifi-poller
     ```
@@ -124,23 +124,23 @@ To have launchd start golift/mugs/unifi-poller now and restart at login:
 
 You can build your own package from source with the `Makefile`. Recommend reading the note at the bottom if you're using a mac.
 
-1. [Install FPM](https://fpm.readthedocs.io/en/latest/installing.html)
-1. [Install Go](https://golang.org/doc/install). 
-1. [Install dep](https://golang.github.io/dep/docs/installation.html).
-1. **Clone this repo** and change your working directory to the checkout.
-   ```shell
-   git clone https://github.com/davidnewhall/unifi-poller.git
-   cd unifi-poller
-   ```
-1. **Install local Golang dependencies**: 
-   ```shell
-   dep ensure
-   ```
-1. Build a package (or two!): 
-   1. `make deb` will build a Debian package.
-   1. `make rpm` builds a RHEL package.
-1. Install it:
-   1. `sudo dpkg -i *.deb || sudo rpm -Uvh *.rpm`
+1.  [Install FPM](https://fpm.readthedocs.io/en/latest/installing.html)
+1.  [Install Go](https://golang.org/doc/install).
+1.  [Install dep](https://golang.github.io/dep/docs/installation.html).
+1.  **Clone this repo** and change your working directory to the checkout.
+    ```shell
+    git clone https://github.com/unifi-poller/unifi-poller.git
+    cd unifi-poller
+    ```
+1.  **Install local Golang dependencies**:
+    ```shell
+    dep ensure
+    ```
+1.  Build a package (or two!):
+    1.  `make deb` will build a Debian package.
+    1.  `make rpm` builds a RHEL package.
+1.  Install it:
+    1.  `sudo dpkg -i *.deb || sudo rpm -Uvh *.rpm`
 
 ### Note
 
@@ -151,7 +151,7 @@ sudo gem install --no-document fpm
 mkdir ~/go/{src,mod}
 export GOPATH=~/go
 cd ~go/src
-git clone https://github.com/davidnewhall/unifi-poller.git
+git clone https://github.com/unifi-poller/unifi-poller.git
 cd unifi-poller
 dep ensure
 make rpm deb

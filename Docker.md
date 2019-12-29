@@ -1,8 +1,8 @@
-## Docker images are available on [Docker Hub](https://hub.docker.com/r/golift/unifi-poller/tags). 
+## Docker images are available on [Docker Hub](https://hub.docker.com/r/golift/unifi-poller/tags).
 
-Many thanks to [mabunixda](https://github.com/mabunixda) for the [helping](https://github.com/davidnewhall/unifi-poller/pull/38) begin our Docker support! The images are [built automatically](https://cloud.docker.com/repository/docker/golift/unifi-poller/builds) by Docker Cloud using the [Dockerfile](https://github.com/davidnewhall/unifi-poller/blob/master/init/docker/Dockerfile) included in this repo. 
+Many thanks to [mabunixda](https://github.com/mabunixda) for the [helping](https://github.com/unifi-poller/unifi-poller/pull/38) begin our Docker support! The images are [built automatically](https://cloud.docker.com/repository/docker/golift/unifi-poller/builds) by Docker Cloud using the [Dockerfile](https://github.com/unifi-poller/unifi-poller/blob/master/init/docker/Dockerfile) included in this repo.
 
-# Install 
+# Install
 
 You can install `latest`, `stable` (recommended), or pick a specific version. See the following sections for information on how to do each.
 
@@ -18,7 +18,7 @@ You may download the `latest` version with this command:
 ```shell
 docker pull golift/unifi-poller:latest
 ```
-Using `latest` is not recommended. You may be asked to give this a try while troubleshooting or debugging, but generally this will contain untested code or things that will break your graphs. The latest version is based from the `master` branch and may contain bugs. 
+Using `latest` is not recommended. You may be asked to give this a try while troubleshooting or debugging, but generally this will contain untested code or things that will break your graphs. The latest version is based from the `master` branch and may contain bugs.
 
 #### Pick a version
 Install a specific version like this:
@@ -29,11 +29,11 @@ docker pull golift/unifi-poller:1.5.4
 #### From Source
 You can build your own image from source.
 ```shell
-git clone https://github.com/davidnewhall/unifi-poller.git
+git clone https://github.com/unifi-poller/unifi-poller.git
 cd unifi-poller
 make docker
 ```
-This builds a 64-bit amd64 linux image from scratch. If you need another architecture, use the `docker build` command directly with a correct `--build-arg` flag. [Examples here](https://github.com/davidnewhall/unifi-poller/tree/master/init/docker/hooks).
+This builds a 64-bit amd64 linux image from scratch. If you need another architecture, use the `docker build` command directly with a correct `--build-arg` flag. [Examples here](https://github.com/unifi-poller/unifi-poller/tree/master/init/docker/hooks).
 
 # Running the Container
 
@@ -43,7 +43,7 @@ This command starts the container as a daemon:
 ```shell
 docker run -d -v /your/config/up.conf:/etc/unifi-poller/up.conf golift/unifi-poller:stable
 ```
-Copy the [example configuration file](https://github.com/davidnewhall/unifi-poller/blob/master/examples/up.conf.example) from this repository and mount it as an overlay into the container. The example configuration file is also included in the container at the default location _/etc/unifi-poller/up.conf_
+Copy the [example configuration file](https://github.com/unifi-poller/unifi-poller/blob/master/examples/up.conf.example) from this repository and mount it as an overlay into the container. The example configuration file is also included in the container at the default location _/etc/unifi-poller/up.conf_
 
 #### Environment Variables
 
