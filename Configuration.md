@@ -1,1 +1,2 @@
-This page will soon explain and document all of the configuration file parameters available in UniFi Poller 2.0.
+This page will soon explain and document all of the configuration file
+parameters available in UniFi Poller 2.0.
