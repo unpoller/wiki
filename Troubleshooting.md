@@ -41,3 +41,20 @@ indicates a problem with the variables, or the data source the variables are usi
 Edit the affected dashboards: go to Settings then to Variables, and click on the variables.
 Make sure they have the correct data source listed, and check for "preview of values"
 to make sure things are showing up. Let me know if you see values when you make a report.
+
+## Common Problems
+
+If you're getting errors like this:
+
+```shell
+[ERROR] infdb.Write(bp): {"error":"field type conflict"}
+[ERROR] infdb.Write(bp): {"error":"partial write: field type conflict: input field "tx_power" on measurement "uap_radios" is type integer, already exists as type float dropped="}
+```
+
+This usually indicates a bug was fixed and the resulting fixed has caused an
+incompatibility with your existing InfluxDB database. This could also indicate
+you've found a new bug. Please open an issue if you are running the latest
+version and dropping the database did not solve the error. There are generally two fixes:
+
+1.  Downgrade. Do not upgrade to a new version.
+1.  `DROP` and re-`CREATE` the InfluxDB database.

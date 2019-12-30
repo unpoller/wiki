@@ -39,7 +39,7 @@ The `master` docker tag is based from the `master` git branch and may contain bu
 Install a specific version like this:
 
 ```shell
-docker pull golift/unifi-poller:1.5.4
+docker pull golift/unifi-poller:2.0.1
 ```
 
 ### From Source
