@@ -55,7 +55,7 @@ as shown below.
 -   Create a file at `/etc/yum.repos.d/golift.repo` with the following contents.
 -   You may replace `centos` with `el`, but they're the same thing either way.
 
-```toml
+```yaml
 [golift]
 name=Go Lift Awesomeness - Main Repo
 baseurl=https://dl.bintray.com/golift/centos/main/$basearch/
