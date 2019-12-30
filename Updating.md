@@ -2,7 +2,7 @@
 [Download](https://github.com/unifi-poller/unifi-poller/releases) and install a new package.
 The package will correctly restart `unifi-poller` after upgrading and will not overwrite
 your existing configuration file(s). After installing the new package, you may choose to
-[import updated dashboards](Grafana#Grafana-Dashboards).
+[import updated dashboards](Grafana#dashboards).
 
 macOS: `brew upgrade unifi-poller`
 

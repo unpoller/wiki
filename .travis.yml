@@ -2,7 +2,7 @@ dist: bionic
 language: ruby
 before_script:
   - gem install mdl
-script: scripts/check.sh
+script: mdl .
 deploy:
   - provider: script
     script: scripts/deploy.sh
