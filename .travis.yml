@@ -3,8 +3,7 @@ language: ruby
 script: mdl .
 deploy:
   - provider: script
-    script:
-      - ./deploy.sh
+    script: ./deploy.sh
     on:
       all_branches: true
       condition: $TRAVIS_BRANCH =~ ^(master|testing)$
