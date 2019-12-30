@@ -71,10 +71,14 @@ from this repository and mount it as an overlay into the container.
 The example configuration file is also included in the container at the default
 location _/etc/unifi-poller/up.conf_
 
-### Environment Variables
+## Docker Compose
 
-For version 2.0 and beyond see the [Configuration](Configuration) doc.
-Everything changed, and the information below is only valid for versions 1.5.x and 1.6.x.
+Included with version 1.5.3 is a Docker Compose file and example environment variable
+configuration to make it work. If you do not have Grafana or InfluxDB running already,
+then this is a great option to let you try this software. TODO: finish this section......
+9/9/19 - give credit to @jonbloom.
+
+### Environment Variables
 
 Example passing an env variable:
 
@@ -83,6 +87,9 @@ docker run -e UP_UNIFI_PASS="your-secret-pasword" -e UP_DEBUG="true" -d golift/u
 ```
 
 #### Available Variables
+
+For version 2.0 and beyond see the [Configuration](Configuration) doc.
+Everything changed, and the information below is only valid for versions 1.5.x and 1.6.x.
 
 |ENV v1.5|ENV v1.6|config|note|
 |---|---|---|---|
@@ -104,10 +111,3 @@ UP_POLLING_INTERVAL|UP_INTERVAL|interval|Go duration. ie `"1m"` or `"90s"`, defa
 UP_POLL_SITES|UP_SITES|sites|separate sites with commas, default `"all"`
 ||UP_NAMESPACE|namespace|top level Prometheus namespace. Default `"unifipoller"`
 ||UP_HTTP_LISTEN|http_listen|Prometheus HTTP listen address, `ip:port`. You will likely want to publish this port on the host.
-
-## Docker Compose
-
-Included with version 1.5.3 is a Docker Compose file and example environment variable
-configuration to make it work. If you do not have Grafana or InfluxDB running already,
-then this is a great option to let you try this software. TODO: finish this section......
-9/9/19 - give credit to jon.
