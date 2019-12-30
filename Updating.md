@@ -24,6 +24,7 @@ you can scrape metrics from using
 
 The names changed a bit, you can see all the new variables in the [Configuration](Configuration)
 doc. Below are the ones you probably used to configured your system.
+Changing these to the correct names should fix your configuration and get poller working.
 
 |v1.x ENV|v2.x ENV|
 |---|---|
