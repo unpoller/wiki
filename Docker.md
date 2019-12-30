@@ -73,8 +73,10 @@ location _/etc/unifi-poller/up.conf_
 
 ### Environment Variables
 
-As of version 1.5.3 all configuration options may be passed as environment variables.
-Here's an example:
+For version 2.0 and beyond see the [Configuration](Configuration) doc.
+Everything changed, and the information below is only valid for versions 1.5.x and 1.6.x.
+
+Example passing an env variable:
 
 ```shell
 docker run -e UP_UNIFI_PASS="your-secret-pasword" -e UP_DEBUG="true" -d golift/unifi-poller:stable

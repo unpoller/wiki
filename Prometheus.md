@@ -3,13 +3,17 @@ Release 2.0 brings with it a re-write of the prometheus integration. Many change
 were made to how one may configure a controller. This page only applies to version
 2.0+.
 
+This page explains how to configure Prometheus and unifi-poller.
+For help installing Prometheus you'll have to look elsewhere;
+that's not in this wiki at this time.
+
 ## Single Controller
 
 Lets make the first example look a lot like the old v1.x way of doing things.
 Configure a single controller in up.conf (or using environment variables).
 See the [Configuration](Configuration) doc and the example config file for help with that.
 
-Then you simple point prometheus to unifi-poller using a config like this:
+Then you simply point prometheus to unifi-poller using a config like this:
 
 ```yaml
 scrape_configs:
@@ -112,7 +116,7 @@ UP_UNIFI_CONTROLLER_1_USER="unifipoller"
 UP_UNIFI_CONTROLLER_1_PASS="unifipoller"
 ```
 
-#### Configure Prometheus
+#### Prometheus Configuration for URLs
 
 This applies to approach 1 and 2 above. Configure prometheus like this:
 
@@ -143,7 +147,7 @@ As in the example above, replace `localhost` with the IP of your unifi-poller ho
 and replace `unifi.controller` and `another.controller` with the IPs of your controllers.
 The `unifi:` portion before the `https://` is required, so is the `https://`.
 
-### Approach: Poll by Role
+### Approach 3: Poll by Role
 
 Example polling three controllers using roles:
 
@@ -209,7 +213,7 @@ Again, replace `localhost` with the IP of your unifi-poller host, and replace
 your controllers. The `unifi:` portion before the `https://` is required,
 so is the `https://`.
 
-### Recommend Approach
+### Approach 4, _Recommended_
 
 Just configure your controllers in `up.conf` or using env variables as explained
 in the [Configuration](Configuration) doc. Then setup Prometheus like this:

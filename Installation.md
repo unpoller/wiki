@@ -12,7 +12,7 @@ You need to create an Influx database and user/pass on the UniFi Controller.
 
 1.  **Add a user to the UniFi Controller**. After logging into your controller:
     1.  Go to `Settings -> Admins`
-    1.  Add a read-only user (`influx`) with a nice long password.
+    1.  Add a read-only user (`unifipoller`) with a nice long password.
     1.  The new user needs access to each site. For each UniFi Site you want to poll,
         add admin via the 'Invite existing admin' option.
     1.  Take note of this info, you need to put it into the unifi-poller config file in a moment.
@@ -24,7 +24,7 @@ You need to create an Influx database and user/pass on the UniFi Controller.
     ```shell
     influx -host localhost -port 8086
     CREATE DATABASE unifi
-    CREATE USER unifi WITH PASSWORD 'unifi' WITH ALL PRIVILEGES
+    CREATE USER unifipoller WITH PASSWORD 'unifipoller' WITH ALL PRIVILEGES
     GRANT ALL ON unifi TO unifi
     ```
 
@@ -35,14 +35,14 @@ You need to create an Influx database and user/pass on the UniFi Controller.
 
 1.  **You need [Grafana](Grafana)**.
     After you follow the directions in [Grafana Wiki](Grafana):
-    1.  [Add a new data source](https://grafana.com/docs/features/datasources/influxdb/)
+    -   [Add a new data source](https://grafana.com/docs/features/datasources/influxdb/)
         for the InfluxDB `unifi` database you created.
-    1.  Don't forget to **Install Grafana Plugins** and **[Dashboards](Grafana-Dashboards)**.
-        You must create the data source before importing the dashboards.
 
 # Docker
 
-Check that you meet the pre-reqs above then see [Docker](Docker).
+Check that you meet the pre-reqs above then see [Docker](Docker) for information
+about installing unifi-poller. Then see the [Configuration](Configuration) doc
+for post-install configuration information.
 
 If you are running docker on a Synology check out the [Synology HOWTO](Synology-HOWTO).
 
@@ -156,7 +156,6 @@ Recommend reading the note at the bottom if you're using a mac.
 
 1.  [Install FPM](https://fpm.readthedocs.io/en/latest/installing.html)
 1.  [Install Go](https://golang.org/doc/install).
-1.  [Install dep](https://golang.github.io/dep/docs/installation.html).
 1.  **Clone this repo** and change your working directory to the checkout.
 
     ```shell
@@ -165,15 +164,9 @@ Recommend reading the note at the bottom if you're using a mac.
     ```
 
 1.  **Install local Golang dependencies**:
-
-    ```shell
-    dep ensure
-    ```
-
 1.  Build a package (or two!):
     1.  `make deb` will build a Debian package.
     1.  `make rpm` builds a RHEL package.
-
 1.  Install it:
     1.  `sudo dpkg -i *.deb || sudo rpm -Uvh *.rpm`
 
@@ -192,6 +185,5 @@ export GOPATH=~/go
 cd ~go/src
 git clone https://github.com/unifi-poller/unifi-poller.git
 cd unifi-poller
-dep ensure
 make rpm deb
 ```

@@ -33,7 +33,7 @@ Assumptions:
 
 1.  Add a user to the UniFi Controller. After logging into your controller:
 1.  Go to Settings -> Admins
-1.  Add a read-only user (e.g. 'influx')
+1.  Add a read-only user (e.g. `unifipoller`)
 1.  The new user needs access to each site. For each UniFi Site you want to poll,
     add admin via the 'Manually Set and Share the password' option. Other settings:
 -   don't define an email
@@ -108,7 +108,7 @@ at helps avoid conflicts with the host or other containers you might have that w
 -   `influx` - after a couple of second you should be in the InfluxDB shell.  enter them exactly as shown
 -   `CREATE DATABASE unifi`
 -   `USE unifi`
--   `CREATE USER unifi WITH PASSWORD 'unifi' WITH ALL PRIVILEGES`
+-   `CREATE USER unifipoller WITH PASSWORD 'unifipoller' WITH ALL PRIVILEGES`
 -   `GRANT ALL ON unifi TO unifi`
 
 #### Note
@@ -128,10 +128,11 @@ at helps avoid conflicts with the host or other containers you might have that w
     -   remove the default bridge (usually called bridge)
     -   Ensure that 'use the same network as docker host' is unchecked
 1.  on environment tab add the following vars
-    -   UP_INFLUX_URL = `http://influxdb1:8086`
-    -   UP_UNIFI_URL = `https://{your unifi controller ip}:8443`
-    -   UP_UNIFI_USER = {username for the read on account you created in the unifi controller earlier e.g. influx}
-    -   UP_UNIFI_PASS = {password for the above user}
+    -   UP_INFLUXDB_URL = `http://influxdb1:8086`
+    -   UP_UNIFI_DEFAULT_URL = `https://your.unifi.controller.ip:8443`
+    -   UP_UNIFI_DEFAULT_USER = `username for account created earlier. e.g. unifipoller`
+    -   UP_UNIFI_DEFAULT_PASS = `password for above user`
+    -   (optional) UP_POLLER_DEBUG = `true`
 1.  Finalize container and run
     -   Click APPLY click NEXT click APPLY
 
@@ -262,8 +263,8 @@ You will be prompted to change the default password, do so.
     -   Name = UniFi InfluxDB  (or whatever name you want) and set to default
     -   URL = `http://influxdb1:8086`
     -   Database = unifi
-    -   Username = unifi
-    -   Password = unifi
+    -   Username = unifipoller
+    -   Password = unifipoller
 1.  **No other fields need to be changed or set on this page.**
 1.  Click save & test
     -   You should get green banner above the save and test that says 'Data Source is Working'
