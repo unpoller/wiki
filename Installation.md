@@ -86,8 +86,9 @@ sudo apt install unifi-poller
 
 ### Linux: Post-Install
 
-See the [Configuration](Configuration) doc and the example config file for
-additional post-install configuration information.
+See the [Configuration](Configuration) doc and the
+[example config file](https://github.com/unifi-poller/unifi-poller/blob/master/examples/up.conf.example)
+for additional post-install configuration information.
 
 -   Edit the config file after installing the package, and
     correct the authentication information for your setup:
