@@ -88,12 +88,15 @@ to your own custom dashboards.
 -   This also allows you to identify problems with them and open an
     [Issue](https://github.com/unifi-poller/unifi-poller/issues).
 
-### Install Dashboards
+### Import Dashboards
 
-Simply click the `+` on the left nav bar in Grafana and click `Import`. Put in the
-ID for the dashboard. Repeat this up to 6 times for each dashboard.
-The IDs for each database platform are below.
-You only need Prometheus or Influx, not both. Unless you really want both.
+1.  Simply click the `+` on the left nav bar in Grafana and click `Import`.
+1.  Put in the ID for the dashboard (below) and click the blue `Load` button.
+1.  Select the InfluxDB or Prometheus data source you created earlier.
+1.  Click the Green `Import` button on the last screen.
+-   Repeat this up to 6 times for each dashboard.
+-   The IDs for each database platform are below.
+-   You only need Prometheus or Influx, not both. Unless you really want both.
 
 |App|Prometheus ID|Influx ID|Get this if you...|
 |---|---|---|---|
@@ -104,7 +107,7 @@ You only need Prometheus or Influx, not both. Unless you really want both.
 |UAP|[11314](https://grafana.com/grafana/dashboards/11314)|[10415](https://grafana.com/grafana/dashboards/10415)|...have UniFi WAPs|
 |Clients|[11315](https://grafana.com/grafana/dashboards/11315)|[10418](https://grafana.com/grafana/dashboards/10418)|...love `nano`|
 
-#### Notes on updating dashboards
+#### Dashboard Update Notes
 
 When the dashboards are updated, you have a couple options to update them in Grafana.
 You can either import them and replace the existing ones (use the same unique identifier),

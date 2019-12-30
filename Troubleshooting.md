@@ -1,10 +1,10 @@
-This document provides solutions for common problems.
-
-## Common Solution
+## Common Solutions
 
 Below are some common solutions and possible symptoms.
 
 ### Run Updated Components
+
+Running out of date components may result in missing data, or errors from Grafana.
 
 Make sure you're running up-to-date software. InfluxDB **must** be at least
 1.7.x. Version 1.7.9 is out and it works great. Grafana 6.5.2 also works great,

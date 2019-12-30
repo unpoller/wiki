@@ -143,7 +143,7 @@ Use Homebrew.
     brew services restart unifi-poller
     ```
 
-## Manually
+## Manual Package
 
 You can build your own package from source with the `Makefile`.
 Recommend reading the note at the bottom if you're using a mac.

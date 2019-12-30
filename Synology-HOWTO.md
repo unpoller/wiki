@@ -255,7 +255,7 @@ Grafana logon (the default is admin:admin)
 
 You will be prompted to change the default password, do so.
 
-## Configuring Grafana Datasource
+## Configuring InfluxDB Grafana Datasource
 
 1.  Click add data source on the page you see after logon.
 1.  Select the influxdb icon
@@ -272,30 +272,11 @@ You will be prompted to change the default password, do so.
 
 ## Importing the default dashboards
 
-1.  Click the + on the left nav-bar
-1.  Select import
-1.  In the field 'grafana.com dashboard' enter one of the IDs listed below.
-1.  After each one click the blue load button
-1.  In the unifi section click the 'Select an InfluxDB Data Source' dropdown
-1.  Choose UnFi InfluxDb (or whatever you chose for it earlier)
-1.  Then click the  green import button on the next page
-
+See the [Import Dashboards](Grafana#import-dashboards)
+section to import the unifi-poller dashboards into Grafana.
 You should see you first dashboard with data (depending on how long you took to do this how-to!)
 
-Repeat this process for more.
-
 Congratulations!
-
-### Dashboards as of 9.14.2019
-
--   10414 - Network Sites
--   10415 - UAP Insights
--   10416 - USG / UDM / UDM Pro Insights
--   10417 - USW Insights
--   10418 - Client Insights
-
-Find all these at [https://grafana.com/grafana/dashboards](https://grafana.com/grafana/dashboards)
-by searching for `unifi-poller`.
 
 ### TODO
 

@@ -11,7 +11,7 @@ Merges to `testing` are pushed automatically to the [local test wiki](https://gi
 Once the `testing` branch is merged to `master` the changes are deployed to the
 [main wiki](https://github.com/unifi-poller/unifi-poller/wiki).
 
-To run the linter locally, I had to do this on my Mac:
+To run the linter locally, I had to do this on my Mac, but `bundler` may work too.
 
 ```shell
 brew install rbenv ruby-build
