@@ -25,5 +25,5 @@ git remote add upstream ${TO} > /dev/null 2>&1
 git fetch origin
 git fetch upstream
 git merge upstream/master --no-edit
-git push origin HEAD:master > /dev/null 2>&1
+# git push origin HEAD:master > /dev/null 2>&1
 git push upstream HEAD:master > /dev/null 2>&1
