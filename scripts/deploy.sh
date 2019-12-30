@@ -1,8 +1,20 @@
 #!/bin/bash
 # Copy one repo to another. Useful for moving a wiki into place.
 
+if [ "$TRAVIS_BRANCH" == "" ]; then
+  echo "this only works with travis-ci"
+  exit 1
+fi
+
+# This repo.
 FROM="https://$GITHUB_API_KEY@github.com/unifi-poller/wiki.git"
-TO="https://$GITHUB_API_KEY@github.com/unifi-poller/unifi-poller.wiki.git"
+# Test wiki
+TO="https://$GITHUB_API_KEY@github.com/unifi-poller/wiki.wiki.git"
+# Prod wiki
+if [ "$TRAVIS_BRANCH" == "master" ]; then
+  TO="https://$GITHUB_API_KEY@github.com/unifi-poller/unifi-poller.wiki.git"
+fi
+
 
 git config user.name "unifi-poller"
 git config user.email "code@golift.io"
