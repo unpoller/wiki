@@ -1,6 +1,8 @@
 ## Prerequisites
 
-You need to create an Influx database and user/pass on the UniFi Controller.
+You need to create an Influx database, or setup Prometheus, and user/pass on the UniFi Controller.
+You also need Grafana and you have to add the Influx or Prometheus data source to Grafana.
+**Do not skip any of these pre-reqs!**
 
 1.  **Add a user to the UniFi Controller**. After logging into your controller:
     1.  Go to `Settings -> Admins`
@@ -10,7 +12,7 @@ You need to create an Influx database and user/pass on the UniFi Controller.
     1.  Take note of this info, you need to put it into the unifi-poller config file in a moment.
 
 1.  **You need [InfluxDB](InfluxDB)** OR **You need Prometheus**.
-    -   If you already have one of these, skip ahead.
+    -   If you already have one of these, skip ahead to Grafana.
     -   _Using Docker_? You can use the
         [docker-compose file](https://github.com/unifi-poller/unifi-poller/blob/master/init/docker/docker-compose.yml)
         file to setup Poller, InfluxDB and Grafana all at once.
@@ -34,6 +36,7 @@ You need to create an Influx database and user/pass on the UniFi Controller.
     -   [Add a new data source](https://grafana.com/docs/features/datasources/influxdb/)
         for the InfluxDB `unifi` database you created.
     -   Or, if you use Prometheus, add a [Prometheus data source](https://grafana.com/docs/features/datasources/prometheus/).
+    -   **Do not forget to add the data source!** It's generally just a URL, very easy.
 
 ## Docker
 
