@@ -82,7 +82,7 @@ gpgkey=https://golift.io/gpgkey
 
 ```shell
 curl -s https://golift.io/gpgkey | sudo apt-key add -
-echo deb https://dl.bintray.com/golift/ubuntu bionic main | sudo tee /etc/apt/sources.list.d/golift.repo
+echo deb https://dl.bintray.com/golift/ubuntu bionic main | sudo tee /etc/apt/sources.list.d/golift.list
 sudo apt update
 sudo apt install unifi-poller
 ```
