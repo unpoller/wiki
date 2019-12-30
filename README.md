@@ -6,7 +6,8 @@ The wiki for UniFi Poller is located in its own [GitHub repository](https://gith
 and may be reading this README in that repo.
 
 If you wish to make changes to the wiki, please clone the main repo, and create
-a pull request with your changes.
+a pull request with your changes. Target the `testing` branch in your pull request.
+Merges to `testing` are pushed automatically to the [local test wiki](https://github.com/unifi-poller/wiki/wiki)
 
 To run the linter locally, I had to do this on my Mac:
 
