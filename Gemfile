@@ -1,1 +1,2 @@
-gem "mdl" :require => true
+source "https://rubygems.org"
+gem "mdl"
