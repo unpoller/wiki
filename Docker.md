@@ -1,5 +1,3 @@
-# Install
-
 ## Docker images are available on [Docker Hub](https://hub.docker.com/r/golift/unifi-poller/tags)
 
 Many thanks to [mabunixda](https://github.com/mabunixda) for
