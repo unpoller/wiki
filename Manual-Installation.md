@@ -5,7 +5,6 @@ This is not recommended. **Recommended: You should download or [build a package]
 for your operating system, and use that instead of this procedure.**
 
 1.  [Install Go](https://golang.org/doc/install).
-1.  [Install dep](https://golang.github.io/dep/docs/installation.html).
 1.  **Clone this repo** and change your working directory to the checkout.
 
      ```shell
@@ -13,17 +12,9 @@ for your operating system, and use that instead of this procedure.**
      cd unifi-poller
      ```
 
-1.  **Install local Golang dependencies**:
-
-    ```shell
-    dep ensure
-    ```
-
-    Note: Running `dep ensure` with the `-update` flag may pull in dependencies with compatibility problems.
-
 1.  **Compile the app** by typing `make`
     1.  If that gave you no errors, then make the man file `make man`
-    1.  If that didn't work, make sure your Go env is up to snuff. I tested this with 1.10 through 1.12.5.
+    1.  If that didn't work, make sure your Go env is up to snuff. I tested this with 1.10 through 1.13.5.
 1.  Copy all the files into place.
 
     **Linux**, as root:
@@ -111,11 +102,6 @@ mkdir -p ~/go/src/github.com/unifi-poller
 cd ~/go/src/github.com/unifi-poller
 git clone https://github.com/unifi-poller/unifi-poller
 cd unifi-poller
-
-# Install go dependencies with dep.
-curl -sLo $GOPATH/bin/dep https://github.com/golang/dep/releases/download/v0.5.3/dep-linux-amd64
-chmod +x $GOPATH/bin/dep
-dep ensure
 
 # Make and install package.
 make deb

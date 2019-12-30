@@ -1,11 +1,9 @@
 dist: bionic
 language: ruby
-before_script:
-  - gem install mdl
-script: scripts/check.sh
+script: mdl .
 deploy:
   - provider: script
-    script: scripts/deploy.sh
+    script: ./deploy.sh
     on:
       all_branches: true
       condition: $TRAVIS_BRANCH =~ ^(master|testing)$

@@ -2,13 +2,13 @@
 [Download](https://github.com/unifi-poller/unifi-poller/releases) and install a new package.
 The package will correctly restart `unifi-poller` after upgrading and will not overwrite
 your existing configuration file(s). After installing the new package, you may choose to
-[import updated dashboards](Grafana-Dashboards).
+[import updated dashboards](Grafana#dashboards).
 
 macOS: `brew upgrade unifi-poller`
 
 **If you followed the [Installation Wiki](Installation)** guide and you want to
-update to a newer version of `unifi-poller` or the [unifi](https://github.com/golift/unifi)
-go library (or [other libraries](https://github.com/unifi-poller/unifi-poller/blob/master/Gopkg.lock)),
+update to a newer version of `unifi-poller` or the [unifi](https://github.com/unifi-poller/unifi)
+go library (or [other libraries](https://github.com/unifi-poller/unifi-poller/blob/master/go.mod)),
 it's pretty easy. Just go through the process again.
 
 If you want to build and install a new package:
@@ -24,7 +24,6 @@ Update app & vendors. This will bring everything up to, what should be, a compat
 
 ```shell
 git pull
-dep ensure
 ```
 
 Test First (optional)

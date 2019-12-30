@@ -3,11 +3,13 @@
 [![travis](https://badgen.net/travis/unifi-poller/wiki?icon=travis&label=build "Travis Build")](https://travis-ci.org/unifi-poller/wiki)
 
 The wiki for UniFi Poller is located in its own [GitHub repository](https://github.com/unifi-poller/wiki),
-and may be reading this README in that repo.
+and you may be reading this README in that repo.
 
 If you wish to make changes to the wiki, please clone the main repo, and create
 a pull request with your changes. Target the `testing` branch in your pull request.
 Merges to `testing` are pushed automatically to the [local test wiki](https://github.com/unifi-poller/wiki/wiki)
+Once the `testing` branch is merged to `master` the changes are deployed to the
+[main wiki](https://github.com/unifi-poller/unifi-poller/wiki).
 
 To run the linter locally, I had to do this on my Mac:
 
