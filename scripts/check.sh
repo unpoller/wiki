@@ -2,4 +2,4 @@
 
 # Make sure the commit is valid. Run a linter against the markdown.
 
-mdl *.md
+mdl .
