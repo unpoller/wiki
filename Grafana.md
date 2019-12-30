@@ -4,15 +4,17 @@ After installing Grafana, you should import the provided dashboards (see below).
 
 **Grafana 5.5 or newer is required. Grafana 4.x will not work. Grafana 6.5+ is recommended.**
 
+## Installing
+
 This will set it up on localhost:3000 with admin/admin login.
 
-## Linux
+### Linux
 
-### CentOS 7
+#### CentOS 7
 
 Get an RPM. [https://grafana.com/docs/installation/rpm/](https://grafana.com/docs/installation/rpm/)
 
-### Ubuntu 18.04
+#### Ubuntu 18.04
 
 ```shell
 curl https://packages.grafana.com/gpg.key | sudo apt-key add -
@@ -26,7 +28,7 @@ sudo systemctl enable grafana-server.service
 sudo systemctl status grafana-server
 ```
 
-## macOS
+### macOS
 
 You need [Homebrew](https://brew.sh/):
 
@@ -52,9 +54,7 @@ grafana-cli plugins install natel-discrete-panel
 grafana-cli plugins install grafana-piechart-panel
 ```
 
-### Plugins in Docker
-
-If you're running Grafana in Docker, pass this environment
+If you're running Grafana in **Docker**, pass this environment
 variable/value **to Grafana** to install the plugins:
 
 ```shell
