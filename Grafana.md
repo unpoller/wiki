@@ -6,13 +6,13 @@ After installing Grafana, you should import the provided dashboards (see below).
 
 This will set it up on localhost:3000 with admin/admin login.
 
-# Linux
+## Linux
 
-## CentOS 7
+### CentOS 7
 
 Get an RPM. [https://grafana.com/docs/installation/rpm/](https://grafana.com/docs/installation/rpm/)
 
-## Ubuntu 18.04
+### Ubuntu 18.04
 
 ```shell
 curl https://packages.grafana.com/gpg.key | sudo apt-key add -
@@ -26,7 +26,7 @@ sudo systemctl enable grafana-server.service
 sudo systemctl status grafana-server
 ```
 
-# macOS
+## macOS
 
 You need [Homebrew](https://brew.sh/):
 
@@ -40,7 +40,7 @@ brew services restart grafana
 brew services list
 ```
 
-# Plugins
+## Plugins
 
 This application uses a few Grafana plugins. Install them:
 
@@ -52,7 +52,16 @@ grafana-cli plugins install natel-discrete-panel
 grafana-cli plugins install grafana-piechart-panel
 ```
 
-# Dashboards
+### Plugins in Docker
+
+If you're running Grafana in Docker, pass this environment
+variable/value **to Grafana** to install the plugins:
+
+```shell
+GF_INSTALL_PLUGINS=grafana-clock-panel,natel-discrete-panel,grafana-piechart-panel
+```
+
+## Dashboards
 
 This project provides a few Grafana dashboards. They are available on
 [Grafana.com](https://grafana.com/dashboards?search=unifi-poller).
@@ -64,21 +73,38 @@ that brings new benefits to the existing dashboards. When that happens I update 
 Keeping an example set allows you to update too, inspect the changes, and apply them
 to your own custom dashboards.
 
-**Note**: Do not make one folder per dashboard. Make one folder for all of them.
-The folder name cannot be the same as the dashboard names, or Grafana will throw an error.
-
-Recommendations:
+### Recommendations
 
 -   Import the provided dashboards into their own folder, so they're easy to find.
--   Use the `Upload .json File` button to import the dashboards.
+    -   Do not make one folder per dashboard.
+    -   Make one folder for all of them.
+    -   The folder name cannot be the same as the dashboard names, or Grafana will throw an error.
 -   Changing the unique identifier allows you to re-import a dashboard, but this is not recommended.
--   Don't edit them.
+-   Don't edit them, instead:
 -   Copy these dashboards or graphs to your own.
 -   Edit the copies to get the data how you want it.
 -   Keeping the original dashboards unedited allows you to continue referencing them,
     and copying graphs out of them.
 -   This also allows you to identify problems with them and open an
     [Issue](https://github.com/unifi-poller/unifi-poller/issues).
+
+### Install Dashboards
+
+Simply click the `+` on the left nav bar in Grafana and click `Import`. Put in the
+ID for the dashboard. Repeat this up to 6 times for each dashboard.
+The IDs for each database platform are below.
+You only need Prometheus or Influx, not both. Unless you really want both.
+
+|App|Prometheus ID|Influx ID|Get this if you...|
+|---|---|---|---|
+|Client DPI|[11310](https://grafana.com/grafana/dashboards/11310)|[10419](https://grafana.com/grafana/dashboards/10419)|...enabled `site_dpi`|
+|Sites|[11311](https://grafana.com/grafana/dashboards/11311)|[10414](https://grafana.com/grafana/dashboards/10414)|...enabled `save_sites`|
+|USW|[11312](https://grafana.com/grafana/dashboards/11312)|[10417](https://grafana.com/grafana/dashboards/10417)|...have UniFi Switches|
+|USG|[11313](https://grafana.com/grafana/dashboards/11313)|[10416](https://grafana.com/grafana/dashboards/10416)|...have UniFi Gateways|
+|UAP|[11314](https://grafana.com/grafana/dashboards/11314)|[10415](https://grafana.com/grafana/dashboards/10415)|...have UniFi WAPs|
+|Clients|[11315](https://grafana.com/grafana/dashboards/11315)|[10418](https://grafana.com/grafana/dashboards/10418)|...love `nano`|
+
+#### Notes on updating dashboards
 
 When the dashboards are updated, you have a couple options to update them in Grafana.
 You can either import them and replace the existing ones (use the same unique identifier),

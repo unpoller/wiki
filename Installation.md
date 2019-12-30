@@ -164,7 +164,7 @@ Recommend reading the note at the bottom if you're using a mac.
 1.  Install it:
     1.  `sudo dpkg -i *.deb || sudo rpm -Uvh *.rpm`
 
-### Mac-Linux Note
+### Manual Build Notes
 
 If you're building linux packages on a mac you can run `brew install rpmbuild gnu-tar`
 to get the additional tools you need. That means you're going to need [Homebrew](https://brew.sh).
