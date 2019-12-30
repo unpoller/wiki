@@ -92,10 +92,10 @@ to your own custom dashboards.
 
 1.  Simply click the `+` on the left nav bar in Grafana and click `Import`.
 1.  Put in the ID for the dashboard (below) and click the blue `Load` button.
-1.  Select the InfluxDB or Prometheus data source you created earlier.
+1.  Select the InfluxDB or Prometheus data source you created previously.
 1.  Click the Green `Import` button on the last screen.
--   Repeat this up to 6 times for each dashboard.
--   The IDs for each database platform are below.
+-   Repeat this for each dashboard you want.
+-   The IDs for each database platform are below, use them.
 -   You only need Prometheus or Influx, not both. Unless you really want both.
 
 |App|Prometheus ID|Influx ID|Get this if you...|

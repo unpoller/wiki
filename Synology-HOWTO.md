@@ -270,10 +270,12 @@ You will be prompted to change the default password, do so.
     -   You should get green banner above the save and test that says 'Data Source is Working'
     -   To return to the homepage click the icon with 4 squares on the left nav-bar and select home
 
-## Importing the default dashboards
+## Import Grafana Dashboards
 
 See the [Import Dashboards](Grafana#import-dashboards)
-section to import the unifi-poller dashboards into Grafana.
+section to import the unifi-poller dashboards into Grafana. You just need the InfluxDB dashboards
+if you followed this how-to.
+
 You should see you first dashboard with data (depending on how long you took to do this how-to!)
 
 Congratulations!
