@@ -9,6 +9,32 @@ controllers. This changes, considerably, how the environment variables are setup
 
 The following information only applies to versions 2.0+
 
+## Quick Start
+
+If you just want to get a docker container up and running you really only need a few
+config options set. The following four options are typically enough to get going:
+
+```shell
+UP_UNIFI_DEFAULT_URL="https://your.unifi.controller.ip:8443"
+UP_UNIFI_DEFAULT_USER="unifipoller"
+UP_UNIFI_DEFAULT_PASS="unifipoller"
+UP_INFLUXDB_URL="http://your.influxdb.ip:8086"
+```
+
+In the config file it looks like this:
+
+```toml
+[unifi.defaults]
+  url  = "https://your.unifi.controller.ip:8443"
+  user = "unifipoller"
+  pass = "unifipoller"
+[influxdb]
+  url  = "http://your.influxdb.ip:8086"
+```
+
+If you're using Prometheus, you may omit the `[influxdb]` section, or disable it:
+`UP_INFLUXDB_DISABLE=true`
+
 ## Config File and Environment Variables
 
 The configuration file is broken up into sections. In TOML format, each section begins
@@ -37,19 +63,19 @@ UP_POLLER_PLUGINS_0|plugins|file list - empty|_advanced!_ plugin file, use `_1`,
 
 The unifi section begins with the `[unifi]` header and has the following parameters:
 
-|ENV|config|type - default|explanation|
-|---|---|---|---|
-UP_UNIFI_DISABLE|disable|boolean - `false`|turns off this input. don't do that!|
-UP_UNIFI_DYNAMIC|dynamic|boolean - `false`|enables dynamic lookups (from prometheus)|
-UP_UNIFI_DEFAULT_ROLE|unifi.defaults.role|string - `URL`|allows grouping controllers, default applies to any controller without a role|
-UP_UNIFI_DEFAULT_URL|unifi.defaults.url|`"https://127.0.0.1:8443"`|only applies if no controllers are defined (next section)|
-UP_UNIFI_DEFAULT_USER|unifi.defaults.user|string - `"unifipoller"`|default applies to any controller without a username|
-UP_UNIFI_DEFAULT_PASS|unifi.defaults.pass|string - `""`|default applies to any controller without a password|
-UP_UNIFI_DEFAULT_SAVE_SITES|unifi.defaults.save_sites|boolean - `true`||
-UP_UNIFI_DEFAULT_SAVE_IDS|unifi.defaults.save_ids|boolean - `false`|Only works with InfluxDB, and not very useful|
-UP_UNIFI_DEFAULT_SAVE_DPI|unifi.defaults.save_dpi|boolean - `false`||
-UP_UNIFI_DEFAULT_VERIFY_SSL|unifi.defaults.verify_ssl|boolean - `false`||
-UP_UNIFI_DEFAULT_SITES_0|unifi.defaults.sites.0|list - `["all"]`|specify more sites with `_1`, `_2`, etc.|
+|ENV|config|default, explanation|
+|---|---|---|
+UP_UNIFI_DISABLE|disable|`false`, turns off this input. don't do that!|
+UP_UNIFI_DYNAMIC|dynamic|`false`, enables dynamic lookups (from prometheus)|
+UP_UNIFI_DEFAULT_ROLE|unifi.defaults.role|`URL`, allows grouping controllers|
+UP_UNIFI_DEFAULT_URL|unifi.defaults.url|`"https://127.0.0.1:8443"`, only applies if no controllers are defined (next section)|
+UP_UNIFI_DEFAULT_USER|unifi.defaults.user|`"unifipoller"`, default applies to any controller without a username|
+UP_UNIFI_DEFAULT_PASS|unifi.defaults.pass|`""`, default applies to any controller without a password|
+UP_UNIFI_DEFAULT_SAVE_SITES|unifi.defaults.save_sites|`true`|
+UP_UNIFI_DEFAULT_SAVE_IDS|unifi.defaults.save_ids|`false`|Only works with InfluxDB, and not very useful|
+UP_UNIFI_DEFAULT_SAVE_DPI|unifi.defaults.save_dpi|`false`|
+UP_UNIFI_DEFAULT_VERIFY_SSL|unifi.defaults.verify_ssl|`false`|
+UP_UNIFI_DEFAULT_SITES_0|unifi.defaults.sites.0|`["all"]`, specify more sites with `_1`, `_2`, etc.|
 
 #### UniFi Controllers
 
@@ -63,17 +89,17 @@ second, then `_2` and so on.
 
 Like any configured list, you may configure controllers with a file or env vars, or both.
 
-|ENV|config|type - default|explanation|
-|---|---|---|---|
-UP_UNIFI_CONTROLLER_0_ROLE|unifi.controller.role|defaults to `URL`|allows grouping controllers, default applies to any controller without a role|
-UP_UNIFI_CONTROLLER_0_URL|unifi.controller.url|`"https://127.0.0.1:8443"`|only applies if no controllers are defined (next section)|
-UP_UNIFI_CONTROLLER_0_USER|unifi.controller.user|string - `"unifipoller"`|default applies to any controller without a username|
-UP_UNIFI_CONTROLLER_0_PASS|unifi.controller.pass|string - `""`|default applies to any controller without a password|
-UP_UNIFI_CONTROLLER_0_SAVE_SITES|unifi.controller.save_sites|boolean - `true`|Powers Network Sites dashboard|
-UP_UNIFI_CONTROLLER_0_SAVE_DPI|unifi.controller.save_dpi|boolean - `false`|Powers DPI dashboard|
-UP_UNIFI_CONTROLLER_0_SAVE_IDS|unifi.controller.save_ids|boolean - `false`|Only works with InfluxDB, and not very useful|
-UP_UNIFI_CONTROLLER_0_VERIFY_SSL|unifi.controller.verify_ssl|boolean - `false`|Verify controller SSL certificate|
-UP_UNIFI_CONTROLLER_0_SITES_0|unifi.controller.sites.0|list - `["all"]`|specify more sites with `_1`, `_2`, etc.|
+|ENV|config|default, explanation|
+|---|---|---|
+UP_UNIFI_CONTROLLER_0_ROLE|unifi.controller.role|`URL`, allows grouping controllers, default applies to any controller without a role|
+UP_UNIFI_CONTROLLER_0_URL|unifi.controller.url|`"https://127.0.0.1:8443"`|
+UP_UNIFI_CONTROLLER_0_USER|unifi.controller.user|`"unifipoller"`|
+UP_UNIFI_CONTROLLER_0_PASS|unifi.controller.pass|`""`|
+UP_UNIFI_CONTROLLER_0_SAVE_SITES|unifi.controller.save_sites|`true`, Powers Network Sites dashboard|
+UP_UNIFI_CONTROLLER_0_SAVE_DPI|unifi.controller.save_dpi|`false`, Powers DPI dashboard|
+UP_UNIFI_CONTROLLER_0_SAVE_IDS|unifi.controller.save_ids|`false`, Only works with InfluxDB, and not very useful|
+UP_UNIFI_CONTROLLER_0_VERIFY_SSL|unifi.controller.verify_ssl|`false`, Verify controller SSL certificate|
+UP_UNIFI_CONTROLLER_0_SITES_0|unifi.controller.sites.0|`["all"]`, specify more sites with `_1`, `_2`, etc.|
 
 ### Output: Prometheus
 

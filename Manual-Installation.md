@@ -11,6 +11,7 @@ for your operating system, and use that instead of this procedure.**
      git clone git@github.com:unifi-poller/unifi-poller.git
      cd unifi-poller
      ```
+
 1.  **Compile the app** by typing `make`
     1.  If that gave you no errors, then make the man file `make man`
     1.  If that didn't work, make sure your Go env is up to snuff. I tested this with 1.10 through 1.13.5.
