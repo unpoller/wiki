@@ -6,7 +6,8 @@ Many thanks to [mabunixda](https://github.com/mabunixda) for
 [helping](https://github.com/unifi-poller/unifi-poller/pull/38) begin our Docker support!
 The images are [built automatically](https://cloud.docker.com/repository/docker/golift/unifi-poller/builds)
 by Docker Cloud using the
-[Dockerfile](https://github.com/unifi-poller/unifi-poller/blob/master/init/docker/Dockerfile) included in this repo.
+[Dockerfile](https://github.com/unifi-poller/unifi-poller/blob/master/init/docker/Dockerfile)
+included in this repo.
 
 You can install `latest`, `stable` (recommended), or pick a specific version.
 See the following sections for information on how to do each.
@@ -20,7 +21,8 @@ docker pull golift/unifi-poller:stable
 ```
 
 This is the recommended way to install. Linux images are available for 386, amd64, arm32v6 and arm64v8.
-There is no need to specify an arch tag, docker will pull the correct image automatically with the `stable` tag. For all intents and purposes, the `stable` tag will align with the `latest` tag.
+There is no need to specify an arch tag, docker will pull the correct image automatically with the `stable` tag.
+For all intents and purposes, the `stable` tag will align with the `latest` tag.
 
 ### Latest (master)
 

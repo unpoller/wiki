@@ -140,7 +140,8 @@ Use Homebrew.
     brew services start unifi-poller
     ```
 
-    The **log file** should show up at `/usr/local/var/log/unifi-poller.log`. If it does not show up, make sure your user has permissions to create the file.
+    The **log file** should show up at `/usr/local/var/log/unifi-poller.log`.
+    If it does not show up, make sure your user has permissions to create the file.
 
 1.  This is how you restart it. **Do this when you upgrade.**:
 

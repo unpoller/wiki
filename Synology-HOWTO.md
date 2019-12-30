@@ -26,15 +26,16 @@ Assumptions:
 
 1.  [You already installed Docker from package center.](https://www.synology.com/en-us/dsm/packages/Docker)
 1.  [Enable SSH on Synology](https://www.synology.com/en-global/knowledgebase/DSM/help/DSM/AdminCenter/system_terminal)
-
-(note you should always logon with your default admin account you created when you setup you Synology, logging on as root no longer works)
+-   _Note:_ you should always logon with your default admin account you created when you setup you Synology,
+    logging on as root no longer works.
 
 ## Prepare your UniFi controller
 
 1.  Add a user to the UniFi Controller. After logging into your controller:
 1.  Go to Settings -> Admins
 1.  Add a read-only user (e.g. 'influx')
-1.  The new user needs access to each site. For each UniFi Site you want to poll, add admin via the 'Manually Set and Share the password' option. Other settings:
+1.  The new user needs access to each site. For each UniFi Site you want to poll,
+    add admin via the 'Manually Set and Share the password' option. Other settings:
 -   don't define an email
 -   don't require password to be changed
 -   use only uppercase, lowercase, numerals and the ! symbol and limit to 10 chars or less (some have had
@@ -85,7 +86,8 @@ at helps avoid conflicts with the host or other containers you might have that w
     -   add your network, in this example, Grafana_Net
     -   remove the default bridge (usually called bridge)
     -   Ensure that 'use the same network as docker host' is unchecked
-1.  on port settings **<--- um why do i have host mapped port, not sure we need this for this set of 3 as all traffic is internal**
+1.  on port settings **<--- why do i have host mapped port, not sure we need this for
+    this set of 3 as all traffic is internal**
     -   change local port from Auto to one you have free on host - this makes it predictable. something like 3456
     -   leave container port as 8086 and type as TCP
 1.  on environment tab add the following vars
@@ -141,7 +143,9 @@ at helps avoid conflicts with the host or other containers you might have that w
 1.  After a couple of minutes you should see an entry like the following,
     if you do then everything is working ok
 
-`2019/09/14 22:43:09 [INFO] UniFi Measurements Recorded. Sites: 1, Clients: 78, Wireless APs: 6, Gateways: 1, Switches: 6, Points: 193, Fields: 7398`
+      ```shell
+    2019/09/14 22:43:09 [INFO] UniFi Measurements Recorded. Sites: 1, Clients: 78, Wireless APs: 6, Gateways: 1, Switches: 6, Points: 193, Fields: 7398
+    ```
 
 ### Grafana Container
 
@@ -173,7 +177,8 @@ Options:
     is on volume 3 so for me it is: `cd /volume3/docker`
 1.  Now you need to change the permissions of the grafana folder: `sudo chown 472 grafana`
 
--   **NOTE**: If you look at the grafana folder ownership in file station it will say 472 rather than any user you have created.
+-   **NOTE**: If you look at the grafana folder ownership in file station it will say
+    472 rather than any user you have created.
 
 ##### Method 1 Container
 

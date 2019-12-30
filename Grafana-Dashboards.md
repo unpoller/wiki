@@ -20,7 +20,8 @@ Recommendations:
 -   Don't edit them.
 -   Copy these dashboards or graphs to your own.
 -   Edit the copies to get the data how you want it.
--   Keeping the original dashboards unedited, allows you to continue referencing them, and copying graphs out of them.
+-   Keeping the original dashboards unedited allows you to continue referencing them,
+    and copying graphs out of them.
 -   This also allows you to identify problems with them and open an [Issue](https://github.com/unifi-poller/unifi-poller/issues).
 
 The dashboards use a few plugins. See the [Grafana wiki page](Grafana) for that information.

@@ -58,5 +58,7 @@ grafana-cli plugins install grafana-piechart-panel
 More information and best practices can be found on the [Grafana Dashboards Wiki Page](Grafana-Dashboards).
 
 The most important part! Something to quickly visualize all the data you're collecting!
-The dashboards used to be in this repository, but they've been moved to [Grafana.com](https://grafana.com/dashboards?search=unifi-poller).
-You can install all of them, or only install the ones that interest you. Directions are available on each dashboard's page.
+The dashboards used to be in this repository,
+but they've been moved to [Grafana.com](https://grafana.com/dashboards?search=unifi-poller).
+You can install all of them, or only install the ones that interest you.
+Directions are available on each dashboard's page.
