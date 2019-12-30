@@ -1,20 +1,24 @@
-# Unifi-Poller Manual Installation
+## Unifi-Poller Manual Installation
 
-This procedure details manual installation, building the software from scratch and installing to /usr/local. This is not recommended. **Recommended: You should download or [build a package](Installation) for your operating system, and use that instead of this procedure.**
-
-If you followed a previous version of this procedure, or installed unifi-poller to /usr/local on Linux, recommend running `make uninstall` before following this procedure or using a package.
+This procedure details manual installation, building the software from scratch and installing to /usr/local.
+This is not recommended. **Recommended: You should download or [build a package](Installation)
+for your operating system, and use that instead of this procedure.**
 
 1.  [Install Go](https://golang.org/doc/install).
 1.  [Install dep](https://golang.github.io/dep/docs/installation.html).
 1.  **Clone this repo** and change your working directory to the checkout.
+
      ```shell
      git clone git@github.com:unifi-poller/unifi-poller.git
      cd unifi-poller
      ```
+
 1.  **Install local Golang dependencies**:
+
     ```shell
     dep ensure
     ```
+
     Note: Running `dep ensure` with the `-update` flag may pull in dependencies with compatibility problems.
 
 1.  **Compile the app** by typing `make`
@@ -23,6 +27,7 @@ If you followed a previous version of this procedure, or installed unifi-poller 
 1.  Copy all the files into place.
 
     **Linux**, as root:
+
     ```shell
     cp unifi-poller /usr/bin
     mkdir /etc/unifi-poller
@@ -32,7 +37,8 @@ If you followed a previous version of this procedure, or installed unifi-poller 
     ```
 
     **macOS**:
-    ```shell  
+
+    ```shell
     cp unifi-poller /usr/local/bin
     mkdir /usr/local/etc/unifi-poller /usr/local/var/log
     cp examples/up.conf.example /usr/local/etc/unifi-poller/up.conf
@@ -46,22 +52,28 @@ If you followed a previous version of this procedure, or installed unifi-poller 
 1.  Edit `/usr/local/etc/unifi-poller/up.conf` (Mac) `/etc/unifi-poller/up.conf` (Linux)
     1.  Correct the InfluxDB and Unifi Controller authentication settings.
 1.  **Create a database in InfluxDB.**  Something like:
+
     ```shell
     influx -host localhost -port 8086
     CREATE DATABASE unifi
     ```
+
 1.  **Restart the `unifi-poller` service**:
 
     **macOS**:
+
     ```shell
     launchctl unload ~/Library/LaunchAgents/com.github.unifi-poller.unifi-poller.plist
     launchctl load -w ~/Library/LaunchAgents/com.github.unifi-poller.unifi-poller.plist
     ```
+
     **Linux**:
+
     ```shell
     systemctl daemon-reload
     systemctl start unifi-poller
     ```
+
 1.  **Check the log.** Watch it for a minute or so, look for errors.
     1.  macOS: `/usr/local/var/log/unifi-poller.log`
     1.  Linux: `/var/log/syslog` or `/var/log/messages`.
@@ -69,12 +81,17 @@ If you followed a previous version of this procedure, or installed unifi-poller 
     1.  Put it in Debug mode. Edit the config file and restart.
 1.  **Add the unifi InfluxDB** database as a [data source to Grafana](https://grafana.com/docs/features/datasources/influxdb/).
 1.  **Import the grafana json files** from this repo as dashboards.
-1.  Recommend leaving the dashboard as-is, and creating your own with data you care about. Dashboards are updated when new metrics are added.
+1.  Recommend leaving the dashboard as-is, and creating your own with data you care about.
+    Dashboards are updated when new metrics are added.
 
-**Good luck!** Please [leave feedback](https://github.com/unifi-poller/unifi-poller/issues/new) about your experience and how these directions can be improved to save the next person some time. Thanks!
+**Good luck!** Please [leave feedback](https://github.com/unifi-poller/unifi-poller/issues/new) about your
+experience and how these directions can be improved to save the next person some time. Thanks!
 
-# Installing on Ubuntu tested with 18.04
-This is a tl;dr version of the above instructions provided by the community. These directions manually build and compile unifi-poller, create and install a package that enables, auto-starts and keeps the application running.
+## Installing on Ubuntu tested with 18.04
+
+This is a tl;dr version of the above instructions provided by the community.
+These directions manually build and compile unifi-poller, create and install a
+package that enables, auto-starts and keeps the application running.
 
 ```shell
 # Install rubygems, go, fpm.
