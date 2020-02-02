@@ -7,24 +7,26 @@ by Docker Cloud using the
 [Dockerfile](https://github.com/unifi-poller/unifi-poller/blob/master/init/docker/Dockerfile)
 included in this repo.
 
-You can install `latest`, `stable` (recommended), or pick a specific version.
+### Pulling Images
+
+You can install `latest` (recommended), or pick a specific version.
 See the following sections for information on how to do each.
 
-### Stable Release
+#### Stable Release
 
 You may install the current stable released version using a tag like this:
 
 ```shell
-docker pull golift/unifi-poller:stable
+docker pull golift/unifi-poller:latest
 ```
 
 This is the recommended way to install. Linux images are available for 386, amd64, arm32v6 and arm64v8.
-There is no need to specify an arch tag, docker will pull the correct image automatically with the `stable` tag.
-For all intents and purposes, the `stable` tag will align with the `latest` tag.
+There is no need to specify an arch tag, docker will pull the correct image automatically with the `latest` tag.
 
-### Latest (master)
+#### Latest (master)
 
-You may download the latest version with this command:
+You may download the latest possibly-unreleased code
+with this command (using the `master` tag):
 
 ```shell
 docker pull golift/unifi-poller:master
@@ -32,9 +34,9 @@ docker pull golift/unifi-poller:master
 
 Using `master` is not recommended. You may be asked to give this a try while troubleshooting
 or debugging, but generally this will contain untested code or things that will break your graphs.
-The `master` docker tag is based from the `master` git branch and may contain bugs.
+The `master` docker tag is based from the `master` git branch and may contain bugs; you've been overly warned.
 
-### Pick a version
+#### Specific version
 
 Install a specific version like this:
 
@@ -42,7 +44,7 @@ Install a specific version like this:
 docker pull golift/unifi-poller:2.0.1
 ```
 
-### From Source
+#### From Source
 
 You can build your own image from source.
 
