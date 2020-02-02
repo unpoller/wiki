@@ -9,23 +9,26 @@ included in this repo.
 
 ### Pulling Images
 
+Linux images are available for 386, amd64, arm32v6 and arm64v8 architectures.
+There is no need to specify an architecture tag, docker will pull the correct
+image automatically with the `latest` tag.
+
 You can install `latest` (recommended), or pick a specific version.
 See the following sections for information on how to do each.
 
 #### Stable Release
 
-You may install the current stable released version using a tag like this:
+*   **This is the recommended way to install.**
+
+Install the current stable released version using a tag like this:
 
 ```shell
 docker pull golift/unifi-poller:latest
 ```
 
-This is the recommended way to install. Linux images are available for 386, amd64, arm32v6 and arm64v8.
-There is no need to specify an arch tag, docker will pull the correct image automatically with the `latest` tag.
-
 #### Latest (master)
 
-You may download the latest possibly-unreleased code
+Download the latest possibly-unreleased code
 with this command (using the `master` tag):
 
 ```shell
