@@ -62,6 +62,9 @@ pkg install unifi-poller-2.0.0-800.amd64.txz
 # View manual.
 man unifi-poller
 
+# Edit config file
+vi /usr/local/etc/unifi-poller/up.conf
+
 # Start, Restart, Stop service.
 service unifi-poller start
 service unifi-poller restart
@@ -82,7 +85,7 @@ JFrog Bintray provides package hosting for RedHat/CentOS/Debian/Ubuntu repos.
 The same package is in all the repos, but you can set the name to match your OS
 as shown below.
 
-### RedHat variants (CentOS)
+### RedHat variants (CentOS, Fedora)
 
 -   Create a file at `/etc/yum.repos.d/golift.repo` with the following contents.
 -   You may replace `centos` with `el`, but they're the same thing either way.
@@ -101,7 +104,7 @@ gpgkey=https://golift.io/gpgkey
 -   Then install the package: `sudo yum install unifi-poller`
 -   You'll have to respond `yes` to the prompts to install the Go Lift GPG key.
 
-### Debian variants (Ubuntu)
+### Debian variants (Ubuntu, Knoppix)
 
 -   Install the repo and package using the commands below.
 -   Replace `ubuntu` with `debian` if you have Debian.
