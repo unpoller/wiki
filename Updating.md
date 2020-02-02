@@ -62,7 +62,7 @@ If you wish to just continue using a package, simply
 a new package. The package will correctly restart `unifi-poller` after upgrading
 and will  not overwrite your existing configuration file(s).
 
-## FreeBSD
+### FreeBSD
 
 **If you installed a package** and `unifi-poller` is working, updating is simple.
 [Download](https://github.com/unifi-poller/unifi-poller/releases) and install the new package.
