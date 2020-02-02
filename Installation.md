@@ -1,3 +1,7 @@
+## Upgrading
+
+See [Updating](Updating) for upgrade details.
+
 ## Prerequisites
 
 You need to create an Influx database, or setup Prometheus, and user/pass on the UniFi Controller.
@@ -46,6 +50,31 @@ You also need Grafana and you have to add the Influx or Prometheus data source t
 -   See [Docker](Docker) for information about installing unifi-poller.
 -   Then see the [Configuration](Configuration) doc for post-install configuration information.
 -   _Synology_? Check out the [Synology HOWTO](Synology-HOWTO) provided by @Scyto.
+
+## FreeBSD
+
+-   Download a `txz` package from the [Releases](https://github.com/unifi-poller/unifi-poller/releases) page.
+-   Install it, and use these commands to maintain the service:
+
+```shell
+# Install package.
+pkg install unifi-poller-2.0.0-800.amd64.txz
+# View manual.
+man unifi-poller
+
+# Start, Restart, Stop service.
+service unifi-poller start
+service unifi-poller restart
+service unifi-poller stop
+# Check service status, useful for scripts.
+service unifi-poller status
+
+# Logs should wind up in this file, but your syslog may differ.
+grep unifi-poller /var/log/messages
+```
+
+Sorry I don't use FreeBSD so I have very few tips for this OS.
+Free to [update the wiki](https://github.com/unifi-poller/wiki/blob/master/README.md)!
 
 ## Linux
 

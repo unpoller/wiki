@@ -45,17 +45,41 @@ Changing these to the correct names should fix your configuration and get poller
 
 ## General Upgrade Advice
 
+After installing the new package, you should [import updated dashboards](Grafana#dashboards).
+If you upgrade major versions, like 1.x to 2.x the config file format may have (probably) changed.
+
+### Linux
+
 **If you installed a package from a repo** (recommended), just run `sudo apt update unifi-poller`
 or `sudo yum install unifi-poller`. The package will correctly restart `unifi-poller`
 after upgrading and will not overwrite your existing configuration file(s).
 
-**If you installed a package** and `unifi-poller` is working, updating is simple:
-[Download](https://github.com/unifi-poller/unifi-poller/releases) and install a new package.
-The package will correctly restart `unifi-poller` after upgrading and will not overwrite
-your existing configuration file(s). After installing the new package, you may choose to
-[import updated dashboards](Grafana#dashboards).
+**If you installed a package** and `unifi-poller` is working,
+updating is simple, but we recommend you install the _new repo_.
+The instructions are in the [Installation](Installation) page.
+If you wish to just continue using a package, simply
+[Download](https://github.com/unifi-poller/unifi-poller/releases) and install
+a new package. The package will correctly restart `unifi-poller` after upgrading
+and will  not overwrite your existing configuration file(s).
 
-macOS: `brew upgrade unifi-poller`
+## FreeBSD
+
+**If you installed a package** and `unifi-poller` is working, updating is simple.
+[Download](https://github.com/unifi-poller/unifi-poller/releases) and install the new package.
+The package _may not_ restart `unifi-poller` after upgrading and _may_ overwrite
+your existing configuration file(s). Sorry, but FreeBSD hasn't been well tested.
+
+Check the config file and then restart it after upgrading (as root):
+
+```shell
+service unifi-poller restart
+```
+
+### macOS
+
+`brew upgrade unifi-poller`
+
+### ALL
 
 If you want to build and install a new package:
 
@@ -78,11 +102,12 @@ Build a new package, pick one:
 ```shell
 make deb
 make rpm
+make freebsd_pkg
 ```
 
 Install the package:
 
 ```shell
-# redhat/centos/fedora:
-rpm -Uvh *.rpm || dpkg -i *.deb
+# redhat/centos/fedora || debian/ubuntu || freebsd
+rpm -Uvh *.rpm || dpkg -i *.deb || pkg install *.txz
 ```
