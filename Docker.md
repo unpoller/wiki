@@ -47,7 +47,6 @@ Install a specific version like this:
 docker pull golift/unifi-poller:2.0.1
 ```
 
-
 #### Major or Minor version
 
 Install the latest minor version like this:

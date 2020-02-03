@@ -1,0 +1,207 @@
+## UniFi Poller Change Log
+
+### Recent Releases (2020+)
+
+#### `v2.0` (0X.XX.2020) Multi-Controller Support, FreeBSD pkg + APT & YUM repos + DPI
+
+[v2.0](https://github.com/unifi-poller/unifi-poller/releases/tag/v2.0.0)
+
+##### v2 Breaking Changes
+
+These things have changed and will require you to take action when you upgrade
+to this version. Make sure to copy your old config file values to the new config
+file format. If you use environment variables, they all need to be updated!
+
+-   **Config file format changed.** All key names refactored for consistency.
+-   **Environment variable names changed.** All key names refactored for consistency.
+-   Some graphs require Grafana 6.6.0. UPGRADE.
+-   All graphs require InfluxDB 1.7.x. UPGRADE.
+
+##### v2 Updates
+
+-   New GitHub Org created for UniFi Poller. Moved from personal repo. LINK
+-   [InfluxDB output code moved to separate library](https://github.com/unifi-poller/influxunifi)
+    as modular plugin. (output module)
+-   [UniFi input code moved to separate library](https://github.com/unifi-poller/inputunifi)
+    as modular plugin. (input module)
+-   [Prometheus code moved to separate library](https://github.com/unifi-poller/promunifi)
+    as modular plugin. (output module)
+-   [Poller app code moved to separate library](https://github.com/unifi-poller/poller).
+    The main repo only handles builds and golang vendors now.
+-   [UniFi API code moved to new location](https://github.com/unifi-poller/unifi)
+    from golift github org. It fits better in the new unifi-poller org.
+-   [New library created](https://golift.io/cnfg) for config file and environment variable parsing.
+-   Dynamic go plugin support added for output modules. May not prove useful.
+-   [Example (MySQL) dynamic output module](https://github.com/unifi-poller/mysqlunifi)
+    created (for above).
+-   Application refactored to use "registering module" approach.
+    -   This means the main library knows nothing about the input or output modules.
+        hey register their interfaces on load.
+-   **Multiple Controller support added to input module.**
+-   Dynamic controller support added to input module and prometheus module.
+-   **Adds FreeBSD packages** and binaries for amd64, i386 and armhf.
+-   All dashboards updated. Multi-controller support added, but hidden
+    (since most users wont need it).
+-   **New dashboard: Client DPI** (for Prometheus and InfluxDB, 12 total)
+-   Homebrew fixes.
+-   Build updates.
+-   Type Conflict error fixes (and probably more errors added, uhg).
+-   Install Script updates. LINK
+-   New JFrogg Bintray **YUM and APT repos** for users to keep up to date. LINK?
+-   unRAID Community Applications template updated. LINK
+-   The wiki was moved into its [own repo](https://github.com/unifi-poller/wiki) and
+    attached to a build pipeline that auto deploys tested changes to the main wiki.
+-   The dashboards were moved into their [own repo](https://github.com/unifi-poller/dashboards)
+    and attached to a build pipeline that auto deploys them to Grafana.com.
+
+### Older (pre-2020) Releases
+
+The following releases were drafted in this file from memory.
+They are condensed and contain fewer details than the more recent releases above.
+
+#### `v1.6.3` (12.12.2019) Exit Behavior Changed
+
+[v1.6.1](https://github.com/unifi-poller/unifi-poller/releases/tag/v1.6.1),
+[v1.6.2](https://github.com/unifi-poller/unifi-poller/releases/tag/v1.6.2),
+[v1.6.3](https://github.com/unifi-poller/unifi-poller/releases/tag/v1.6.3)
+This one had a long life.
+
+-   Prometheus bug fixes.
+-   App no longer exits on error (yay unRAID users).
+
+#### `v1.6` (12.01.2019) Prometheus Support & InfluxDB Improvements + Dashboard Updates
+
+[v1.6](https://github.com/unifi-poller/unifi-poller/releases/tag/v1.6.0)
+
+-   **Prometheus support added.**
+-   Five new Prometheus dashboards.
+-   Lots of unused data trimmed from InfluxDB output.
+-   Fixed UAP VAP data collection. It was all wrong.
+-   Updated all InfluxDB dashboards.
+
+#### `v1.5.4` (10.08.2019) Bug Fixes
+
+[v1.5.4](https://github.com/unifi-poller/unifi-poller/releases/tag/v1.5.4)
+This one had a long life.
+
+-   This release provides fixes for a handful of bugs that only affect a few controllers and use cases.
+-   `max_errors` was removed from the config file. Any error will cause the poller to exit now.
+
+#### `v1.5.3` (09.09.2019) UDM and UDM Pro - Docker ENV Support
+
+[v1.5.1](https://github.com/unifi-poller/unifi-poller/releases/tag/v1.5.1),
+[v1.5.2](https://github.com/unifi-poller/unifi-poller/releases/tag/v1.5.2),
+[v1.5.3](https://github.com/unifi-poller/unifi-poller/releases/tag/v1.5.3)
+
+-   UDM and UDM Pro (UniFi Dream Machine) support added. 5.11.38
+-   Dashboards Updated
+-   A fix was put in place to make the application more resilient to a failing
+    startup condition (on Linux using systemd).
+-   The application can now be configured with environment variables,
+    making it much easier to run in Docker.
+-   Some "defaults" were changed to match documentation, but nothing major.
+-   Also included is a new re-authenticate feature. Most people won't need this,
+    but at least one person does.
+
+#### `v1.5` (07.11.2019) Intrusion Detection Data
+
+[v1.4.1](https://github.com/unifi-poller/unifi-poller/releases/tag/v1.4.1),
+[v1.4.2](https://github.com/unifi-poller/unifi-poller/releases/tag/v1.4.2),
+[v1.5](https://github.com/unifi-poller/unifi-poller/releases/tag/v1.5.0)
+
+-   UniFi 5.11.x support.
+-   Multi-architecture Docker Images
+-   IDS collection. Actually sucks.
+-   Bug fix: The application was failing to restart after exiting on Linux.
+-   Bug fix: Some beta controllers are failing to unmarshal a specific piece of data.
+-   Bug fix: Devices without names were not selectable in the dashboard variables.
+-   Build improvements thanks to [application-builder](https://github.com/golift/application-builder).
+
+#### `v1.4` (07.05.2019) Data Surplus
+
+[v1.4](https://github.com/unifi-poller/unifi-poller/releases/tag/v1.4.0),
+
+-   Clients and UAP dashboards overhauled.
+-   Data formats changed.
+-   Bug fixes.
+-   Add additional config file support (yaml, json, xml).
+-   Switched to a newer (better maintained) TOML library (only used for config file).
+-   Dashboards are moved out of the package and into Grafana.com.
+    This allows them to be updated independently of this application.
+-   A new run-mode has been added. The application can start, collect metrics,
+    report them to influx and exit. This mode is called "lambda".
+-   RPM package will not overwrite up.conf now.
+-   Homebrew file passes all audit tests now.
+-   Makefile had a lot of updates.
+-   32 bit rpm and deb packages are built now (in addition to the existing 64 bit packages)
+-   A 64-bit windows exe binary is available now.
+-   32 bit arm packages for deb and rpm are now available.
+-   New script that automatically downloads (and optionally installs) the
+    correct package for your system.
+
+#### `v1.3.3` (06.19.2019) Exit on Error
+
+[v1.3.1](https://github.com/unifi-poller/unifi-poller/releases/tag/v1.3.1),
+[v1.3.2](https://github.com/unifi-poller/unifi-poller/releases/tag/v1.3.2),
+[v1.3.3](https://github.com/unifi-poller/unifi-poller/releases/tag/v1.3.3)
+
+-   General code updates.
+-   Bug fixes.
+-   Dashboard fixes.
+-   Adds very basic DPI counter stats, but no graphs.
+-   Improved logging and debug.
+-   Homebrew fixes.
+-   Log file location change for macOS.
+-   Manual updates.
+-   **Adds fifth dashboard. (Network Sites)**
+-   Adds Docker builds and release.
+
+#### `v1.3` (06.13.2019) Better Debug, Better Output, Better Build, Better Layout
+
+[v1.2.3](https://github.com/unifi-poller/unifi-poller/releases/tag/v1.2.3),
+[v1.2.2](https://github.com/unifi-poller/unifi-poller/releases/tag/v1.2.2),
+[v1.3](https://github.com/unifi-poller/unifi-poller/releases/tag/v1.3.0)
+
+-   Improved logging and debug.
+-   Build pipeline updates.
+-   Homebrew support.
+-   Main routine put into a library.
+-   Bug fixes and RPM build fix.
+-   Dashboard updates.
+
+#### `v1.2` (06.05.2019) Better Site support
+
+[v1.2](https://github.com/unifi-poller/unifi-poller/releases/tag/v1.2.0)
+
+-   Bug fixes.
+-   Site name added to metrics making dashboards better.
+-   Travis-CI builds packages now.
+
+#### `v1.1.1` (05.30.2019) Packages! Better run support
+
+[v1.1.0](https://github.com/unifi-poller/unifi-poller/releases/tag/v1.1.0),
+[v1.1.1](https://github.com/unifi-poller/unifi-poller/releases/tag/v1.1.1)
+
+-   Adds multi site support. Was only working with `default`.
+-   Provides precompiled binaries for linux amd64 and macos amd64.
+-   Provides linux and macos packages. RPM, DEB, PKG for amd64 arch.
+-   Bug fixes and small features.
+
+#### `v1.0` (01.26.2019) Cleanup and New Libraries
+
+[v0.2a](https://github.com/unifi-poller/unifi-poller/releases/tag/v0.2a),
+[v0.2b](https://github.com/unifi-poller/unifi-poller/releases/tag/V0.2b),
+[v0.3](https://github.com/unifi-poller/unifi-poller/releases/tag/0.3.0),
+[v1.0](https://github.com/unifi-poller/unifi-poller/releases/tag/v1.0.0)
+
+-   **Adds more device support: UAP USG**
+-   Adds better json parsing.
+-   Avoid errors from different controllers rendering the same data in different ways.
+-   Better log output.
+-   Split UniFi API collection code into a library.
+
+#### `v0.2` (04.22.2018) Full Client Support
+
+[v0.2](https://github.com/unifi-poller/unifi-poller/releases/tag/v0.2)
+
+-   Adds Support for Pulling Client Data
