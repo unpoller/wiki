@@ -123,7 +123,7 @@ This one had a long life.
 
 #### `v1.4` (07.05.2019) Data Surplus
 
-[v1.4](https://github.com/unifi-poller/unifi-poller/releases/tag/v1.4.0),
+[v1.4](https://github.com/unifi-poller/unifi-poller/releases/tag/v1.4.0)
 
 -   Clients and UAP dashboards overhauled.
 -   Data formats changed.
@@ -172,6 +172,7 @@ This one had a long life.
 -   Main routine put into a library.
 -   Bug fixes and RPM build fix.
 -   Dashboard updates.
+-   **Adds USW dashboard.**
 
 #### `v1.2` (06.05.2019) Better Site support
 
