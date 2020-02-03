@@ -68,13 +68,13 @@ use the `docker build` command directly with a correct `--build-arg` flag.
 This command starts the container as a daemon:
 
 ```shell
-docker run -d -v /your/config/up.conf:/etc/unifi-poller/up.conf golift/unifi-poller:stable
+docker run -d -v /your/config/up.conf:/config/unifi-poller.conf golift/unifi-poller:latest
 ```
 
 Copy the [example configuration file](https://github.com/unifi-poller/unifi-poller/blob/master/examples/up.conf.example)
 from this repository and mount it as an overlay into the container.
-The example configuration file is also included in the container at the default
-location _/etc/unifi-poller/up.conf_
+The example configuration file is also included in the container at the
+location _/etc/unifi-poller/up.conf_, but you should mount yours at _/config/unifi-poller.conf_.
 
 ## Docker Compose
 
@@ -88,7 +88,7 @@ then this is a great option to let you try this software. TODO: finish this sect
 Example passing an env variable:
 
 ```shell
-docker run -e UP_UNIFI_PASS="your-secret-pasword" -e UP_DEBUG="true" -d golift/unifi-poller:stable
+docker run -e UP_UNIFI_DEFAULT_PASS="your-secret-pasword" -e UP_POLLER_DEBUG="true" -d golift/unifi-poller:latest
 ```
 
 #### Available Variables
