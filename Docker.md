@@ -74,14 +74,18 @@ docker run -d -v /host/path/up.conf:/config/unifi-poller.conf golift/unifi-polle
 from this repo and mount it as an overlay into the container.
 -   You should mount your overlay config file at **/config/unifi-poller.conf**.
 -   _For legacy reasons, you may also mount it at /etc/unifi-poller/up.conf_.
--   **Instead of a config file, you may use environment variables.** Explained below.
+-   **Instead of a config file, you may use environment variables.**
+    Explained in the [Configuration](Configuration) wiki page.
 
 ## Docker Compose
 
 Included with version 1.5.3 is a Docker Compose file and example environment variable
-configuration to make it work. If you do not have Grafana or InfluxDB running already,
-then this is a great option to let you try this software. TODO: finish this section......
-9/9/19 - give credit to @jonbloom.
+configuration to make it work. These were graciously provided [@jonbloom](https://github.com/jonbloom).
+If you do not have Grafana or InfluxDB running already,
+then this is a great option to let you try this software.
+
+The docker compose files have been updated to work with poller v2.
+TODO: finish this section...... 2/3/20
 
 ### Environment Variables
 
@@ -91,7 +95,7 @@ Example passing an env variable:
 docker run -e UP_UNIFI_DEFAULT_PASS="your-secret-pasword" -e UP_POLLER_DEBUG="true" -d golift/unifi-poller:latest
 ```
 
-#### Available Variables
+#### Available Variables (v1)
 
 For version 2.0 and beyond see the [Configuration](Configuration) doc.
 Everything changed, and **the information below is only valid for versions 1.5.x and 1.6.x.**
