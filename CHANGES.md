@@ -34,23 +34,26 @@ file format. If you use environment variables, they all need to be updated!
 -   Dynamic go plugin support added for output modules. May not prove useful.
 -   [Example (MySQL) dynamic output module](https://github.com/unifi-poller/mysqlunifi)
     created (for above).
+-   Switch from `dep` to go modules.
 -   Application refactored to use "registering module" approach.
     -   This means the main library knows nothing about the input or output modules.
-        hey register their interfaces on load.
--   **Multiple Controller support added to input module.**
--   Dynamic controller support added to input module and prometheus module.
+        They register their own interfaces on load.
 -   **Adds FreeBSD packages** and binaries for amd64, i386 and armhf.
--   All dashboards updated. Multi-controller support added, but hidden
-    (since most users wont need it).
 -   **New dashboard: Client DPI** (for Prometheus and InfluxDB, 12 total)
--   Homebrew fixes.
--   Build updates.
--   Type Conflict error fixes (and probably more errors added, uhg).
--   Install Script updates. LINK
 -   New JFrogg Bintray **YUM and APT repos** for users to keep up to date. LINK?
+-   **Multiple controller support added to input module.**
+    You may configure multiple controllers and group them with roles.
+-   **Dynamic controller support added to input module and prometheus module.**
+-   **All [dashboards updated](https://grafana.com/dashboards?search=unifi-poller).
+    Multi-controller support added**, but hidden (since most users wont need it).
+-   Homebrew fixes.
+-   Many build updates for packages, FreeBSD, Homebrew and Docker.
+-   Type Conflict error fixes (and probably more errors added, uhg).
+-   Install script updates. LINK
 -   unRAID Community Applications template updated. LINK
+-   Many many [wiki updates](https://github.com/unifi-poller/unifi-poller/wiki).
 -   The wiki was moved into its [own repo](https://github.com/unifi-poller/wiki) and
-    attached to a build pipeline that auto deploys tested changes to the main wiki.
+    attached to a build pipeline that auto deploys tested changes to the main wiki (linked above)
 -   The dashboards were moved into their [own repo](https://github.com/unifi-poller/dashboards)
     and attached to a build pipeline that auto deploys them to Grafana.com.
 
@@ -86,6 +89,7 @@ This one had a long life.
 
 -   This release provides fixes for a handful of bugs that only affect a few controllers and use cases.
 -   `max_errors` was removed from the config file. Any error will cause the poller to exit now.
+-   InfluxDB SSL cert verification added.
 
 #### `v1.5.3` (09.09.2019) UDM and UDM Pro - Docker ENV Support
 
