@@ -63,18 +63,18 @@ use the `docker build` command directly with a correct `--build-arg` flag.
 
 ## Running the Container
 
-*   **Make sure you've completed the prerequisites in the [Installation](Installation) article.**
-
-This command starts the container as a daemon:
+-   **Make sure you've completed the prerequisites in the [Installation](Installation) article.**
+-   This command starts the container as a daemon:
 
 ```shell
-docker run -d -v /your/config/up.conf:/config/unifi-poller.conf golift/unifi-poller:latest
+docker run -d -v /host/path/up.conf:/config/unifi-poller.conf golift/unifi-poller:latest
 ```
 
-Copy the [example configuration file](https://github.com/unifi-poller/unifi-poller/blob/master/examples/up.conf.example)
-from this repository and mount it as an overlay into the container.
-The example configuration file is also included in the container at the
-location _/etc/unifi-poller/up.conf_, but you should mount yours at _/config/unifi-poller.conf_.
+-   Copy the [example config file](https://github.com/unifi-poller/unifi-poller/blob/master/examples/up.conf.example)
+from this repo and mount it as an overlay into the container.
+-   You should mount your overlay config file at **/config/unifi-poller.conf**.
+-   _For legacy reasons, you may also mount it at /etc/unifi-poller/up.conf_.
+-   **Instead of a config file, you may use environment variables.** Explained below.
 
 ## Docker Compose
 
@@ -94,7 +94,7 @@ docker run -e UP_UNIFI_DEFAULT_PASS="your-secret-pasword" -e UP_POLLER_DEBUG="tr
 #### Available Variables
 
 For version 2.0 and beyond see the [Configuration](Configuration) doc.
-Everything changed, and the information below is only valid for versions 1.5.x and 1.6.x.
+Everything changed, and **the information below is only valid for versions 1.5.x and 1.6.x.**
 
 |ENV v1.5|ENV v1.6|config|note|
 |---|---|---|---|
