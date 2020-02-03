@@ -47,6 +47,24 @@ Install a specific version like this:
 docker pull golift/unifi-poller:2.0.1
 ```
 
+
+#### Major or Minor version
+
+Install the latest minor version like this:
+
+```shell
+docker pull golift/unifi-poller:2.0
+```
+
+And the latest major version (2) like this:
+
+```shell
+docker pull golift/unifi-poller:2
+```
+
+The former will download the latest 2.0.x release, and the latter will download
+the latest 2.x release. These are both considered safe and OK.
+
 #### From Source
 
 You can build your own image from source.
