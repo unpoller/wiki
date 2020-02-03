@@ -67,7 +67,8 @@ use the `docker build` command directly with a correct `--build-arg` flag.
 *   This command starts the container as a daemon:
 
 ```shell
-docker run -d -v /host/path/up.conf:/config/unifi-poller.conf golift/unifi-poller:latest
+docker pull golift/unifi-poller
+docker run -d -v /host/path/up.conf:/config/unifi-poller.conf golift/unifi-poller
 ```
 
 *   Copy the [example config file](https://github.com/unifi-poller/unifi-poller/blob/master/examples/up.conf.example)
