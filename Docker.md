@@ -63,18 +63,18 @@ use the `docker build` command directly with a correct `--build-arg` flag.
 
 ## Running the Container
 
--   **Make sure you've completed the prerequisites in the [Installation](Installation) article.**
--   This command starts the container as a daemon:
+*   **Make sure you've completed the prerequisites in the [Installation](Installation) article.**
+*   This command starts the container as a daemon:
 
 ```shell
 docker run -d -v /host/path/up.conf:/config/unifi-poller.conf golift/unifi-poller:latest
 ```
 
--   Copy the [example config file](https://github.com/unifi-poller/unifi-poller/blob/master/examples/up.conf.example)
-from this repo and mount it as an overlay into the container.
--   You should mount your overlay config file at **/config/unifi-poller.conf**.
--   _For legacy reasons, you may also mount it at /etc/unifi-poller/up.conf_.
--   **Instead of a config file, you may use environment variables.**
+*   Copy the [example config file](https://github.com/unifi-poller/unifi-poller/blob/master/examples/up.conf.example)
+    from this repo and mount it as an overlay into the container.
+*   You should mount your overlay config file at **/config/unifi-poller.conf**.
+*   _For legacy reasons, you may also mount it at /etc/unifi-poller/up.conf_.
+*   **Instead of a config file, you may use environment variables.**
     Explained in the [Configuration](Configuration) wiki page.
 
 ## Docker Compose
