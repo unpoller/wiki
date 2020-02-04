@@ -19,7 +19,7 @@ file format. If you use environment variables, they all need to be updated!
 
 ##### v2 Updates
 
--   New GitHub Org created for UniFi Poller. Moved from personal repo. LINK
+-   New [GitHub Org](https://github.com/unifi-poller) created for UniFi Poller. Moved from personal repo.
 -   [InfluxDB output code moved to separate library](https://github.com/unifi-poller/influxunifi)
     as modular plugin. (output module)
 -   [UniFi input code moved to separate library](https://github.com/unifi-poller/inputunifi)
@@ -34,23 +34,24 @@ file format. If you use environment variables, they all need to be updated!
 -   Dynamic go plugin support added for output modules. May not prove useful.
 -   [Example (MySQL) dynamic output module](https://github.com/unifi-poller/mysqlunifi)
     created (for above).
+-   Support for latest UDM OS using 5.12.55+ controller version. API paths changed.
 -   Switch from `dep` to go modules.
 -   Application refactored to use "registering module" approach.
     -   This means the main library knows nothing about the input or output modules.
         They register their own interfaces on load.
 -   **Adds FreeBSD packages** and binaries for amd64, i386 and armhf.
 -   **New dashboard: Client DPI** (for Prometheus and InfluxDB, 12 total)
--   New JFrogg Bintray **YUM and APT repos** for users to keep up to date. LINK?
+-   New [JFrogg Bintray **YUM and APT repos**](http://bintray.com/golift) for users to keep up to date.
 -   **Multiple controller support added to input module.**
     You may configure multiple controllers and group them with roles.
 -   **Dynamic controller support added to input module and prometheus module.**
 -   **All [dashboards updated](https://grafana.com/dashboards?search=unifi-poller).
     Multi-controller support added**, but hidden (since most users wont need it).
--   Homebrew fixes.
--   Many build updates for packages, FreeBSD, Homebrew and Docker.
--   Type Conflict error fixes (and probably more errors added, uhg).
--   Install script updates. LINK
--   unRAID Community Applications template updated. LINK
+-   Many build fixes and improvements for packages, FreeBSD, Homebrew and Docker.
+-   Type Conflict error fixes for InfluxDB (and probably more errors added, uhg).
+-   [Install script](https://github.com/unifi-poller/unifi-poller/blob/master/scripts/install.sh) updates.
+-   unRAID [Community Applications template](https://github.com/selfhosters/unRAID-CA-templates/blob/master/templates/unifi-poller.xml)
+    updated.
 -   Many many [wiki updates](https://github.com/unifi-poller/unifi-poller/wiki).
 -   The wiki was moved into its [own repo](https://github.com/unifi-poller/wiki) and
     attached to a build pipeline that auto deploys tested changes to the main wiki (linked above)
