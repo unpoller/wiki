@@ -100,11 +100,11 @@ to your own custom dashboards.
 
 |App|Prometheus ID|Influx ID|Get this if you...|
 |---|---|---|---|
-|Client DPI|[11310](https://grafana.com/grafana/dashboards/11310)|[10419](https://grafana.com/grafana/dashboards/10419)|...enabled `site_dpi`|
+|Client DPI|[11310](https://grafana.com/grafana/dashboards/11310)|[10419](https://grafana.com/grafana/dashboards/10419)|...enabled `save_dpi`|
 |Sites|[11311](https://grafana.com/grafana/dashboards/11311)|[10414](https://grafana.com/grafana/dashboards/10414)|...enabled `save_sites`|
 |USW|[11312](https://grafana.com/grafana/dashboards/11312)|[10417](https://grafana.com/grafana/dashboards/10417)|...have UniFi Switches|
 |USG|[11313](https://grafana.com/grafana/dashboards/11313)|[10416](https://grafana.com/grafana/dashboards/10416)|...have UniFi Gateways|
-|UAP|[11314](https://grafana.com/grafana/dashboards/11314)|[10415](https://grafana.com/grafana/dashboards/10415)|...have UniFi WAPs|
+|UAP|[11314](https://grafana.com/grafana/dashboards/11314)|[10415](https://grafana.com/grafana/dashboards/10415)|...have UniFi Access Points|
 |Clients|[11315](https://grafana.com/grafana/dashboards/11315)|[10418](https://grafana.com/grafana/dashboards/10418)|...love `nano`|
 
 #### Dashboard Update Notes
