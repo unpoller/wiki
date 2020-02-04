@@ -6,6 +6,8 @@
 
 [v2.0](https://github.com/unifi-poller/unifi-poller/releases/tag/v2.0.0)
 
+This release is still in beta. Feb 4, 2020.
+
 ##### v2 Breaking Changes
 
 These things have changed and will require you to take action when you upgrade
