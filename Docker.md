@@ -7,24 +7,29 @@ by Docker Cloud using the
 [Dockerfile](https://github.com/unifi-poller/unifi-poller/blob/master/init/docker/Dockerfile)
 included in this repo.
 
-You can install `latest`, `stable` (recommended), or pick a specific version.
+### Pulling Images
+
+Linux images are available for 386, amd64, arm32v6 and arm64v8 architectures.
+There is no need to specify an architecture tag, docker will pull the correct
+image automatically with the `latest` tag.
+
+You can install `latest` (recommended), or pick a specific version.
 See the following sections for information on how to do each.
 
-### Stable Release
+#### Stable Release
 
-You may install the current stable released version using a tag like this:
+*   **This is the recommended way to install.**
+
+Install the current stable released version using a tag like this:
 
 ```shell
-docker pull golift/unifi-poller:stable
+docker pull golift/unifi-poller:latest
 ```
 
-This is the recommended way to install. Linux images are available for 386, amd64, arm32v6 and arm64v8.
-There is no need to specify an arch tag, docker will pull the correct image automatically with the `stable` tag.
-For all intents and purposes, the `stable` tag will align with the `latest` tag.
+#### Latest (master)
 
-### Latest (master)
-
-You may download the latest version with this command:
+Download the latest possibly-unreleased code
+with this command (using the `master` tag):
 
 ```shell
 docker pull golift/unifi-poller:master
@@ -32,17 +37,34 @@ docker pull golift/unifi-poller:master
 
 Using `master` is not recommended. You may be asked to give this a try while troubleshooting
 or debugging, but generally this will contain untested code or things that will break your graphs.
-The `master` docker tag is based from the `master` git branch and may contain bugs.
+The `master` docker tag is based from the `master` git branch and may contain bugs; you've been overly warned.
 
-### Pick a version
+#### Specific version
 
 Install a specific version like this:
 
 ```shell
-docker pull golift/unifi-poller:1.5.4
+docker pull golift/unifi-poller:2.0.1
 ```
 
-### From Source
+#### Major or Minor version
+
+Install the latest minor version like this:
+
+```shell
+docker pull golift/unifi-poller:2.0
+```
+
+And the latest major version (2) like this:
+
+```shell
+docker pull golift/unifi-poller:2
+```
+
+The former will download the latest 2.0.x release, and the latter will download
+the latest 2.x release. These are both considered safe and OK.
+
+#### From Source
 
 You can build your own image from source.
 
@@ -59,28 +81,42 @@ use the `docker build` command directly with a correct `--build-arg` flag.
 ## Running the Container
 
 *   **Make sure you've completed the prerequisites in the [Installation](Installation) article.**
-
-This command starts the container as a daemon:
+*   This command starts the container as a daemon:
 
 ```shell
-docker run -d -v /your/config/up.conf:/etc/unifi-poller/up.conf golift/unifi-poller:stable
+docker pull golift/unifi-poller
+docker run -d -v /host/path/up.conf:/config/unifi-poller.conf golift/unifi-poller
 ```
 
-Copy the [example configuration file](https://github.com/unifi-poller/unifi-poller/blob/master/examples/up.conf.example)
-from this repository and mount it as an overlay into the container.
-The example configuration file is also included in the container at the default
-location _/etc/unifi-poller/up.conf_
+*   Copy the [example config file](https://github.com/unifi-poller/unifi-poller/blob/master/examples/up.conf.example)
+    from this repo and mount it as an overlay into the container.
+*   You should mount your overlay config file at **/config/unifi-poller.conf**.
+*   _For legacy reasons, you may also mount it at /etc/unifi-poller/up.conf_.
+*   **Instead of a config file, you may use environment variables.**
+    Explained in the [Configuration](Configuration) wiki page.
+
+## Docker Compose
+
+Included with version 1.5.3 is a Docker Compose file and example environment variable
+configuration to make it work. These were graciously provided [@jonbloom](https://github.com/jonbloom).
+If you do not have Grafana or InfluxDB running already,
+then this is a great option to let you try this software.
+
+The docker compose files have been updated to work with poller v2.
+TODO: finish this section...... 2/3/20
 
 ### Environment Variables
 
-As of version 1.5.3 all configuration options may be passed as environment variables.
-Here's an example:
+Example passing an env variable:
 
 ```shell
-docker run -e UP_UNIFI_PASS="your-secret-pasword" -e UP_DEBUG="true" -d golift/unifi-poller:stable
+docker run -e UP_UNIFI_DEFAULT_PASS="your-secret-pasword" -e UP_POLLER_DEBUG="true" -d golift/unifi-poller:latest
 ```
 
-#### Available Variables
+#### Available Variables (v1)
+
+For version 2.0 and beyond see the [Configuration](Configuration) doc.
+Everything changed, and **the information below is only valid for versions 1.5.x and 1.6.x.**
 
 |ENV v1.5|ENV v1.6|config|note|
 |---|---|---|---|
@@ -102,10 +138,3 @@ UP_POLLING_INTERVAL|UP_INTERVAL|interval|Go duration. ie `"1m"` or `"90s"`, defa
 UP_POLL_SITES|UP_SITES|sites|separate sites with commas, default `"all"`
 ||UP_NAMESPACE|namespace|top level Prometheus namespace. Default `"unifipoller"`
 ||UP_HTTP_LISTEN|http_listen|Prometheus HTTP listen address, `ip:port`. You will likely want to publish this port on the host.
-
-## Docker Compose
-
-Included with version 1.5.3 is a Docker Compose file and example environment variable
-configuration to make it work. If you do not have Grafana or InfluxDB running already,
-then this is a great option to let you try this software. TODO: finish this section......
-9/9/19 - give credit to jon.

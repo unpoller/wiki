@@ -1,15 +1,85 @@
-**If you installed a package** and `unifi-poller` is working, updating is simple:
-[Download](https://github.com/unifi-poller/unifi-poller/releases) and install a new package.
-The package will correctly restart `unifi-poller` after upgrading and will not overwrite
-your existing configuration file(s). After installing the new package, you may choose to
-[import updated dashboards](Grafana-Dashboards).
+## Upgrading to Version 2
 
-macOS: `brew upgrade unifi-poller`
+UniFi Poller version 2 changes the config file format and the env variable names.
+This section intends to help you upgrade. Also check out the [Configuration](Configuration)
+doc for more information on configuration options.
 
-**If you followed the [Installation Wiki](Installation)** guide and you want to
-update to a newer version of `unifi-poller` or the [unifi](https://github.com/golift/unifi)
-go library (or [other libraries](https://github.com/unifi-poller/unifi-poller/blob/master/Gopkg.lock)),
-it's pretty easy. Just go through the process again.
+### Config File
+
+If you only have 1 controller you can delete the `[[unifi.controller]]` section
+at the bottom of `up.conf`, and configure your controller in the `[unifi.defaults]`
+section.
+
+Copy your parameters from your existing config file into the new one. The names have
+changed slightly, and each section has a `[header]` that must remain. Use the
+[example config file](https://github.com/unifi-poller/unifi-poller/blob/master/examples/up.conf.example)
+for reference.
+
+If you don't use Prometheus or InfluxDB, set `disable = true` for the one you don't use.
+Leaving Prometheus enabled without using it _safe_ and fine. This exposes a web port
+you can scrape metrics from using
+[apps that support OpenMetrics format](https://openmetrics.io).
+
+### Docker ENV Variables
+
+The names changed a bit, you can see all the new variables in the [Configuration](Configuration)
+doc. Below are the ones you probably used to configured your system.
+Changing these to the correct names should fix your configuration and get poller working.
+
+|v1.x ENV|v2.x ENV|
+|---|---|
+|UP_DEBUG_MODE|UP_POLLER_DEBUG|
+|UP_SAVE_IDS|UP_UNIFI_DEFAULT_SAVE_IDS|
+|n/a|UP_UNIFI_DEFAULT_SAVE_DPI|
+|UP_VERIFY_SSL|UP_UNIFI_DEFAULT_VERIFY_SSL|
+|UP_UNIFI_URL|UP_UNIFI_DEFAULT_URL|
+|UP_UNIFI_USER|UP_UNIFI_DEFAULT_USER|
+|UP_UNIFI_PASS|UP_UNIFI_DEFAULT_PASS|
+|UP_UNIFI_SITES|UP_UNIFI_DEFAULT_SITES_0, UP_UNIFI_DEFAULT_SITES_1, ...|
+|UP_INFLUX_URL|UP_INFLUXDB_URL|
+|UP_INFLUX_USER|UP_INFLUXDB_USER|
+|UP_INFLUX_PASS|UP_INFLUXDB_PASS|
+|UP_INFLUX_DB|UP_INFLUXDB_DB|
+|UP_POLLING_INTERVAL|UP_INFLUXDB_INTERVAL|
+|UP_HTTP_LISTEN|UP_PROMETHEUS_HTTP_LISTEN|
+
+## General Upgrade Advice
+
+After installing the new package, you should [import updated dashboards](Grafana#dashboards).
+If you upgrade major versions, like 1.x to 2.x the config file format may have (probably) changed.
+
+### Linux
+
+**If you installed a package from a repo** (recommended), just run `sudo apt update unifi-poller`
+or `sudo yum install unifi-poller`. The package will correctly restart `unifi-poller`
+after upgrading and will not overwrite your existing configuration file(s).
+
+**If you installed a package** and `unifi-poller` is working,
+updating is simple, but we recommend you install the _new repo_.
+The instructions are in the [Installation](Installation) page.
+If you wish to just continue using a package, simply
+[Download](https://github.com/unifi-poller/unifi-poller/releases) and install
+a new package. The package will correctly restart `unifi-poller` after upgrading
+and will  not overwrite your existing configuration file(s).
+
+### FreeBSD
+
+**If you installed a package** and `unifi-poller` is working, updating is simple.
+[Download](https://github.com/unifi-poller/unifi-poller/releases) and install the new package.
+The package _may not_ restart `unifi-poller` after upgrading and _may_ overwrite
+your existing configuration file(s). Sorry, but FreeBSD hasn't been well tested.
+
+Check the config file and then restart it after upgrading (as root):
+
+```shell
+service unifi-poller restart
+```
+
+### macOS
+
+`brew upgrade unifi-poller`
+
+### ALL
 
 If you want to build and install a new package:
 
@@ -18,13 +88,7 @@ Go back to your git checkout for unifi-poller, or clone it again.
 ```shell
 git clone git@github.com:unifi-poller/unifi-poller.git
 cd unifi-poller
-```
-
-Update app & vendors. This will bring everything up to, what should be, a compatible version.
-
-```shell
-git pull
-dep ensure
+git pull -p
 ```
 
 Test First (optional)
@@ -38,28 +102,12 @@ Build a new package, pick one:
 ```shell
 make deb
 make rpm
+make freebsd_pkg
 ```
 
 Install the package:
 
 ```shell
-# redhat/centos/fedora:
-rpm -Uvh *.rpm || dpkg -i *.deb
+# redhat/centos/fedora || debian/ubuntu || freebsd
+rpm -Uvh *.rpm || dpkg -i *.deb || pkg install *.txz
 ```
-
-## Troubleshooting
-
-If you're getting errors like this:
-
-```shell
-[ERROR] infdb.Write(bp): {"error":"field type conflict"}
-[ERROR] infdb.Write(bp): {"error":"partial write: field type conflict: input field "tx_power" on measurement "uap_radios" is type integer, already exists as type float dropped="}
-```
-
-This usually indicates a bug was fixed and the resulting fixed has caused an
-incompatibility with your existing InfluxDB database. This could also indicate
-you've found a new bug. Please open an issue if you are running the latest
-version and dropping the database did not solve the error. There are generally two fixes:
-
-1.  Downgrade. Do not upgrade to a new version.
-1.  `DROP` and re-`CREATE` the InfluxDB database.

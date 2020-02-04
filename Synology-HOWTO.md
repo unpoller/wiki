@@ -33,7 +33,7 @@ Assumptions:
 
 1.  Add a user to the UniFi Controller. After logging into your controller:
 1.  Go to Settings -> Admins
-1.  Add a read-only user (e.g. 'influx')
+1.  Add a read-only user (e.g. `unifipoller`)
 1.  The new user needs access to each site. For each UniFi Site you want to poll,
     add admin via the 'Manually Set and Share the password' option. Other settings:
 -   don't define an email
@@ -108,7 +108,7 @@ at helps avoid conflicts with the host or other containers you might have that w
 -   `influx` - after a couple of second you should be in the InfluxDB shell.  enter them exactly as shown
 -   `CREATE DATABASE unifi`
 -   `USE unifi`
--   `CREATE USER unifi WITH PASSWORD 'unifi' WITH ALL PRIVILEGES`
+-   `CREATE USER unifipoller WITH PASSWORD 'unifipoller' WITH ALL PRIVILEGES`
 -   `GRANT ALL ON unifi TO unifi`
 
 #### Note
@@ -128,10 +128,11 @@ at helps avoid conflicts with the host or other containers you might have that w
     -   remove the default bridge (usually called bridge)
     -   Ensure that 'use the same network as docker host' is unchecked
 1.  on environment tab add the following vars
-    -   UP_INFLUX_URL = `http://influxdb1:8086`
-    -   UP_UNIFI_URL = `https://{your unifi controller ip}:8443`
-    -   UP_UNIFI_USER = {username for the read on account you created in the unifi controller earlier e.g. influx}
-    -   UP_UNIFI_PASS = {password for the above user}
+    -   UP_INFLUXDB_URL = `http://influxdb1:8086`
+    -   UP_UNIFI_DEFAULT_URL = `https://your.unifi.controller.ip:8443`
+    -   UP_UNIFI_DEFAULT_USER = `username for account created earlier. e.g. unifipoller`
+    -   UP_UNIFI_DEFAULT_PASS = `password for above user`
+    -   (optional) UP_POLLER_DEBUG = `true`
 1.  Finalize container and run
     -   Click APPLY click NEXT click APPLY
 
@@ -254,7 +255,7 @@ Grafana logon (the default is admin:admin)
 
 You will be prompted to change the default password, do so.
 
-## Configuring Grafana Datasource
+## Configuring InfluxDB Grafana Datasource
 
 1.  Click add data source on the page you see after logon.
 1.  Select the influxdb icon
@@ -262,39 +263,22 @@ You will be prompted to change the default password, do so.
     -   Name = UniFi InfluxDB  (or whatever name you want) and set to default
     -   URL = `http://influxdb1:8086`
     -   Database = unifi
-    -   Username = unifi
-    -   Password = unifi
+    -   Username = unifipoller
+    -   Password = unifipoller
 1.  **No other fields need to be changed or set on this page.**
 1.  Click save & test
     -   You should get green banner above the save and test that says 'Data Source is Working'
     -   To return to the homepage click the icon with 4 squares on the left nav-bar and select home
 
-## Importing the default dashboards
+## Import Grafana Dashboards
 
-1.  Click the + on the left nav-bar
-1.  Select import
-1.  In the field 'grafana.com dashboard' enter one of the IDs listed below.
-1.  After each one click the blue load button
-1.  In the unifi section click the 'Select an InfluxDB Data Source' dropdown
-1.  Choose UnFi InfluxDb (or whatever you chose for it earlier)
-1.  Then click the  green import button on the next page
+See the [Import Dashboards](Grafana#import-dashboards)
+section to import the unifi-poller dashboards into Grafana. You just need the InfluxDB dashboards
+if you followed this how-to.
 
 You should see you first dashboard with data (depending on how long you took to do this how-to!)
 
-Repeat this process for more.
-
 Congratulations!
-
-### Dashboards as of 9.14.2019
-
--   10414 - Network Sites
--   10415 - UAP Insights
--   10416 - USG / UDM / UDM Pro Insights
--   10417 - USW Insights
--   10418 - Client Insights
-
-Find all these at [https://grafana.com/grafana/dashboards](https://grafana.com/grafana/dashboards)
-by searching for `unifi-poller`.
 
 ### TODO
 
