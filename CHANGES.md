@@ -16,8 +16,8 @@ file format. If you use environment variables, they all need to be updated!
 
 -   **Config file format changed.** All key names refactored for consistency.
 -   **Environment variable names changed.** All key names refactored for consistency.
--   Some graphs require Grafana 6.6.0. UPGRADE.
--   All graphs require InfluxDB 1.7.x. UPGRADE.
+-   Some graphs require Grafana 6.6.0. Upgrade yours today!
+-   All graphs require InfluxDB 1.7.x. Upgrade yours today!
 
 ##### v2 Updates
 
@@ -38,6 +38,7 @@ file format. If you use environment variables, they all need to be updated!
     created (for above).
 -   Support for latest UDM OS using 5.12.55+ controller version. API paths changed.
 -   Switch from `dep` to go modules.
+-   **Clients' and Sites' DPI data added.** It was a lot of work.
 -   Application refactored to use "registering module" approach.
     -   This means the main library knows nothing about the input or output modules.
         They register their own interfaces on load.
