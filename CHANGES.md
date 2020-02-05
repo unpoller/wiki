@@ -2,7 +2,7 @@
 
 ### Recent Releases (2020+)
 
-#### `v2.0` (0X.XX.2020) Multi-Controller Support, FreeBSD pkg + APT & YUM repos + DPI
+#### `v2.0` (02.XX.2020) Multi-Controller Support, FreeBSD pkg + APT & YUM repos + DPI
 
 [v2.0](https://github.com/unifi-poller/unifi-poller/releases/tag/v2.0.0)
 
@@ -37,7 +37,7 @@ file format. If you use environment variables, they all need to be updated!
 -   [Example (MySQL) dynamic output module](https://github.com/unifi-poller/mysqlunifi)
     created (for above).
 -   Support for latest UDM OS using 5.12.55+ controller version. API paths changed.
--   Switch from `dep` to go modules.
+-   Switch from `dep` to go modules. Now using to Go 1.13, from 1.12.
 -   **Clients' and Sites' DPI data added.** It was a lot of work.
 -   Application refactored to use "registering module" approach.
     -   This means the main library knows nothing about the input or output modules.
@@ -52,7 +52,8 @@ file format. If you use environment variables, they all need to be updated!
     Multi-controller support added**, but hidden (since most users wont need it).
 -   Many build fixes and improvements for packages, FreeBSD, Homebrew and Docker.
 -   Type Conflict error fixes for InfluxDB (and probably more errors added, uhg).
--   [Install script](https://github.com/unifi-poller/unifi-poller/blob/master/scripts/install.sh) updates.
+-   [Install script](https://github.com/unifi-poller/unifi-poller/blob/master/scripts/install.sh)
+    updates. Supports arm64 better and now supports FreeBSD packages.
 -   unRAID [Community Applications template](https://github.com/selfhosters/unRAID-CA-templates/blob/master/templates/unifi-poller.xml)
     updated.
 -   Many many [wiki updates](https://github.com/unifi-poller/unifi-poller/wiki).
@@ -71,7 +72,6 @@ They are condensed and contain fewer details than the more recent releases above
 [v1.6.1](https://github.com/unifi-poller/unifi-poller/releases/tag/v1.6.1),
 [v1.6.2](https://github.com/unifi-poller/unifi-poller/releases/tag/v1.6.2),
 [v1.6.3](https://github.com/unifi-poller/unifi-poller/releases/tag/v1.6.3)
-This one had a long life.
 
 -   Prometheus bug fixes.
 -   App no longer exits on error (yay unRAID users).
@@ -89,7 +89,6 @@ This one had a long life.
 #### `v1.5.4` (10.08.2019) Bug Fixes
 
 [v1.5.4](https://github.com/unifi-poller/unifi-poller/releases/tag/v1.5.4)
-This one had a long life.
 
 -   This release provides fixes for a handful of bugs that only affect a few controllers and use cases.
 -   `max_errors` was removed from the config file. Any error will cause the poller to exit now.
