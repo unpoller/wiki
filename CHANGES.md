@@ -2,11 +2,9 @@
 
 ### Recent Releases (2020+)
 
-#### `v2.0` (02.XX.2020) Multi-Controller Support, FreeBSD pkg + APT & YUM repos + DPI
+#### `v2.0` (02.06.2020) Multi-Controller Support, FreeBSD pkg + APT & YUM repos + DPI
 
 [v2.0](https://github.com/unifi-poller/unifi-poller/releases/tag/v2.0.0)
-
-This release is still in beta. Feb 4, 2020.
 
 ##### v2 Breaking Changes
 
