@@ -103,6 +103,7 @@ If you do not have Grafana or InfluxDB running already,
 then this is a great option to let you try this software.
 
 The docker compose files have been updated to work with poller v2.
+
 *   Fill out the `docker-compose.env.example` file with the appropriate values
 *   Save the file as `.env` in the same folder as your `docker-compose.yml` file.
 *   Run `docker-compose up -d`
