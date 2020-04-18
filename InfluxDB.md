@@ -61,5 +61,5 @@ Create database:
 CREATE DATABASE unifi
 USE unifi
 CREATE USER unifi WITH PASSWORD 'unifi' WITH ALL PRIVILEGES
-GRANT ALL ON unifi TO unifi
+GRANT ALL ON unifi TO unifipoller
 ```
