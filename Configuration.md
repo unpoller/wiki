@@ -75,7 +75,7 @@ UP_UNIFI_DEFAULT_SAVE_SITES|unifi.defaults.save_sites|`true`|
 UP_UNIFI_DEFAULT_SAVE_IDS|unifi.defaults.save_ids|`false`|Only works with InfluxDB, and not very useful|
 UP_UNIFI_DEFAULT_SAVE_DPI|unifi.defaults.save_dpi|`false`|
 UP_UNIFI_DEFAULT_VERIFY_SSL|unifi.defaults.verify_ssl|`false`|
-UP_UNIFI_DEFAULT_SITES_0|unifi.defaults.sites.0|`["all"]`, specify more sites with `_1`, `_2`, etc.|
+UP_UNIFI_DEFAULT_SITE_0|unifi.defaults.site.0|`["all"]`, specify more sites with `_1`, `_2`, etc.|
 
 #### UniFi Controllers
 
@@ -99,7 +99,7 @@ UP_UNIFI_CONTROLLER_0_SAVE_SITES|unifi.controller.save_sites|`true`, Powers Netw
 UP_UNIFI_CONTROLLER_0_SAVE_DPI|unifi.controller.save_dpi|`false`, Powers DPI dashboard|
 UP_UNIFI_CONTROLLER_0_SAVE_IDS|unifi.controller.save_ids|`false`, Only works with InfluxDB, and not very useful|
 UP_UNIFI_CONTROLLER_0_VERIFY_SSL|unifi.controller.verify_ssl|`false`, Verify controller SSL certificate|
-UP_UNIFI_CONTROLLER_0_SITES_0|unifi.controller.sites.0|`["all"]`, specify more sites with `_1`, `_2`, etc.|
+UP_UNIFI_CONTROLLER_0_SITE_0|unifi.controller.site.0|`["all"]`, specify more sites with `_1`, `_2`, etc.|
 
 ### Output: Prometheus
 
