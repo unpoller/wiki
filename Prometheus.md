@@ -7,7 +7,7 @@ This page explains how to configure Prometheus and UniFi-Poller.
 For help installing Prometheus you'll have to look elsewhere;
 that's not in this wiki at this time.
 
-## Single Controller
+# Single Controller
 
 Lets make the first example look a lot like the old v1.x way of doing things.
 Configure a single controller in up.conf (or using environment variables).
@@ -26,8 +26,10 @@ If you have other scrape configs, leave them there. Just add a new one for `unif
 Replace `localhost` with the IP of the host running unifi-poller.
 That's it! Restart prometheus and it should begin to scrape data from your controller.
 
-## Multiple Controllers
+# Multiple Controllers
 
+You can either configure the controllers in unifi-poller or poll them unconfigured.
+When polling unconfigured, you must enable `dynamic`.
 You can scrape multiple controllers in several ways. Here is a list of options:
 
 1.  Set all controller user/passwords the same and pass in controller URLs from Prometheus.
@@ -39,12 +41,7 @@ You can scrape multiple controllers in several ways. Here is a list of options:
     all the controllers at the same time from a single prometheus instance. This is the
     most common approach.
 
-### Approach: Poll by URL
-
-You can either configure the controllers in unifi-poller or poll them unconfigured.
-When polling unconfigured, you must enable `dynamic`.
-
-#### First Approach
+## First Approach
 
 This describes approach 1 above.
 
@@ -75,7 +72,7 @@ UP_UNIFI_DEFAULT_USER="unifipoller"
 UP_UNIFI_DEFAULT_PASS="unifipoller"
 ```
 
-#### Second Approach
+## Second Approach
 
 This describes approach 2 above.
 
@@ -112,7 +109,7 @@ UP_UNIFI_CONTROLLER_1_USER="unifipoller"
 UP_UNIFI_CONTROLLER_1_PASS="unifipoller"
 ```
 
-##### Prometheus Configuration for URLs
+### Prometheus Configuration for URLs
 
 This applies to both approaches above. Configure prometheus like this:
 
@@ -136,7 +133,7 @@ scrape_configs:
 As in the example above, replace `localhost` with the IP of your unifi-poller host,
 and replace `unifi.controller` and `another.controller` with the IPs of your controllers.
 
-#### Final Approach, _NOT Recommended_
+## Final Approach, _NOT Recommended_
 
 Just configure your controllers in `up.conf` or using env variables as explained
 in the [Configuration](Configuration) doc. Then setup Prometheus like this:
