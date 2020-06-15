@@ -126,8 +126,8 @@ scrape_configs:
     metrics_path: /scrape
     relabel_configs:
      - source_labels: [__address__]
-       target_label: __param_path
-     - source_labels: [__param_path]
+       target_label: __param_target
+     - source_labels: [__param_target]
        target_label: instance
      - target_label: __address__
        replacement: localhost:9130
