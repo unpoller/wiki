@@ -37,9 +37,8 @@ You can scrape multiple controllers in several ways. Here is a list of options:
 1.  Configure each controller in unifi-poller and pass in urls from Prometheus.
     This allows them to have different usernames and passwords.
 1.  **NOT Recommended:** Configure each controller in unifi-poller and configure prometheus as
-    shown above in the Single Controller section. This is useful when you just want to poll
-    all the controllers at the same time from a single prometheus instance. This is the
-    most common approach.
+    shown above in the Single Controller section. This is useful when you want to poll
+    all the controllers at the same time from a single prometheus instance.
 
 ## First Approach
 
@@ -130,7 +129,7 @@ scrape_configs:
        replacement: localhost:9130
 ```
 
-As in the example above, replace `localhost` with the IP of your unifi-poller host,
+Replace `localhost` with the IP of your unifi-poller host,
 and replace `unifi.controller` and `another.controller` with the IPs of your controllers.
 
 ## Final Approach, _NOT Recommended_
