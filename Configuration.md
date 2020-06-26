@@ -75,8 +75,10 @@ The unifi section begins with the `[unifi]` header and has the following paramet
 | UP_UNIFI_DEFAULT_USER | unifi.defaults.user | `"unifipoller"`, default applies to any controller without a username |
 | UP_UNIFI_DEFAULT_PASS | unifi.defaults.pass | `""`, default applies to any controller without a password |
 | UP_UNIFI_DEFAULT_SAVE_SITES | unifi.defaults.save_sites | `true` |
-| UP_UNIFI_DEFAULT_SAVE_EVENTS | unifi.defaults.save_events | `false`, Only works with InfluxDB, added in v2.0.2 |
-| UP_UNIFI_DEFAULT_SAVE_IDS | unifi.defaults.save_ids | `false`, Only works with InfluxDB |
+| UP_UNIFI_DEFAULT_SAVE_IDS | unifi.defaults.save_ids | `false`, Only works with InfluxDB / Loki |
+| UP_UNIFI_DEFAULT_SAVE_EVENTS | unifi.defaults.save_events | `false`, Only works with InfluxDB / Loki, added in v2.0.2 |
+| UP_UNIFI_DEFAULT_SAVE_ALARMS | unifi.defaults.save_alarms | `false`, Only works with InfluxDB / Loki, added in v2.0.2 |
+| UP_UNIFI_DEFAULT_SAVE_ANOMALIES | unifi.defaults.save_anomalies | `false`, Only works with InfluxDB / Loki, added in v2.0.2 |
 | UP_UNIFI_DEFAULT_SAVE_DPI | unifi.defaults.save_dpi | `false` |
 | UP_UNIFI_DEFAULT_VERIFY_SSL | unifi.defaults.verify_ssl | `false` |
 | UP_UNIFI_DEFAULT_SITE_0 | unifi.defaults.site.0 | `["all"]`, specify more sites with `_1`, `_2`, etc. |
@@ -100,8 +102,10 @@ Like any configured list, you may configure controllers with a file or env vars,
 | UP_UNIFI_CONTROLLER_0_USER | unifi.controller.user | `"unifipoller"` |
 | UP_UNIFI_CONTROLLER_0_PASS | unifi.controller.pass | `""` |
 | UP_UNIFI_CONTROLLER_0_SAVE_SITES | unifi.controller.save_sites | `true`, Powers Network Sites dashboard |
-| UP_UNIFI_CONTROLLER_0_SAVE_EVENTS | unifi.controller.save_events | `false`, Only works with InfluxDB, added in v2.0.2 |
-| UP_UNIFI_CONTROLLER_0_SAVE_IDS | unifi.controller.save_ids | `false`, Only works with InfluxDB |
+| UP_UNIFI_CONTROLLER_0_SAVE_IDS | unifi.controller.save_ids | `false`, Only works with InfluxDB / Loki |
+| UP_UNIFI_CONTROLLER_0_SAVE_EVENTS | unifi.controller.save_events | `false`, Only works with InfluxDB / Loki, added in v2.0.2 |
+| UP_UNIFI_CONTROLLER_0_SAVE_ALARMS | unifi.controller.save_alarms | `false`, Only works with InfluxDB / Loki, added in v2.0.2 |
+| UP_UNIFI_CONTROLLER_0_SAVE_ANOMALIES | unifi.controller.save_anomalies | `false`, Only works with InfluxDB / Loki, added in v2.0.2 |
 | UP_UNIFI_CONTROLLER_0_SAVE_DPI | unifi.controller.save_dpi | `false`, Powers DPI dashboard |
 | UP_UNIFI_CONTROLLER_0_VERIFY_SSL | unifi.controller.verify_ssl | `false`, Verify controller SSL certificate |
 | UP_UNIFI_CONTROLLER_0_SITE_0 | unifi.controller.site.0 | `["all"]`, specify more sites with `_1`, `_2`, etc. |
