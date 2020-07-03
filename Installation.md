@@ -25,6 +25,7 @@ You also need Grafana and you have to add the Influx or Prometheus data source t
     ```shell
     influx -host localhost -port 8086
     CREATE DATABASE unifi
+    USE unifi
     CREATE USER unifipoller WITH PASSWORD 'unifipoller' WITH ALL PRIVILEGES
     GRANT ALL ON unifi TO unifipoller
     ```

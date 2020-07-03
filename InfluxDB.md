@@ -55,11 +55,20 @@ Delete database. Do this when the db is too large, or when `unifi-poller` change
 DROP DATABASE unifi
 ```
 
+You can also get specific and drop certain measurements.
+
+```shell
+USE unifi
+SHOW measurements
+DROP measurement <measurement>
+```
+
 Create database:
 
 ```shell
+influx -host localhost -port 8086
 CREATE DATABASE unifi
 USE unifi
-CREATE USER unifipoller WITH PASSWORD 'unifi' WITH ALL PRIVILEGES
+CREATE USER unifipoller WITH PASSWORD 'unifipoller' WITH ALL PRIVILEGES
 GRANT ALL ON unifi TO unifipoller
 ```
