@@ -6,7 +6,7 @@ time of this writing it is only an API, but a simple human interface (read-only)
 
 # Usage
 
-You must enable the web server if you with to use it.
+You must enable the web server if you wish to use it.
 To enable the web server without authentication this is all
 you need to do.
 
@@ -19,7 +19,7 @@ you need to do.
 
 By default there is no authentication. To enable
 authentication, add a username and password.
-Like this:
+Like this (`captain` is the username):
 
 ```toml
 [webserver.accounts]
@@ -33,7 +33,10 @@ Using an env variable (`captain` is the username):
 UP_WEBSERVER_ACCOUNTS_captain="$2a$04$a2XvB0gvTXW6d4rHUXQdduUDBrQB3/2lGTxZXQ32Sd9hYDxrz.oHm"
 ```
 
-How do you make a password hash? With `unifi-poller`.
+## Making a Password Hash
+
+Use `unifi-poller` to make a web server account password hash.
+Like this:
 
 ```shell
 unifi-poller -e -
@@ -44,6 +47,7 @@ $2a$04$a2XvB0gvTXW6d4rHUXQdduUDBrQB3/2lGTxZXQ32Sd9hYDxrz.oHm
 Using Docker:
 
 ```shell
+docker pull golift/unifi-poller
 docker -it golift/unifi-poller -e -
 Enter Password:
 $2a$04$yOE5zjJs2Gg0jsGQpE7j2ucKiNndUGEzpX6BsLoKl0hkxBvE81z8.
