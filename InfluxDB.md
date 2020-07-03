@@ -60,6 +60,6 @@ Create database:
 ```shell
 CREATE DATABASE unifi
 USE unifi
-CREATE USER unifi WITH PASSWORD 'unifi' WITH ALL PRIVILEGES
+CREATE USER unifipoller WITH PASSWORD 'unifi' WITH ALL PRIVILEGES
 GRANT ALL ON unifi TO unifipoller
 ```
