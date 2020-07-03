@@ -27,6 +27,7 @@ Example:
 
 The Loki output plugin has a few advanced settings that most folks
 won't use. These are their default values.
+
 ```toml
 user       = ""
 pass       = ""
