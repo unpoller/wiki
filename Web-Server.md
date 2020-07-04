@@ -127,6 +127,31 @@ $ curl -s unifi.poller:37288/api/v1/output/Loki | jq .
 }
 ```
 
+## `/api/v1/output/<output>/eventgroups`
+
+Prints all event-groups present for the requested output plugin.
+Output plugins currently only have one event group but there
+is nothing limiting them from adding more.
+
+```shell
+$ curl -s unifi.poller:37288/api/v1/output/Loki/eventgroups
+["Loki"]
+
+$ curl -s unifi.poller:37288/api/v1/output/Prometheus/eventgroups
+["Prometheus"]
+
+$ curl -s unifi.poller:37288/api/v1/output/WebServer/eventgroups
+["WebServer"]
+
+$ curl -s unifi.poller:37288/api/v1/output/InfluxDB/eventgroups
+["InfluxDB"]
+```
+
+## `/api/v1/output/<output>/events/<group>`
+
+Prints events specific to the requested output and group.
+Looks like output plugin events with one less dictionary.
+
 ## `/api/v1/output/<output>/events`
 
 Prints all events for the specified plugin.
@@ -194,7 +219,61 @@ $ curl -s unifi.poller:37288/api/v1/input/unifi | jq .
       "url": "https://unifi-controller:8443",
       "sites": [
         "all"
-      ]
+      ],
+      "id": "572e0211-a02a-4d09-b6a5-bad63fb76f1c"
+    }
+  ]
+}
+```
+
+## `/api/v1/input/<input>/eventgroups`
+
+Prints all event-groups present for the requested input plugin.
+Currently the `unifi` input plugin has one group for the plugin
+itself, and four groups for each configured controller. The
+four groups are `alarms`, `events`, `ids`, `anomalies`, and each
+is prefixed with the controller UUID.
+
+```shell
+$ curl -s unifi.poller:37288/api/v1/input/unifi/eventgroups | jq .
+[
+  "572e0211-a02a-4d09-b6a5-bad63fb76f1c_alarms",
+  "572e0211-a02a-4d09-b6a5-bad63fb76f1c_events",
+  "unifi",
+  "572e0211-a02a-4d09-b6a5-bad63fb76f1c_ids",
+  "572e0211-a02a-4d09-b6a5-bad63fb76f1c_anomalies"
+]
+```
+
+## `/api/v1/input/<input>/events/<group>`
+
+Prints events specific to the requested input and group.
+
+```json
+curl -s unifi.poller:37288/api/v1/input/unifi/events/unifi | jq .
+{
+  "latest": "2020-07-04T00:30:04.461330789-07:00",
+  "events": [
+    {
+      "ts": "2020-07-04T00:28:31.824048428-07:00",
+      "msg": "Requested https://unifi-controller:8443/api/s/default/stat/anomalies?scale=hourly&end=1593847711000: elapsed 7ms, returned 421 bytes",
+      "tags": {
+        "type": "debug"
+      }
+    },
+    {
+      "ts": "2020-07-04T00:32:04.45699961-07:00",
+      "msg": "Unmarshalling Device Type: usw, site Home (default) ",
+      "tags": {
+        "type": "debug"
+      }
+    },
+    {
+      "ts": "2020-07-04T00:32:04.461339777-07:00",
+      "msg": "Unmarshalling Device Type: uap, site Home (default) ",
+      "tags": {
+        "type": "debug"
+      }
     }
   ]
 }
@@ -216,7 +295,8 @@ $ curl -s unifi.poller:37288/api/v1/input/unifi/sites | jq .
     "id": "574e86664333ffb999a2683f",
     "name": "default",
     "desc": "Home",
-    "source": "https://unifi-controller:8443"
+    "source": "https://unifi-controller:8443",
+    "controller": "572e0211-a02a-4d09-b6a5-bad63fb76f1c"
   }
 ]
 ```
@@ -229,9 +309,12 @@ Prints the most recently collected clients and some meta data.
 $ curl -s unifi.poller:37288/api/v1/input/unifi/clients | jq .
 [
   {
+    "rx_bytes": 2273696,
+    "tx_bytes": 4029181,
     "name": "RMPROPLUS-43-3c-88",
     "site_id": "574e86664333ffb999a2683f",
     "source": "https://unifi-controller:8443",
+    "controller": "572e0211-a02a-4d09-b6a5-bad63fb76f1c",
     "mac": "34:ea:34:43:3c:88",
     "ip": "192.168.1.17",
     "type": "wireless",
@@ -240,9 +323,12 @@ $ curl -s unifi.poller:37288/api/v1/input/unifi/clients | jq .
     "last": "2020-07-03T04:10:36-07:00"
   },
   {
+    "rx_bytes": 1530352814,
+    "tx_bytes": 205398316,
     "name": "ubuntu",
     "site_id": "574e86664333ffb999a2683f",
     "source": "https://unifi-controller:8443",
+    "controller": "572e0211-a02a-4d09-b6a5-bad63fb76f1c",
     "mac": "52:54:00:9a:ea:9e",
     "ip": "",
     "type": "wired",
@@ -261,9 +347,12 @@ Prints the most recently collected devices and some meta data.
 $ curl -s unifi.poller:37288/api/v1/input/unifi/devices | jq .
 [
   {
+    "clients": 3,
+    "uptime": 4835552,
     "name": "wap-lower",
     "site_id": "574e86664333ffb999a2683f",
     "source": "https://unifi-controller:8443",
+    "controller": "572e0211-a02a-4d09-b6a5-bad63fb76f1c",
     "mac": "80:2a:a8:11:ea:78",
     "ip": "192.168.1.14",
     "type": "uap",
@@ -271,9 +360,12 @@ $ curl -s unifi.poller:37288/api/v1/input/unifi/devices | jq .
     "version": "4.3.13.11253"
   },
   {
+    "clients": 14,
+    "uptime": 4834600,
     "name": "wap-upper",
     "site_id": "574e86664333ffb999a2683f",
     "source": "https://unifi-controller:8443",
+    "controller": "572e0211-a02a-4d09-b6a5-bad63fb76f1c",
     "mac": "b4:fb:e4:d2:46:93",
     "ip": "192.168.1.215",
     "type": "uap",
@@ -281,9 +373,12 @@ $ curl -s unifi.poller:37288/api/v1/input/unifi/devices | jq .
     "version": "4.3.13.11253"
   },
   {
+    "clients": 2,
+    "uptime": 4834344,
     "name": "wap-wall",
     "site_id": "574e86664333ffb999a2683f",
     "source": "https://unifi-controller:8443",
+    "controller": "572e0211-a02a-4d09-b6a5-bad63fb76f1c",
     "mac": "74:83:c2:d4:22:d3",
     "ip": "192.168.1.190",
     "type": "uap",
@@ -291,9 +386,12 @@ $ curl -s unifi.poller:37288/api/v1/input/unifi/devices | jq .
     "version": "4.3.13.11253"
   },
   {
+    "clients": 19,
+    "uptime": 4834869,
     "name": "switch",
     "site_id": "574e86664333ffb999a2683f",
     "source": "https://unifi-controller:8443",
+    "controller": "572e0211-a02a-4d09-b6a5-bad63fb76f1c",
     "mac": "80:2a:a8:5d:68:23",
     "ip": "192.168.1.7",
     "type": "usw",
@@ -301,9 +399,12 @@ $ curl -s unifi.poller:37288/api/v1/input/unifi/devices | jq .
     "version": "4.3.13.11253"
   },
   {
+    "clients": 26,
+    "uptime": 4921914,
     "name": "gateway",
     "site_id": "574e86664333ffb999a2683f",
     "source": "https://unifi-controller:8443",
+    "controller": "572e0211-a02a-4d09-b6a5-bad63fb76f1c",
     "mac": "74:83:c2:1a:53:93",
     "ip": "67.181.75.120",
     "type": "ugw",
