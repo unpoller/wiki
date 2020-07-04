@@ -92,8 +92,15 @@ Prints `OK`.
 Prints `poller` config.
 
 ```shell
-$ curl unifi.poller:37288/api/v1/config
-{"poller":{"plugins":[],"debug":true,"quiet":false}}
+$ curl unifi.poller:37288/api/v1/config | jq .
+{
+  "poller": {
+    "plugins": [],
+    "debug": true,
+    "quiet": false
+  },
+  "uptime": 4623
+}
 ```
 
 ## `/api/v1/plugins`
