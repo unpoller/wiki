@@ -10,7 +10,8 @@ This will set it up on localhost:3000 with admin/admin login.
 
 ### Docker
 
-Learn about using [Grafana in Docker here](https://grafana.com/docs/grafana/latest/installation/docker/). Also see [Plugins](#Plugins) below!
+Learn about using [Grafana in Docker here](https://grafana.com/docs/grafana/latest/installation/docker/).
+Also see [Plugins](#Plugins) below!
 
 ### Linux
 
