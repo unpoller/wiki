@@ -163,11 +163,11 @@ is prefixed with the site name.
 ```shell
 $ curl -s unifi.poller:37288/api/v1/input/unifi/eventgroups | jq .
 [
-  "572e0211-a02a-4d09-b6a5-bad63fb76f1c_alarms",
-  "572e0211-a02a-4d09-b6a5-bad63fb76f1c_events",
   "unifi",
-  "572e0211-a02a-4d09-b6a5-bad63fb76f1c_ids",
-  "572e0211-a02a-4d09-b6a5-bad63fb76f1c_anomalies"
+  "default_ids",
+  "default_anomalies",
+  "default_alarms",
+  "default_events"
 ]
 ```
 
