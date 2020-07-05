@@ -2,6 +2,23 @@
 
 ### Recent Releases (2020+)
 
+#### `v2.0.1` (06.15.2020) Enhancements
+
+This release contains enhancements.
+See [this pull request](https://github.com/unifi-poller/unifi-poller/pull/240) for more details.
+
+-   Set timezone with TZ environment variable.
+-   Fixes ARM64 Docker builds.
+-   Fixes macOS Homebrew builds.
+-   Adds temperatures for UDM.
+-   Adds switch port data for UAP and UDM.
+-   Can now read InfluxDB and UniFi controller passwords from dedicated secrets files.
+-   Defaults for `save_ids`, `save_dpi` and `verify_ssl` now properly apply.
+-   Prints controller configuration information on startup.
+-   Can redact (md5 hash) personal info: mac address and hostname.
+-   Various bug fixes.
+-   Prometheus scrape config format updated.
+
 #### `v2.0` (02.06.2020) Multi-Controller Support, FreeBSD pkg + APT & YUM repos + DPI
 
 [v2.0](https://github.com/unifi-poller/unifi-poller/releases/tag/v2.0.0)
