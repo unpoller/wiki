@@ -2,6 +2,14 @@
 
 ### Recent Releases (2020+)
 
+#### `v2.0.2` (TBD.2020) Ordenalogy
+
+-   Adds collection of UniFi Events, Anomalies, Alarms and IDS.
+    -   IDS collection existed before, but it wasn't as good as it is now.
+    -   **WARNING**: This data is not correctly redacted when `hash_pii` is turned on.
+-   Adds **Loki** output support for events, anomalies, alarms and IDS (in addition to InfluxDB).
+-   Adds a built-in read-only web-server with minimal output data and an API.
+
 #### `v2.0.1` (06.15.2020) Enhancements
 
 This release contains enhancements.
