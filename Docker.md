@@ -115,29 +115,3 @@ Example passing an env variable:
 ```shell
 docker run -e UP_UNIFI_DEFAULT_PASS="your-secret-pasword" -e UP_POLLER_DEBUG="true" -d golift/unifi-poller:latest
 ```
-
-#### Available Variables (v1)
-
-For version 2.0 and beyond see the [Configuration](Configuration) doc.
-Everything changed, and **the information below is only valid for versions 1.5.x and 1.6.x.**
-
-|ENV v1.5|ENV v1.6|config|note|
-|---|---|---|---|
-UP_POLLING_MODE|UP_MODE|mode|`"influx"` (default), `"influxlambda"` or `"prometheus"`
-UP_INFLUX_DB|UP_INFLUX_DB| influx_db | default `"unifi"`
-UP_INFLUX_USER|UP_INFLUX_USER| influx_user| default `"unifi"`
-UP_INFLUX_PASS|UP_INFLUX_PASS| influx_pass | default `"unifi"`
-UP_INFLUX_URL|UP_INFLUX_URL| influx_url | default `"http://127.0.0.1:8086"`
-UP_UNIFI_USER|UP_UNIFI_USER| unifi_user | default "influx"
-UP_UNIFI_PASS|UP_UNIFI_PASS| unifi_pass |
-UP_UNIFI_URL|UP_UNIFI_URL| unifi_url | default `"https://127.0.0.1:8443"`
-UP_REAUTHENTICATE|UP_REAUTHENTICATE| reauthenticate | default `"false"`
-UP_VERIFY_SSL|UP_VERIFY_SSL|verify_ssl|default `"false"`
-UP_COLLECT_IDS|UP_SAVE_IDS|save_ids| default `"false"`
-||UP_SAVE_SITES|save_sites| default `"true"`
-UP_QUIET_MODE|UP_QUIET|quiet| default `"false"`
-UP_DEBUG_MODE|UP_DEBUG|debug| default `"false"`
-UP_POLLING_INTERVAL|UP_INTERVAL|interval|Go duration. ie `"1m"` or `"90s"`, default `"30s"`
-UP_POLL_SITES|UP_SITES|sites|separate sites with commas, default `"all"`
-||UP_NAMESPACE|namespace|top level Prometheus namespace. Default `"unifipoller"`
-||UP_HTTP_LISTEN|http_listen|Prometheus HTTP listen address, `ip:port`. You will likely want to publish this port on the host.

@@ -44,6 +44,8 @@ to make sure things are showing up. Let me know if you see values when you make 
 
 ## Common Problems
 
+### InfluxDB Write Errors
+
 If you're getting errors like this:
 
 ```shell
@@ -58,3 +60,11 @@ version and dropping the database did not solve the error. There are generally t
 
 1.  Downgrade. Do not upgrade to a new version.
 1.  `DROP` and re-`CREATE` the InfluxDB database.
+
+### Empty Dashboards
+
+The number one cause of empty dashboards is an old version of InfluxDB. Make sure
+you are on version 1.7.x or 1.8.x. **Use of 1.6.x will cause empty dashboards.**
+
+If your DPI dashboards are empty DPI is like still disabled. It must be enabled
+in the poller config and in your UniFi controller. Two spots.
