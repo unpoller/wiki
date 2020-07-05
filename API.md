@@ -156,9 +156,9 @@ $ curl -s unifi.poller:37288/api/v1/input/unifi | jq .
 
 Prints all event-groups present for the requested input plugin.
 Currently the `unifi` input plugin has one group for the plugin
-itself, and four groups for each configured controller. The
+itself, and four groups for each configured site. The
 four groups are `alarms`, `events`, `ids`, `anomalies`, and each
-is prefixed with the controller UUID.
+is prefixed with the site name.
 
 ```shell
 $ curl -s unifi.poller:37288/api/v1/input/unifi/eventgroups | jq .
