@@ -1,6 +1,6 @@
 *   [Home](https://github.com/unifi-poller/unifi-poller/wiki/Home)
 *   [Installation](https://github.com/unifi-poller/unifi-poller/wiki/Installation)
-*   [Grafana](https://github.com/unifi-poller/unifi-poller/wiki/Grafana)
+    *   [Grafana](https://github.com/unifi-poller/unifi-poller/wiki/Grafana)
     *   [InfluxDB](https://github.com/unifi-poller/unifi-poller/wiki/InfluxDB)
     *   [Loki](https://github.com/unifi-poller/unifi-poller/wiki/Loki)
     *   [Prometheus](https://github.com/unifi-poller/unifi-poller/wiki/Prometheus)
