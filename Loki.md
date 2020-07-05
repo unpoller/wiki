@@ -3,6 +3,11 @@ data to Loki. There are no dashboards for this data, but it's pretty simple.
 Just add a "Logs" panel. You can also use this data as an Annotation source.
 Loki support was added in UniFi Poller v2.0.2.
 
+# Installation
+
+Installation of Loki is [documented here](https://github.com/grafana/loki/blob/master/docs/installation/README.md).
+If you're only using Poller, you don't need Promtail.
+
 # Usage
 
 Just add the Loki URL to your poller config to enable this output plugin.
