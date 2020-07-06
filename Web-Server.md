@@ -1,6 +1,6 @@
 Poller has a built-in and **disabled by default** web server. The web server provides some very basic information
-about your UniFi environment, devices and clients. At the
-time of this writing it is only an API, but a simple human interface (read-only) is planned.
+about your UniFi environment, devices and clients.
+At the time of this writing it is [only an API](API), but a simple human interface (read-only) is planned.
 
 -   The web server was added in UniFi Poller v2.0.2.
 
@@ -8,11 +8,17 @@ time of this writing it is only an API, but a simple human interface (read-only)
 
 You must enable the web server if you wish to use it.
 To enable the web server without authentication this is all
-you need to do.
+you need to do:
 
 ```toml
 [webserver]
   enable = true
+```
+
+or, with an environment variable:
+
+```shell
+UP_WEBSERVER_ENABLE=true
 ```
 
 # Authentication
