@@ -158,16 +158,30 @@ Prints all event-groups present for the requested input plugin.
 Currently the `unifi` input plugin has one group for the plugin
 itself, and four groups for each configured site. The
 four groups are `alarms`, `events`, `ids`, `anomalies`, and each
-is prefixed with the site name.
+is prefixed with the site ID.
 
 ```shell
 $ curl -s unifi.poller:37288/api/v1/input/unifi/eventgroups | jq .
 [
-  "unifi",
-  "default_ids",
-  "default_anomalies",
-  "default_alarms",
-  "default_events"
+"unifi",
+"574e86664333ffb999a2683f_alarms",
+"574e86664333ffb999a2683f_events",
+"574e86664333ffb999a2683f_ids",
+"574e86664333ffb999a2683f_anomalies"
+]
+```
+
+## `/api/v1/input/<input>/eventgroups/<siteID>`
+
+Prints all event-groups present for the requested input plugin and siteID.
+
+```shell
+$ curl -s unifi.poller:37288/api/v1/input/unifi/eventgroups/574e86664333ffb999a2683f | jq .
+[
+"574e86664333ffb999a2683f_alarms",
+"574e86664333ffb999a2683f_events",
+"574e86664333ffb999a2683f_ids",
+"574e86664333ffb999a2683f_anomalies"
 ]
 ```
 
@@ -265,6 +279,15 @@ $ curl -s unifi.poller:37288/api/v1/input/unifi/clients | jq .
 ]
 ```
 
+## `/api/v1/input/<input>/clients/<siteID>`
+
+Prints the most recently collected clients from a specific site.
+
+```shell
+$ curl -s unifi.poller:37288/api/v1/input/unifi/clients/574e86664333ffb999a2683f | jq .
+# Looks the same as above.
+```
+
 ## `/api/v1/input/<input>/devices`
 
 Prints the most recently collected devices and some meta data.
@@ -338,4 +361,13 @@ $ curl -s unifi.poller:37288/api/v1/input/unifi/devices | jq .
     "version": "4.4.51.5287926"
   }
 ]
+```
+
+## `/api/v1/input/<input>/devices/<siteID>`
+
+Prints the most recently collected devices from a specific site.
+
+```shell
+$ curl -s unifi.poller:37288/api/v1/input/unifi/devices/574e86664333ffb999a2683f | jq .
+# Looks the same as above.
 ```
