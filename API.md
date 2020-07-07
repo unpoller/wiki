@@ -8,26 +8,38 @@ Prints `OK`.
 
 ## `/api/v1/config`
 
-Prints `poller` config and uptime.
+Prints `poller` config, uptime and plugins.
+
+The empty `plugins` list under `poller` represents configured and loaded `*.so`
+shared-object plugins. These are rare and that list will almost always be empty.
 
 ```shell
 $ curl unifi.poller:37288/api/v1/config | jq .
 {
+  "inputs": [
+    "unifi"
+  ],
+  "outputs": [
+    "WebServer",
+    "InfluxDB",
+    "Loki",
+    "Prometheus"
+  ]
   "poller": {
     "plugins": [],
     "debug": true,
     "quiet": false
   },
-  "uptime": 4623
+  "uptime": 4623,
 }
 ```
 
-## `/api/v1/plugins`
+## `/api/v1/config/plugins`
 
-Prints list of plugins. Output and Input.
+Prints list of plugins only. Output and Input. These are also in `/config` (above).
 
 ```shell
-$ curl unifi.poller:37288/api/v1/plugins
+$ curl unifi.poller:37288/api/v1/config/plugins
 {"inputs":["unifi"],"outputs":["WebServer","InfluxDB","Loki","Prometheus"]}
 ```
 
