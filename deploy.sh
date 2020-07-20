@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -x
 # Copy one repo to another. Useful for moving a wiki into place.
 
 if [ "$TRAVIS_BRANCH" == "" ]; then
@@ -26,4 +26,4 @@ git fetch origin
 git fetch upstream
 git merge upstream/master --no-edit
 # git push origin HEAD:master > /dev/null 2>&1
-git push upstream HEAD:master > /dev/null 2>&1
+git push --force upstream HEAD:master > /dev/null 2>&1
