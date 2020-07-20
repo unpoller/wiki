@@ -8,26 +8,38 @@ Prints `OK`.
 
 ## `/api/v1/config`
 
-Prints `poller` config and uptime.
+Prints `poller` config, uptime and plugins.
+
+The empty `plugins` list under `poller` represents configured and loaded `*.so`
+shared-object plugins. These are rare and that list will almost always be empty.
 
 ```shell
 $ curl unifi.poller:37288/api/v1/config | jq .
 {
+  "inputs": [
+    "unifi"
+  ],
+  "outputs": [
+    "WebServer",
+    "InfluxDB",
+    "Loki",
+    "Prometheus"
+  ]
   "poller": {
     "plugins": [],
     "debug": true,
     "quiet": false
   },
-  "uptime": 4623
+  "uptime": 4623,
 }
 ```
 
-## `/api/v1/plugins`
+## `/api/v1/config/plugins`
 
-Prints list of plugins. Output and Input.
+Prints list of plugins only. Output and Input. These are also in `/config` (above).
 
 ```shell
-$ curl unifi.poller:37288/api/v1/plugins
+$ curl unifi.poller:37288/api/v1/config/plugins
 {"inputs":["unifi"],"outputs":["WebServer","InfluxDB","Loki","Prometheus"]}
 ```
 
@@ -158,16 +170,30 @@ Prints all event-groups present for the requested input plugin.
 Currently the `unifi` input plugin has one group for the plugin
 itself, and four groups for each configured site. The
 four groups are `alarms`, `events`, `ids`, `anomalies`, and each
-is prefixed with the site name.
+is prefixed with the site ID.
 
 ```shell
 $ curl -s unifi.poller:37288/api/v1/input/unifi/eventgroups | jq .
 [
-  "572e0211-a02a-4d09-b6a5-bad63fb76f1c_alarms",
-  "572e0211-a02a-4d09-b6a5-bad63fb76f1c_events",
-  "unifi",
-  "572e0211-a02a-4d09-b6a5-bad63fb76f1c_ids",
-  "572e0211-a02a-4d09-b6a5-bad63fb76f1c_anomalies"
+"unifi",
+"574e86664333ffb999a2683f_alarms",
+"574e86664333ffb999a2683f_events",
+"574e86664333ffb999a2683f_ids",
+"574e86664333ffb999a2683f_anomalies"
+]
+```
+
+## `/api/v1/input/<input>/eventgroups/<siteID>`
+
+Prints all event-groups present for the requested input plugin and siteID.
+
+```shell
+$ curl -s unifi.poller:37288/api/v1/input/unifi/eventgroups/574e86664333ffb999a2683f | jq .
+[
+"574e86664333ffb999a2683f_alarms",
+"574e86664333ffb999a2683f_events",
+"574e86664333ffb999a2683f_ids",
+"574e86664333ffb999a2683f_anomalies"
 ]
 ```
 
@@ -265,6 +291,15 @@ $ curl -s unifi.poller:37288/api/v1/input/unifi/clients | jq .
 ]
 ```
 
+## `/api/v1/input/<input>/clients/<siteID>`
+
+Prints the most recently collected clients from a specific site.
+
+```shell
+$ curl -s unifi.poller:37288/api/v1/input/unifi/clients/574e86664333ffb999a2683f | jq .
+# Looks the same as above.
+```
+
 ## `/api/v1/input/<input>/devices`
 
 Prints the most recently collected devices and some meta data.
@@ -338,4 +373,13 @@ $ curl -s unifi.poller:37288/api/v1/input/unifi/devices | jq .
     "version": "4.4.51.5287926"
   }
 ]
+```
+
+## `/api/v1/input/<input>/devices/<siteID>`
+
+Prints the most recently collected devices from a specific site.
+
+```shell
+$ curl -s unifi.poller:37288/api/v1/input/unifi/devices/574e86664333ffb999a2683f | jq .
+# Looks the same as above.
 ```
