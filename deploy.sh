@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -x
 # Copy one repo to another. Useful for moving a wiki into place.
 
 if [ "$TRAVIS_BRANCH" == "" ]; then
