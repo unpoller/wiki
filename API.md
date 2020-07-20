@@ -2,6 +2,11 @@ These are the available API paths that the [built-in web server](Web-Server) pro
 
 -   The web server was added in UniFi Poller v2.0.2.
 
+## `/debug/vars`
+
+This path prints [expvar](https://golang.org/pkg/expvar/) data,
+which currently contains only memory statistics.
+
 ## `/health`
 
 Prints `OK`.
@@ -16,21 +21,49 @@ shared-object plugins. These are rare and that list will almost always be empty.
 ```shell
 $ curl unifi.poller:37288/api/v1/config | jq .
 {
-  "inputs": [
-    "unifi"
-  ],
-  "outputs": [
-    "WebServer",
-    "InfluxDB",
-    "Loki",
-    "Prometheus"
-  ]
+  "arch": "linux amd64",
+  "branch": "dn2_events",
+  "built": "2020-08-17T04:20:00Z",
+  "cpus": 16,
+  "gid": 0,
+  "gover": "go1.14.4",
+  "inputs": {
+    "unifi": {
+      "name": "unifi",
+      "version": "v0.0.9",
+      "path": "github.com/unifi-poller/inputunifi"
+    }
+  },
+  "malloc": 9353240,
+  "memsys": 75055360,
+  "mtalloc": 33876272,
+  "numgc": 1234,
+  "outputs": {
+    "influxdb": {
+      "name": "influxdb",
+      "version": "v0.0.11",
+      "path": "github.com/unifi-poller/influxunifi"
+    },
+    "loki": {
+      "name": "loki",
+      "version": "v0.0.1",
+      "path": "github.com/unifi-poller/lokiunifi"
+    },
+    "prometheus": {
+      "name": "prometheus",
+      "version": "v0.0.10",
+      "path": "github.com/unifi-poller/promunifi"
+    }
+  },
+  "pid": 1,
   "poller": {
     "plugins": [],
     "debug": true,
     "quiet": false
   },
-  "uptime": 4623,
+  "uid": 0,
+  "uptime": 1234,
+  "version": "2.0.2-999"
 }
 ```
 
@@ -39,8 +72,33 @@ $ curl unifi.poller:37288/api/v1/config | jq .
 Prints list of plugins only. Output and Input. These are also in `/config` (above).
 
 ```shell
-$ curl unifi.poller:37288/api/v1/config/plugins
-{"inputs":["unifi"],"outputs":["WebServer","InfluxDB","Loki","Prometheus"]}
+$ curl unifi.poller:37288/api/v1/config/plugins | jq .
+{
+  "inputs": {
+    "unifi": {
+      "name": "unifi",
+      "version": "v0.0.9",
+      "path": "github.com/unifi-poller/inputunifi"
+    }
+  },
+  "outputs": {
+    "influxdb": {
+      "name": "influxdb",
+      "version": "v0.0.11",
+      "path": "github.com/unifi-poller/influxunifi"
+    },
+    "loki": {
+      "name": "loki",
+      "version": "v0.0.1",
+      "path": "github.com/unifi-poller/lokiunifi"
+    },
+    "prometheus": {
+      "name": "prometheus",
+      "version": "v0.0.10",
+      "path": "github.com/unifi-poller/promunifi"
+    }
+  }
+}
 ```
 
 ## `/api/v1/output/<output>`
