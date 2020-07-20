@@ -43,12 +43,12 @@ format `[header.name]` where `name` is the map key. There may not be any map val
 in the config at this time.
 
 You can use any of these formats for the config file: XML, TOML, YAML or JSON.
-Examples are provided in the [examples/](../../tree/master/examples) folder.
+Examples are provided in the [examples/](http://github.com/unifi-poller/unifi-poller/tree/master/examples) folder.
 Use the examples for an explanation of how to structure the config files.
 You may pass a blank config file, but you must provide _something_. You can
 completely configure the application with environment variables too. Explained below.
 
--   _IMPORTANT_: **See [up.conf.example](../../tree/master/examples/up.conf.example)
+-   _IMPORTANT_: **See [up.conf.example](http://github.com/unifi-poller/unifi-poller/tree/master/examples/up.conf.example)
     for a thorough description of each configuration option shown below.**
 
 ### Poller (Core)
