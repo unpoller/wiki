@@ -88,7 +88,8 @@ at helps avoid conflicts with the host or other containers you might have that w
     -   Ensure that 'use the same network as docker host' is `unchecked`
 1.  On port settings **<--- why do i have host mapped port, not sure we need this for -
     this set of 3 as all traffic is internal**
-    -   Change local port from `Auto` to one you have free on host - this makes it predictable. Something like `3456`
+    -   Change local port from `Auto` to one you have free on host - this makes it predictable.
+        Something like `3456`
     -   Leave container port as `8086` and type as `TCP`
 1.  On environment tab add the following vars
     -   `INFLUXDB_DATA_DIR`      |  `/var/lib/influxdb/data`
@@ -108,11 +109,15 @@ at helps avoid conflicts with the host or other containers you might have that w
 1.  Select `bash` from the left hand side. You should now see a command prompt
 1.  In the command prompt, enter these commands: (note you can't copy and paste)
     -   `influx` - after a couple of seconds you should be in the InfluxDB shell
-    -   `CREATE DATABASE unifi`
-    -   `USE unifi`
-    -   `CREATE USER unifipoller WITH PASSWORD 'unifipoller' WITH ALL PRIVILEGES`
-    -   `GRANT ALL ON unifi TO unifipoller`
-1.  You can `exit`, `exit` and close this window.
+    -   Run the following commands in the InfluxDB shell, then close the window:
+
+```shell
+CREATE DATABASE unifi
+USE unifi
+CREATE USER unifipoller WITH PASSWORD 'unifipoller' WITH ALL PRIVILEGES
+GRANT ALL ON unifi TO unifipoller
+exit
+```
 
 #### Note
 
@@ -191,17 +196,19 @@ Options:
 ##### Method 1 Container
 
 1.  In the `Image` tab, select `grafana/grafana:latest` and click `Launch`
-1.  Leave the `General Settings` alone - the container name should be `grafana-grafana1`, unless you created other grafanas
+1.  Leave the `General Settings` alone - the container name should be `grafana-grafana1`,
+    unless you created other Grafanas.
 1.  Click `Advanced Settings`
 1.  On the `Volume` tab, add the following:
     -   `docker/grafana` folder to mount path `/var/lib/grafana` and leave as `read/write`
 1.  On the `Network` tab:
-    -   add your network, in this example, `Grafana_Net`
-    -   remove the default bridge (usually called `bridge`)
+    -   Add your network, in this example, `Grafana_Net`
+    -   Remove the default bridge (usually called `bridge`)
     -   Ensure that 'use the same network as docker host' is `Unchecked`
-1. On `Port Settings`
-    -   change `local port` from `Auto` to one you have free on host - this makes it predictable. Something like `3000`
-    -   leave container port as `3000` and type as `TCP`
+1.  On `Port Settings`
+    -   Change `local port` from `Auto` to one you have free on host - this makes it predictable.
+        Something like `3000`
+    -   Leave container port as `3000` and type as `TCP`
 1.  On the `Environment` tab, add the following vars:
     -   `GF_INSTALL_PLUGINS` |  `grafana-clock-panel,grafana-piechart-panel,natel-discrete-panel`
 1.  Finalize container and:
