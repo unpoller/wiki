@@ -53,15 +53,18 @@ You also need Grafana and you have to add the Influx or Prometheus data source t
 -   _Synology_? Check out the [Synology HOWTO](Synology-HOWTO) provided by @Scyto.
 
 ## FreeBSD
-### Installation
--   unifi-poller is now available in the ports tree and can be installed from there.
 
--   To install compiled binary from ports run
+### Installation
+
+-   Poller is now available in the ports tree and can be installed from there.
+-   To install compiled binary from ports run:
+
 ```shell
 pkg install net/unifi-poller
 ```   
 
--   To build and install from ports use   
+-   To build and install from ports run:   
+
 ```shell
 cd /usr/ports/net-mgmt/unifi-poller
 make install clean
@@ -70,6 +73,7 @@ make install clean
 ### Post installation
 
 -   Use these commands to maintain the service
+
 ```shell
 # View manual.
 man unifi-poller
@@ -92,8 +96,6 @@ service unifi-poller status
 # Logs should wind up in this file, but your syslog may differ.
 grep unifi-poller /var/log/messages
 ```
-
-
 
 ## Linux
 
