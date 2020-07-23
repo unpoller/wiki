@@ -10,9 +10,9 @@ to add the Influx or Prometheus data source to Grafana.
 **Do not skip any of the pre-reqs!**
 
 <details>
-  <summary><font color="blue">
-    Click here to reveal the prerequisites for poller.
-  </font></summary>
+  <summary>
+    Click here to reveal the prerequisites for poller.<br><br>
+  </summary>
 
 1.  **Add a user to the UniFi Controller**. After logging into your controller:
     1.  Go to `Settings -> Admins`
@@ -20,14 +20,12 @@ to add the Influx or Prometheus data source to Grafana.
     1.  The new user needs access to each site. For each UniFi Site you want to poll,
         add admin via the 'Invite existing admin' option.
     1.  Take note of this info, you need to put it into the unifi-poller config file in a moment.
-
 1.  **You need [InfluxDB](InfluxDB)** OR **You need Prometheus**.
     -   If you already have one of these, skip ahead to Grafana.
     -   _Using Docker_? You can use the
         [docker-compose file](https://github.com/unifi-poller/unifi-poller/blob/master/init/docker/docker-compose.yml)
         file to setup Poller, InfluxDB and Grafana all at once.
 1.  If using Influx, **Create a database in InfluxDB.** Something like:
-
     ```shell
     influx -host localhost -port 8086
     CREATE DATABASE unifi
@@ -35,12 +33,10 @@ to add the Influx or Prometheus data source to Grafana.
     CREATE USER unifipoller WITH PASSWORD 'unifipoller' WITH ALL PRIVILEGES
     GRANT ALL ON unifi TO unifipoller
     ```
-
     Take note of the username and password you create (if you choose to do so,
       you may skip the last 2 commands). You'll need the **hostname**, **port**,
       **database name**, and optionally **user/pass** in a moment for the unifi-poller
       config file.
-
 1.  If you're using Prometheus, see the [Prometheus](Prometheus) doc for post-install configuration.
 1.  **You need [Grafana](Grafana)**.
     After you follow the directions in [Grafana Wiki](Grafana), and before (or after) you install unifi-poller:
@@ -65,9 +61,9 @@ to add the Influx or Prometheus data source to Grafana.
 **Poller is now available in the ports tree and can be installed from there.**
 
 <details>
-  <summary><font color="blue">
-    Follow these directions to install poller using FreeBSD ports.
-  </font></summary>
+  <summary>
+    Follow these directions to install poller using FreeBSD ports.<br><br>
+  </summary>
 
 -   **To install compiled binary from ports run:**
 
@@ -114,9 +110,9 @@ grep unifi-poller /var/log/messages
 **JFrog Bintray provides package hosting with RedHat, CentOS, Debian and Ubuntu repos.**
 
 <details>
-  <summary><font color="blue">
-    Follow these directions to configure the repo and install poller.
-  </font></summary>
+  <summary>
+    Follow these directions to configure the repo and install poller.<br><br>
+  </summary>
 
 The same package is in all the repos, but you can set the name to match your OS
 as shown below.
@@ -125,18 +121,16 @@ as shown below.
 
 -   Create a file at `/etc/yum.repos.d/golift.repo` with the following contents.
 -   You may replace `centos` with `el`, but they're the same thing either way.
-
-```yaml
-[golift]
-name=Go Lift Awesomeness - Main Repo
-baseurl=https://dl.bintray.com/golift/centos/main/$basearch/
-gpgcheck=1
-repo_gpgcheck=1
-enabled=1
-sslverify=1
-gpgkey=https://golift.io/gpgkey
-```
-
+    ```yaml
+    [golift]
+    name=Go Lift Awesomeness - Main Repo
+    baseurl=https://dl.bintray.com/golift/centos/main/$basearch/
+    gpgcheck=1
+    repo_gpgcheck=1
+    enabled=1
+    sslverify=1
+    gpgkey=https://golift.io/gpgkey
+    ```
 -   Then install the package: `sudo yum install unifi-poller`
 -   You'll have to respond `yes` to the prompts to install the Go Lift GPG key.
 
@@ -144,16 +138,15 @@ gpgkey=https://golift.io/gpgkey
 
 -   **Install the repo and package using the commands below.**
 -   Replace `ubuntu` with `debian` if you have Debian.
+    ```shell
+    curl -s https://golift.io/gpgkey | sudo apt-key add -
+    echo deb https://dl.bintray.com/golift/ubuntu bionic main | sudo tee /etc/apt/sources.list.d/golift.list
+    sudo apt update
+    sudo apt install unifi-poller
+    ```
 -   Supported distributions:
     -   `xenial`, `bionic`, `focal`, `jesse`, `stretch`, `buster`, `bullseye`
     -   If you have another distro, try one of these ^  (they're all the same).
-
-```shell
-curl -s https://golift.io/gpgkey | sudo apt-key add -
-echo deb https://dl.bintray.com/golift/ubuntu bionic main | sudo tee /etc/apt/sources.list.d/golift.list
-sudo apt update
-sudo apt install unifi-poller
-```
 
 ### Linux: Post-Install
 
@@ -187,34 +180,27 @@ for additional post-install configuration information.
 ## macOS
 
 <details>
-  <summary><font color="blue">
-    Follow these instructions to install poller using Homebrew.
-  </font></summary>
+  <summary>
+    Follow these instructions to install poller using Homebrew.<br><br>
+  </summary>
 
 1.  [Install Homebrew](https://brew.sh/)
 1.  `brew install golift/mugs/unifi-poller`
 1.  Edit the config file after installing the brew:
-
     ```shell
     nano /usr/local/etc/unifi-poller/up.conf
     # or
     vi /usr/local/etc/unifi-poller/up.conf
     ```
-
-    Correct the authentication information for your setup (see prerequisites).
-
+    -   Correct the authentication information for your setup (see prerequisites).
 1.  Start the service:
-
     ```shell
     # do not use sudo
     brew services start unifi-poller
     ```
-
-    The **log file** should show up at `/usr/local/var/log/unifi-poller.log`.
-    If it does not show up, make sure your user has permissions to create the file.
-
+    -   The **log file** should show up at `/usr/local/var/log/unifi-poller.log`.
+    -   If it does not show up, make sure your user has permissions to create the file.
 1.  This is how you restart it. **Do this when you upgrade.**:
-
     ```shell
     brew services restart unifi-poller
     ```
@@ -224,20 +210,18 @@ for additional post-install configuration information.
 ## Manual Package
 
 <details>
-  <summary><font color="blue">
-    You can build your own package from source with the Makefile.
-  </font></summary>
+  <summary>
+    You can build your own package from source with the Makefile.<br><br>
+  </summary>
 Recommend reading the note at the bottom if you're using a mac.
 
 1.  [Install FPM](https://fpm.readthedocs.io/en/latest/installing.html)
 1.  [Install Go](https://golang.org/doc/install).
 1.  **Clone this repo** and change your working directory to the checkout.
-
     ```shell
     git clone https://github.com/unifi-poller/unifi-poller.git
     cd unifi-poller
     ```
-
 1.  **Install local Golang dependencies**:
 1.  Build a package (or two!):
     1.  `make deb` will build a Debian package.

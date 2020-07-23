@@ -3,5 +3,6 @@ rules '~MD030', # lists may have spaces before them
       '~MD002', # first header does not need to be top level
       '~MD034', # allow bare URLs because we put them in code blocks...
       '~MD046', # do not worry about code block style, it gets confused
-      '~MD033'  # what's wrong with inline html?
+      '~MD033', # what's wrong with inline html?
+      '~MD031'  # fenced code blocks wrapped in blank lines look terrible in lists.
 style "./.style"
