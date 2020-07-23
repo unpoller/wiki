@@ -69,47 +69,55 @@ at helps avoid conflicts with the host or other containers you might have that w
 
 ### Download needed images from the registry
 
-1.  select registry
-1.  use search box to find the following
--   `golift/unifi-poller:latest` [https://hub.docker.com/r/golift/unifi-poller/](https://hub.docker.com/r/golift/unifi-poller/)
--   `grafana/grafana:latest` [https://hub.docker.com/r/grafana/grafana/](https://hub.docker.com/r/grafana/grafana/)
--   `influxdb:latest` [https://hub.docker.com/_/influxdb/](https://hub.docker.com/_/influxdb/)
+1.  Select `Registry`
+1.  Use the search box to find the following:
+    -   `unifi-poller` for golift/unifi-poller:latest [https://hub.docker.com/r/golift/unifi-poller/](https://hub.docker.com/r/golift/unifi-poller/)
+    -   `grafana` for grafana/grafana:latest [https://hub.docker.com/r/grafana/grafana/](https://hub.docker.com/r/grafana/grafana/)
+    -   `influxdb` for influxdb:latest [https://hub.docker.com/_/influxdb/](https://hub.docker.com/_/influxdb/)
 
 ### Create influxdb container
 
-1.  In image select `influxdb:latest` and click launch
-1.  leave general settings alone - container name should be influxdb1 unless you created other influxdb's
-1.  Click advanced settings
-1.  on volume tab add the following:
-    -   docker/influxdb folder to mount path /var/lib/influxdb leave as read/write
-1.  on the network tab
-    -   add your network, in this example, Grafana_Net
-    -   remove the default bridge (usually called bridge)
-    -   Ensure that 'use the same network as docker host' is unchecked
-1.  on port settings **<--- why do i have host mapped port, not sure we need this for
+1.  In `Image`, select `influxdb:latest` and click `launch`
+1.  Leave `General Settings` alone - container name should be `influxdb1`, unless you created other influxdb's
+1.  Click `Advanced Settings`
+1.  On volume tab add the following:
+    -   The `/docker/influxdb` folder from above to mount path `/var/lib/influxdb` - leave as read/write
+1.  On the `Network` tab
+    -   Add your network - in this example: `Grafana_Net`
+    -   Remove the default bridge (usually called `Bridge`)
+    -   Ensure that 'use the same network as docker host' is `unchecked`
+1.  On port settings **<--- why do i have host mapped port, not sure we need this for -
     this set of 3 as all traffic is internal**
-    -   change local port from Auto to one you have free on host - this makes it predictable. something like 3456
-    -   leave container port as 8086 and type as TCP
-1.  on environment tab add the following vars
-    -   INFLUXDB_DATA_DIR       = /var/lib/influxdb/data
-    -   INFLUXDB_DATA_WAL_DIR   = /var/lib/influxdb/wal
-    -   INFLUXDB_DATA_META_DIR  = /var/lib/influxdb/meta
-1.  Finalize container and run
-    -   Click APPLY click NEXT click APPLY
+    -   Change local port from `Auto` to one you have free on host - this makes it predictable.
+        Something like `3456`
+    -   Leave container port as `8086` and type as `TCP`
+1.  On environment tab add the following vars
+    -   `INFLUXDB_DATA_DIR`      |  `/var/lib/influxdb/data`
+    -   `INFLUXDB_DATA_WAL_DIR`  |  `/var/lib/influxdb/wal`
+    -   `INFLUXDB_DATA_META_DIR` |  `/var/lib/influxdb/meta`
+1.  Finalize container and:
+    -   Click `APPLY`
+    -   Click `NEXT`
+    -   Click `APPLY`
 
 #### Create influx database
 
-1.  click containers and then double click the running influxdb1 container
-1.  switch to the terminal tab
-1.  click the drop down next to create and 'select launch with command'
-1.  enter bash and click ok
-1.  select bash from the left hand side - you should now see a command prompt
-1.  in the command prompt enter these commands (note you can't cut and paste)
--   `influx` - after a couple of second you should be in the InfluxDB shell.  enter them exactly as shown
--   `CREATE DATABASE unifi`
--   `USE unifi`
--   `CREATE USER unifipoller WITH PASSWORD 'unifipoller' WITH ALL PRIVILEGES`
--   `GRANT ALL ON unifi TO unifi`
+1.  Click `Containers` and then double click the running `influxdb1` container
+1.  Switch to the `terminal` tab
+1.  Click the drop down next to `Create` and select `launch with command`
+1.  Enter `bash` and click `ok`
+1.  Select `bash` from the left hand side. You should now see a command prompt
+1.  In the command prompt, enter these commands: (note you can't copy and paste)
+    -   `influx` - after a couple of seconds you should be in the InfluxDB shell
+    -   Run the following commands in the InfluxDB shell, then close the window:
+
+```shell
+CREATE DATABASE unifi
+USE unifi
+CREATE USER unifipoller WITH PASSWORD 'unifipoller' WITH ALL PRIVILEGES
+GRANT ALL ON unifi TO unifipoller
+exit
+```
 
 #### Note
 
@@ -120,85 +128,93 @@ at helps avoid conflicts with the host or other containers you might have that w
 
 ### Create unifi-poller container
 
-1.  In image select golift/unifi-poller:latest and click launch
-1.  leave general settings alone - container name should be `golift-unifi-poller1` unless you created other unifi-pollers
-1.  Click advanced settings
-1.  on the network tab
-    -   add your network, in this example, `Grafana_Net`
-    -   remove the default bridge (usually called bridge)
-    -   Ensure that 'use the same network as docker host' is unchecked
-1.  on environment tab add the following vars
-    -   UP_INFLUXDB_URL = `http://influxdb1:8086`
-    -   UP_UNIFI_DEFAULT_URL = `https://your.unifi.controller.ip:8443`
-    -   UP_UNIFI_DEFAULT_USER = `username for account created earlier. e.g. unifipoller`
-    -   UP_UNIFI_DEFAULT_PASS = `password for above user`
-    -   (optional) UP_POLLER_DEBUG = `true`
-1.  Finalize container and run
-    -   Click APPLY click NEXT click APPLY
+1.  In `Image` select `golift/unifi-poller:latest` and click `launch`
+1.  Leave general settings alone - container name should be `golift-unifi-poller1`, unless you created other unifi-pollers
+1.  Click `Advanced Settings`
+1.  On the network tab:
+    -   Add your network, in this example, `Grafana_Net`
+    -   Remove the default bridge (usually called `Bridge`)
+    -   Ensure that 'use the same network as docker host' is `unchecked`
+1.  On the `Environment` tab, add the following vars:
+    -   `UP_INFLUXDB_URL`   |   `http://influxdb1:8086`
+    -   `UP_UNIFI_DEFAULT_URL`  |    `https://your.unifi.controller.ip:8443`
+    -   `UP_UNIFI_DEFAULT_USER`     |    `username for account created earlier. e.g. unifipoller`
+    -   `UP_UNIFI_DEFAULT_PASS`     |   `password for above user`
+    -   (optional) `UP_POLLER_DEBUG`    |   `true`
+1.  Finalize the container by:
+    -   Click `APPLY`
+    -   Click `NEXT`
+    -   Click `APPLY`
 
 #### Check that poller and influx are working
 
-1.  Select container in docker UI
+1.  Select the `Container` tab in the Docker UI
 1.  Double click `golift-unifi-poller1`
-1.  Select log tab
+1.  Select the `Log` tab
 1.  After a couple of minutes you should see an entry like the following,
-    if you do then everything is working ok
+    if you do then everything is working ok:
 
-      ```shell
+    ```shell
     2019/09/14 22:43:09 [INFO] UniFi Measurements Recorded. Sites: 1, Clients: 78, Wireless APs: 6, Gateways: 1, Switches: 6, Points: 193, Fields: 7398
     ```
 
 ### Grafana Container
 
-This container is a little difficult on Synology, there are two methods that have
-been to shown to work.  If you have an even better method let us know!
-The two different methods have their pros and cons.
+This container is a little difficult on Synology. There are two methods that have
+been to shown to work. If you have an even better method let us know!
+The two different methods do have their pros and cons.
 
 Options:
 
-**Method 1** - create container in UI, use SSH on the Synology to change some file permissions.
+**Method 1** - Create the container in the Docker UI, use SSH on the Synology to change some file permissions.
 
--   `Advantages` - the docker clean action in the UI continues to work.
+-   `Advantages` - the `Docker Clean` action in the UI continues to work.
 -   `Disadvantages` - be careful not to break the container by modifying folder attributes in the UI.
 
-**Method 2** - create container via SSH command on the Synology to create the container.
+**Method 2** - Create the container via `SSH` command on the Synology.
 
 -   `Advantages` - no need to change file system ownership attributes.
--   `Disadvantages` - have to create a user account and delete the container and re-run the docker
+-   `Disadvantages` - you have to create a user account, delete the container, and re-run the docker
     command each time you want to update the base image.
 
 #### Method 1 - Recommended
 
 ##### Method 1 Preparation
 
-1.  SSH into your Synology
-1.  You will need to CD to the root docker directory you created earlier
-    (in this example the /docker folder containing the `/grafana` folder.
-1.  The command format is cd `/volume{x}/{dirname}` on my system this shared folder
-    is on volume 3 so for me it is: `cd /volume3/docker`
-1.  Now you need to change the permissions of the grafana folder: `sudo chown 472 grafana`
+1.  `SSH` into your Synology
+1.  You will need to `cd` to the root `Docker Directory` you created earlier
+    (In this example, the `/docker` folder containing the `/grafana` folder)
+1.  The command is:
+    -   `cd /volume{x}/[dirname]`
+    -   On my system this shared folder is on volume 3 so, for me it is: `cd /volume3/docker`
+1.  Now, you need to change the permissions of the grafana folder:
+    -   `sudo chown 472 grafana`
 
 -   **NOTE**: If you look at the grafana folder ownership in file station it will say
-    472 rather than any user you have created.
+    `472` rather than any user you have created.
 
 ##### Method 1 Container
 
-1.  In image select grafan/grafana:latest and click launch
-1.  leave general settings alone - container name should be `grafana-grafana1` unless you created other grafanas
-1.  Click advanced settings
-1.  on volume tab add the following:
-    -   `docker/grafana` folder to mount path `/var/lib/grafana` leave as `read/write`
-1.  on the network tab
-    -   add your network, in this example, `Grafana_Net`
-    -   remove the default bridge (usually called `bridge`)
-    -   Ensure that 'use the same network as docker host' is unchecked
-1.  on port settings
-    -   change local port from Auto to one you have free on host - this makes it predictable. something like `3000`
-    -   leave container port as `3000` and type as `TCP`
-1.  on environment tab add the following vars
-    -   `GF_INSTALL_PLUGINS = grafana-clock-panel,grafana-piechart-panel,natel-discrete-panel`
-1.  Finalize container and run
-    -   Click APPLY click NEXT click APPLY
+1.  In the `Image` tab, select `grafana/grafana:latest` and click `Launch`
+1.  Leave the `General Settings` alone - the container name should be `grafana-grafana1`,
+    unless you created other Grafanas.
+1.  Click `Advanced Settings`
+1.  On the `Volume` tab, add the following:
+    -   `docker/grafana` folder to mount path `/var/lib/grafana` and leave as `read/write`
+1.  On the `Network` tab:
+    -   Add your network, in this example, `Grafana_Net`
+    -   Remove the default bridge (usually called `bridge`)
+    -   Ensure that 'use the same network as docker host' is `Unchecked`
+1.  On `Port Settings`
+    -   Change `local port` from `Auto` to one you have free on host - this makes it predictable.
+        Something like `3000`
+    -   Leave container port as `3000` and type as `TCP`
+1.  On the `Environment` tab, add the following vars:
+    -   `GF_INSTALL_PLUGINS` |  `grafana-clock-panel,grafana-piechart-panel,natel-discrete-panel`
+1.  Finalize container and:
+    -   Click `APPLY`
+    -   Click `NEXT`
+    -   Click `APPLY`
 
 -   **NOTE**: Don't change ownership in file station of the Grafana folder or you will break the container.
 -   **_Skip to 'running the container section below'_**
@@ -207,15 +223,16 @@ Options:
 
 ##### Method 2 Preparation
 
-1.  Create a new user account on the Synology from control panel
-    -   Call the user grafana
-    -   Set their password (you don't need to logon as grafana and change it)
-    -   Disallow password change
-    -   Assign them to the user group users
-    -   Give them r/w permission to the folder you created e.g. /docker/grafana
+1.  Create a new user account on the Synology from the `Control Panel`:
+    -   Call the user `grafana`
+    -   Set the password (you don't need to logon as grafana and change it)
+    -   `Disallow Password Change`
+    -   Assign them to the user group `users`
+    -   Give them `r/w` permission to the folder you created e.g. `/docker/grafana`
     -   Don't assign them anything else
-1.  SSH into your Synology
-1.  Run the following command to find the PID of the user you created and note it for later: `sudo id grafana`
+1.  `SSH` into your Synology
+1.  Run the following command to find the `PID` of the user you created and note it for later:
+    -   `sudo id grafana`
 
 ##### Method 2 Container
 
@@ -230,43 +247,43 @@ Options:
     ```
 
 -   **Use the pid you got in step 3 above**, use the network name you created if you didn't use `Grafana_Net`
-    AND you will need to use the volume # your docker folder (the one you created manually is on)
-    by default this will be on volume1 but if you have multiple volumes this may not be the case.
+    AND you will need to use the volume # of your docker folder (the one you created manually is on)
+    by default this will be on `/volume1`, but if you have multiple volumes, this may not be the case.
 
 ##### Method 2 Notes
 
--   If you use the clean action in the Synology docker UI you will break this VM and need to
-    delete and rerun the docker run command.
--   If you use the Synology docker UI to export the configuration and import it again later the
-    docker will break and you will need to rerun the docker run command.
+-   If you use the clean action in the Synology docker UI, you will break this VM and you will need to
+    delete and rerun the `docker run` command.
+-   If you use the Synology docker UI to export the configuration and import it again later,
+    docker will break and you will need to rerun the `docker run` command.
 -   I have no idea if hyperbackup or any other backup / restore will also break the config
 -   This all derives from the fact there is no way to do `--user {PID}` in the Synology docker UI / JSON.
 
 #### Running the container
 
-At this point your container should have created ok,
+At this point your containers should have been created, hopefully with no issues.
 
-If so start the container, the first time it should take a while to initialize the database.
+If so! Start the container. The first time it should take a while to initialize the database.
 Check the logs to make sure you have no file / folder permissions issues. If you did you will
-need to check you used the right PID and set the ownership of the host grafana folder correctly.
+need to check and make sure you used the right `PID` and set the ownership of the host grafana folder correctly.
 
-From you host browser access `http://{ip address of your synology}:3000` and you should see the
+From your host browser, access `http://{ip address of your synology}:3000` and you should see the
 Grafana logon (the default is admin:admin)
 
 You will be prompted to change the default password, do so.
 
 ## Configuring InfluxDB Grafana Datasource
 
-1.  Click add data source on the page you see after logon.
-1.  Select the influxdb icon
+1.  Click `Add your first data source` on the home page you see after logon.
+1.  Select the `influxdb` option
 1.  Set the following fields:
-    -   Name = UniFi InfluxDB  (or whatever name you want) and set to default
+    -   Name = `UniFi InfluxDB`  (or whatever name you want) and set to default
     -   URL = `http://influxdb1:8086`
-    -   Database = unifi
-    -   Username = unifipoller
-    -   Password = unifipoller
+    -   Database = `unifi`
+    -   Username = `unifipoller`
+    -   Password = `unifipoller`
 1.  **No other fields need to be changed or set on this page.**
-1.  Click save & test
+1.  Click `Save & Test`
     -   You should get green banner above the save and test that says 'Data Source is Working'
     -   To return to the homepage click the icon with 4 squares on the left nav-bar and select home
 
