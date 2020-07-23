@@ -61,9 +61,9 @@ You also need Grafana and you have to add the Influx or Prometheus data source t
 
 ```shell
 pkg install net/unifi-poller
-```   
+```
 
--   To build and install from ports run:   
+-   To build and install from ports run:
 
 ```shell
 cd /usr/ports/net-mgmt/unifi-poller
@@ -78,13 +78,13 @@ make install clean
 # View manual.
 man unifi-poller
 
-# Edit config file. 
+# Edit config file.
 # A defualt configuration file is placed in /usr/local/etc/unifi-poller/up.conf which is not overwritten on upgrades
 # A sample configuration is placed in /usr/local/etc/unifi-poller/up.conf.sample
 vi /usr/local/etc/unifi-poller/up.conf
 
 # enable the service. Or edit /etc/rc.conf
-sysrc unifi_poller_enable="YES" 
+sysrc unifi_poller_enable="YES"
 
 # Start, Restart, Stop service.
 service unifi-poller start
