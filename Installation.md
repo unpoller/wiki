@@ -1,12 +1,18 @@
 ## Upgrading
 
-See [Updating](Updating) for upgrade details.
+See the [Updating](Updating) wiki for upgrade details.
 
 ## Prerequisites
 
-You need to create an Influx database, or setup Prometheus, and user/pass on the UniFi Controller.
-You also need Grafana and you have to add the Influx or Prometheus data source to Grafana.
-**Do not skip any of these pre-reqs!**
+_Important:_ You need to create an Influx database, or setup Prometheus,
+and user/pass on the UniFi Controller. You also need Grafana and you have
+to add the Influx or Prometheus data source to Grafana.
+**Do not skip any of the pre-reqs!**
+
+<details>
+  <summary><font color="blue">
+    Click here to reveal the prerequisites for poller.
+  </font></summary>
 
 1.  **Add a user to the UniFi Controller**. After logging into your controller:
     1.  Go to `Settings -> Admins`
@@ -43,36 +49,40 @@ You also need Grafana and you have to add the Influx or Prometheus data source t
     -   Or, if you use Prometheus, add a [Prometheus data source](https://grafana.com/docs/features/datasources/prometheus/).
     -   **Do not forget to add the data source!** It's generally just a URL, very easy.
 
+</details>
+
 ## Docker
 
 -   Check that you meet the pre-reqs above, or use
     [Docker Compose](https://github.com/unifi-poller/unifi-poller/blob/master/init/docker/docker-compose.yml)
     to "do it all."
--   See [Docker](Docker) for information about installing unifi-poller.
+-   See the [Docker](Docker) wiki for information about installing poller.
 -   Then see the [Configuration](Configuration) doc for post-install configuration information.
--   _Synology_? Check out the [Synology HOWTO](Synology-HOWTO) provided by @Scyto.
+-   _Synology_? Check out the [Synology HOWTO](Synology-HOWTO) provided by [@Scyto](http://github.com/scyto).
 
 ## FreeBSD
 
-### Installation
+**Poller is now available in the ports tree and can be installed from there.**
 
--   Poller is now available in the ports tree and can be installed from there.
--   To install compiled binary from ports run:
+<details>
+  <summary><font color="blue">
+    Follow these directions to install poller using FreeBSD ports.
+  </font></summary>
+
+-   **To install compiled binary from ports run:**
 
 ```shell
 pkg install net/unifi-poller
 ```
 
--   To build and install from ports run:
+-   **To build and install from ports run:**
 
 ```shell
 cd /usr/ports/net-mgmt/unifi-poller
 make install clean
 ```
 
-### Post installation
-
--   Use these commands to maintain the service
+-   **Use these commands to maintain the service:**
 
 ```shell
 # View manual.
@@ -97,9 +107,17 @@ service unifi-poller status
 grep unifi-poller /var/log/messages
 ```
 
+</details>
+
 ## Linux
 
-JFrog Bintray provides package hosting for RedHat/CentOS/Debian/Ubuntu repos.
+**JFrog Bintray provides package hosting with RedHat, CentOS, Debian and Ubuntu repos.**
+
+<details>
+  <summary><font color="blue">
+    Follow these directions to configure the repo and install poller.
+  </font></summary>
+
 The same package is in all the repos, but you can set the name to match your OS
 as shown below.
 
@@ -124,7 +142,7 @@ gpgkey=https://golift.io/gpgkey
 
 ### Debian variants (Ubuntu, Knoppix)
 
--   Install the repo and package using the commands below.
+-   **Install the repo and package using the commands below.**
 -   Replace `ubuntu` with `debian` if you have Debian.
 -   Supported distributions:
     -   `xenial`, `bionic`, `focal`, `jesse`, `stretch`, `buster`, `bullseye`
@@ -164,9 +182,14 @@ for additional post-install configuration information.
     tail -f -n100  /var/log/syslog /var/log/messages | grep unifi-poller
     ```
 
+</details>
+
 ## macOS
 
-Use Homebrew.
+<details>
+  <summary><font color="blue">
+    Follow these instructions to install poller using Homebrew.
+  </font></summary>
 
 1.  [Install Homebrew](https://brew.sh/)
 1.  `brew install golift/mugs/unifi-poller`
@@ -196,9 +219,14 @@ Use Homebrew.
     brew services restart unifi-poller
     ```
 
+</details>
+
 ## Manual Package
 
-You can build your own package from source with the `Makefile`.
+<details>
+  <summary><font color="blue">
+    You can build your own package from source with the Makefile.
+  </font></summary>
 Recommend reading the note at the bottom if you're using a mac.
 
 1.  [Install FPM](https://fpm.readthedocs.io/en/latest/installing.html)
@@ -234,3 +262,5 @@ git clone https://github.com/unifi-poller/unifi-poller.git
 cd unifi-poller
 make rpm deb
 ```
+
+</details>
