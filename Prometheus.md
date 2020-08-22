@@ -18,6 +18,7 @@ Then you simply point prometheus at unifi-poller using a config like this:
 ```yaml
 scrape_configs:
   - job_name: 'unifipoller'
+    scrape_interval: 30s
     static_configs:
     - targets: ['localhost:9130']
 ```
@@ -115,6 +116,7 @@ This applies to both approaches above. Configure prometheus like this:
 ```yaml
 scrape_configs:
   - job_name: 'unifipoller'
+    scrape_interval: 30s
     static_configs:
       - targets:
         - https://unifi.controller:8443
@@ -140,6 +142,7 @@ in the [Configuration](Configuration) doc. Then setup Prometheus like this:
 ```yaml
 scrape_configs:
   - job_name: 'unifipoller'
+    scrape_interval: 30s
     static_configs:
     - targets: ['localhost:9130']
 ```
